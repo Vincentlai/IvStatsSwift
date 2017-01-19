@@ -1,0 +1,31 @@
+{
+  "name": "PGoApi",
+  "version": "0.1.0",
+  "summary": "A Pokemon GO API library for Swift.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/lsapan/pgoapi-swift",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Luke Sapan": "luke@coadstal.com"
+  },
+  "source": {
+    "git": "https://github.com/lsapan/pgoapi-swift.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0",
+    "osx": "10.11"
+  },
+  "source_files": "PGoApi/Classes/**/*",
+  "dependencies": {
+    "Alamofire": [
+      "~> 4.0"
+    ],
+    "ProtocolBuffers-Swift": [
+      "~> 3.0"
+    ]
+  }
+}

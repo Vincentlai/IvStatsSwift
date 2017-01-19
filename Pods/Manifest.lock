@@ -1,0 +1,38 @@
+PODS:
+  - Alamofire (4.2.0)
+  - Neon (0.4.0)
+  - PGoApi (0.1.0):
+    - Alamofire (~> 4.0)
+    - ProtocolBuffers-Swift (~> 3.0)
+  - ProtocolBuffers-Swift (3.0.0)
+
+DEPENDENCIES:
+  - Neon
+  - PGoApi (from `https://github.com/lsapan/pgoapi-swift`, branch `Swift3.0---Version-45`)
+  - ProtocolBuffers-Swift (from `https://github.com/alexeyxo/protobuf-swift`, branch `ProtoBuf3.0-Swift3.0`)
+
+EXTERNAL SOURCES:
+  PGoApi:
+    :branch: Swift3.0---Version-45
+    :git: https://github.com/lsapan/pgoapi-swift
+  ProtocolBuffers-Swift:
+    :branch: ProtoBuf3.0-Swift3.0
+    :git: https://github.com/alexeyxo/protobuf-swift
+
+CHECKOUT OPTIONS:
+  PGoApi:
+    :commit: ef6f8adf6a4e2e4dfb67940f33a4f52f4fe941e6
+    :git: https://github.com/lsapan/pgoapi-swift
+  ProtocolBuffers-Swift:
+    :commit: fc0f69e2f3b5bed2a444709d35288d33fe7d3532
+    :git: https://github.com/alexeyxo/protobuf-swift
+
+SPEC CHECKSUMS:
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
+  PGoApi: 0c99fd6070c78a5151d050edd77ab5486a2ab57a
+  ProtocolBuffers-Swift: 948824656ef9f507348481655d409628b0219be0
+
+PODFILE CHECKSUM: 94d93ecc88be3e52bc8ee85ab5ebd0f39878b78a
+
+COCOAPODS: 1.1.1
