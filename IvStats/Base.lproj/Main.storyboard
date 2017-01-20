@@ -207,7 +207,7 @@
                         <outlet property="mainLabel" destination="IpT-2o-JDh" id="5td-mr-uhh"/>
                         <outlet property="passwordField" destination="vls-Oi-wLP" id="22V-my-XIY"/>
                         <outlet property="passwordLabel" destination="9CJ-Lz-08v" id="TD4-2q-VgE"/>
-                        <segue destination="sOW-ep-ZRO" kind="presentation" identifier="Dashboard" id="XTo-Yy-FqI"/>
+                        <segue destination="sOW-ep-ZRO" kind="showDetail" identifier="Dashboard" id="XTo-Yy-FqI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAv-Hj-HIw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -296,8 +296,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="sOW-ep-ZRO" kind="modal" identifier="HasUserConfig" id="sBs-qy-K3d"/>
-                        <segue destination="cma-pm-2z1" kind="show" identifier="NoUserConfig" id="9rC-FV-zNV"/>
+                        <segue destination="sOW-ep-ZRO" kind="showDetail" identifier="HasUserConfig" id="sBs-qy-K3d"/>
+                        <segue destination="cma-pm-2z1" kind="showDetail" identifier="NoUserConfig" action="showViewController:sender:" id="9rC-FV-zNV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfr-F6-yjp" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,7 +12,7 @@
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>Neon.xcscheme</key>
 		<dict>
@@ -22,7 +22,7 @@
 		<key>PGoApi.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>Pods-IvStats.xcscheme</key>
 		<dict>

@@ -14,11 +14,10 @@ class MainController: UIViewController
 
     var auth: PGoAuth!
     var request: PGoApiRequest? = nil
-    
+    var hud: MBProgressHUD!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -27,8 +26,8 @@ class MainController: UIViewController
         auth.delegate = self
         let userDefault = UserDefaults.standard
         if let refreshToken = userDefault.string(forKey: "refreshToken") as String! {
-            print("\(refreshToken)")
             auth.loginWithRefreshToken(withRefreshToken: refreshToken)
+            
         }else{
             self.performSegue(withIdentifier: "NoUserConfig", sender: self)
         }
