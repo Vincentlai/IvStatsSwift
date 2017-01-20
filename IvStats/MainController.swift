@@ -8,7 +8,9 @@
 
 import UIKit
 import PGoApi
-class MainController: UIViewController, PGoAuthDelegate, PGoApiDelegate {
+import MBProgressHUD
+class MainController: UIViewController
+, PGoAuthDelegate, PGoApiDelegate, MBProgressHUDDelegate {
 
     var auth: PGoAuth!
     var request: PGoApiRequest? = nil

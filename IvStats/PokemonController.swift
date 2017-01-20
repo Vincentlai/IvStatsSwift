@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class PokemonController: UIViewController {
+class PokemonController: UIViewController, MBProgressHUDDelegate {
 
+    private var hud: MBProgressHUD!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        hud = MBProgressHUD.init(view: self.view)
+        hud.delegate = self
+        hud.setHud(withtitle: "Testing", detailText: nil)
+        self.view.addSubview(hud)
+        hud.show(animated: true)
+        
+        hud.hide(animated: true, afterDelay: 9)
         // Do any additional setup after loading the view.
     }
 

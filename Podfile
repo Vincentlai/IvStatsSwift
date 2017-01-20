@@ -10,4 +10,5 @@ target 'IvStats' do
   pod ‘PGoApi’, :git => ‘https://github.com/lsapan/pgoapi-swift', :branch => 'Swift3.0---Version-45’
   pod ‘ProtocolBuffers-Swift’, :git => ‘https://github.com/alexeyxo/protobuf-swift', :branch => 'ProtoBuf3.0-Swift3.0’
   pod 'Neon'
+  pod 'MBProgressHUD', '~> 1.0.0'
 end

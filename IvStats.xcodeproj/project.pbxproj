@@ -16,6 +16,8 @@
 		BF275E031E166C2C004C16EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF275E011E166C2C004C16EB /* LaunchScreen.storyboard */; };
 		BF362C4C1E166F3D0052B50D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF362C4B1E166F3D0052B50D /* LoginController.swift */; };
 		BF6FC3E31E308F650072A1E0 /* PokemonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6FC3E21E308F650072A1E0 /* PokemonController.swift */; };
+		BF6FC3E51E30B2C30072A1E0 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FC3E41E30B2C30072A1E0 /* MBProgressHUD.framework */; };
+		BF6FC3E91E31A51D0072A1E0 /* HUDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6FC3E81E31A51D0072A1E0 /* HUDHelper.swift */; };
 		BF7DCB121E1736790023B08A /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7DCB111E1736790023B08A /* System.swift */; };
 		BFBACC011E2DF25800551FDE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBACC001E2DF25800551FDE /* User.swift */; };
 		BFE1E1661E21E7EC000C61B2 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE1E1651E21E7EC000C61B2 /* Button.swift */; };
@@ -36,6 +38,8 @@
 		BF275E041E166C2C004C16EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF362C4B1E166F3D0052B50D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BF6FC3E21E308F650072A1E0 /* PokemonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonController.swift; sourceTree = "<group>"; };
+		BF6FC3E41E30B2C30072A1E0 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
+		BF6FC3E81E31A51D0072A1E0 /* HUDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDHelper.swift; sourceTree = "<group>"; };
 		BF7DCB111E1736790023B08A /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		BFBACC001E2DF25800551FDE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BFE1E1651E21E7EC000C61B2 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6FC3E51E30B2C30072A1E0 /* MBProgressHUD.framework in Frameworks */,
 				37865C0DE3CA3BA4D473F203 /* Pods_IvStats.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +62,7 @@
 		07EDBEB15B6C5A6024E68DBF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF6FC3E41E30B2C30072A1E0 /* MBProgressHUD.framework */,
 				B55EA4E009C2D556D4237D9E /* Pods_IvStats.framework */,
 			);
 			name = Frameworks;
@@ -121,6 +127,7 @@
 			children = (
 				BFBACC001E2DF25800551FDE /* User.swift */,
 				BF7DCB111E1736790023B08A /* System.swift */,
+				BF6FC3E81E31A51D0072A1E0 /* HUDHelper.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -256,6 +263,7 @@
 				BF7DCB121E1736790023B08A /* System.swift in Sources */,
 				BF0A060B1E24AE34004834FA /* WebController.swift in Sources */,
 				BF275DFB1E166C2C004C16EB /* HomeController.swift in Sources */,
+				BF6FC3E91E31A51D0072A1E0 /* HUDHelper.swift in Sources */,
 				BF362C4C1E166F3D0052B50D /* LoginController.swift in Sources */,
 				BF275DF91E166C2C004C16EB /* AppDelegate.swift in Sources */,
 				BFBACC011E2DF25800551FDE /* User.swift in Sources */,
@@ -385,10 +393,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = P2J8GCT44C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/MBProgressHUD",
+				);
 				INFOPLIST_FILE = IvStats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = LaiQiang.IvStats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -402,8 +416,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = P2J8GCT44C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/MBProgressHUD",
+				);
 				INFOPLIST_FILE = IvStats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = LaiQiang.IvStats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
