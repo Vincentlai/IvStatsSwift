@@ -9,25 +9,26 @@
 import UIKit
 import PGoApi
 import MBProgressHUD
+
+var request: PGoApiRequest? = nil
+
 class MainController: UIViewController
 , PGoAuthDelegate, PGoApiDelegate, MBProgressHUDDelegate {
 
     var auth: PGoAuth!
-    var request: PGoApiRequest? = nil
     var hud: MBProgressHUD!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        auth = GPSOAuth()
-        auth.delegate = self
         let userDefault = UserDefaults.standard
         if let refreshToken = userDefault.string(forKey: "refreshToken") as String! {
+            auth = GPSOAuth()
+            auth.delegate = self
             auth.loginWithRefreshToken(withRefreshToken: refreshToken)
-            
+            hud = HUDHelper.createHud(withView: self.view, title: "Loging in..", detailText: nil, delegate: self)
         }else{
             self.performSegue(withIdentifier: "NoUserConfig", sender: self)
         }
@@ -52,6 +53,7 @@ class MainController: UIViewController
     func didReceiveApiResponse(_ intent: PGoApiIntent, response: PGoApiResponse){
         if intent == .login {
             print("\(response)")
+            self.hud.hide(animated: true)
             self.performSegue(withIdentifier: "HasUserConfig", sender: self)
         }
         

@@ -11,7 +11,6 @@ import PGoApi
 class LoginController: UIViewController, PGoAuthDelegate, PGoApiDelegate {
 
     var auth: PGoAuth!
-    var request: PGoApiRequest? = nil
     var authMethod: String!
     
     @IBOutlet weak var mainLabel: UILabel!

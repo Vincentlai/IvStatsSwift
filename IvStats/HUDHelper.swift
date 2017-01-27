@@ -10,19 +10,39 @@ import Foundation
 import UIKit
 import MBProgressHUD
 
-extension MBProgressHUD {
-    var HUDBackgroundColor: UIColor{
-        return UIColor.init(white: 0, alpha: 0.5)
-    }
-    public func setHud(withtitle title: String, detailText: String?) {
-        self.label.text = title
-        self.bezelView.color = HUDBackgroundColor
-        self.backgroundView.style = .solidColor
-        if(detailText != nil){
-            self.detailsLabel.text = detailText
+class HUDHelper{
+    
+    private var hudBackgroundColor = UIColor.init(white: 0.7, alpha: 0.5)
+    
+    class func createHud(withView parentView : UIView, title: String?, detailText: String?, delegate : MBProgressHUDDelegate) -> MBProgressHUD{
+        // Clear & remove any previous HUD
+        for view in parentView.subviews {
+            if let previousHUD = view as? MBProgressHUD {
+                previousHUD.removeFromSuperview()
+                break
+            }
         }
+        
+        // Init HUD
+        let HUD = MBProgressHUD.init(view: parentView)
+        
+        // Add HUD into view
+        parentView.addSubview(HUD)
+        
+        if title != nil && title != ""
+        {
+            HUD.label.text = title!
+        }
+        
+        if detailText != nil && title != ""
+        {
+            HUD.detailsLabel.text = detailText!
+        }
+
+
+        return HUD
     }
 }
-    
+
 
     
