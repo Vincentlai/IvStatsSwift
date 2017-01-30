@@ -23,6 +23,7 @@ class Pokemon: NSObject{
     
     var id: UInt64 = UInt64(0)
     var pokemonId: String = ""
+    var pokemonIdInt: Int = 0
     var cp: Int = 0
     var stamina: Int = 0
     var staminaMax: Int = 0
@@ -54,6 +55,7 @@ class Pokemon: NSObject{
         }
         if pokemonData.hasPokemonId {
             self.pokemonId = pokemonData.pokemonId.toString()
+            self.pokemonIdInt = pokemonData.pokemonId.hashValue
         }
         if pokemonData.hasCp {
             self.cp = Int(pokemonData.cp)

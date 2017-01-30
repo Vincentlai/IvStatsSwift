@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C6F5FEFCA5C84EC4D8D092A /* Pods_IvStats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55EA4E009C2D556D4237D9E /* Pods_IvStats.framework */; };
 		BF0A060B1E24AE34004834FA /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A060A1E24AE34004834FA /* WebController.swift */; };
 		BF275DF91E166C2C004C16EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF275DF81E166C2C004C16EB /* AppDelegate.swift */; };
 		BF275DFB1E166C2C004C16EB /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF275DFA1E166C2C004C16EB /* HomeController.swift */; };
@@ -24,6 +25,7 @@
 		BF6FC3F81E35C56D0072A1E0 /* Candy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6FC3F71E35C56D0072A1E0 /* Candy.swift */; };
 		BF6FC3FA1E39C5130072A1E0 /* PokemonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6FC3F91E39C5130072A1E0 /* PokemonCollectionCell.swift */; };
 		BF7DCB121E1736790023B08A /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7DCB111E1736790023B08A /* System.swift */; };
+		BFB031271E3EC78000821C97 /* RNCryptor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB031261E3EC78000821C97 /* RNCryptor.framework */; };
 		BFBACC011E2DF25800551FDE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBACC001E2DF25800551FDE /* User.swift */; };
 		BFE1E1661E21E7EC000C61B2 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE1E1651E21E7EC000C61B2 /* Button.swift */; };
 		BFF74C2D1E2F525700CDFEA0 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF74C2C1E2F525700CDFEA0 /* MainController.swift */; };
@@ -52,6 +54,7 @@
 		BF6FC3F71E35C56D0072A1E0 /* Candy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candy.swift; sourceTree = "<group>"; };
 		BF6FC3F91E39C5130072A1E0 /* PokemonCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokemonCollectionCell.swift; path = Views/PokemonCollectionCell.swift; sourceTree = "<group>"; };
 		BF7DCB111E1736790023B08A /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		BFB031261E3EC78000821C97 /* RNCryptor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RNCryptor.framework; path = "../../Library/Developer/Xcode/DerivedData/IvStats-clezezoarqjivfhbhmmhsuqizqzq/Build/Products/Debug-iphoneos/RNCryptor/RNCryptor.framework"; sourceTree = "<group>"; };
 		BFBACC001E2DF25800551FDE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BFE1E1651E21E7EC000C61B2 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		BFF74C2C1E2F525700CDFEA0 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -62,9 +65,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFB031271E3EC78000821C97 /* RNCryptor.framework in Frameworks */,
 				BF6FC3EF1E31F0F90072A1E0 /* Pods_IvStats.framework in Frameworks */,
 				BF6FC3ED1E31F0EF0072A1E0 /* PGoApi.framework in Frameworks */,
 				BF6FC3E51E30B2C30072A1E0 /* MBProgressHUD.framework in Frameworks */,
+				4C6F5FEFCA5C84EC4D8D092A /* Pods_IvStats.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,7 @@
 		07EDBEB15B6C5A6024E68DBF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFB031261E3EC78000821C97 /* RNCryptor.framework */,
 				BF6FC3EE1E31F0F90072A1E0 /* Pods_IvStats.framework */,
 				BF6FC3EC1E31F0EF0072A1E0 /* PGoApi.framework */,
 				BF6FC3E41E30B2C30072A1E0 /* MBProgressHUD.framework */,
@@ -112,15 +118,11 @@
 		BF275DF71E166C2C004C16EB /* IvStats */ = {
 			isa = PBXGroup;
 			children = (
+				BF275DFC1E166C2C004C16EB /* Main.storyboard */,
 				BF6FC3F21E32EE070072A1E0 /* Helpers */,
 				BF7DCB131E17368C0023B08A /* Classes */,
 				BF362C4A1E166F100052B50D /* Supporting Files */,
-				BF275DFA1E166C2C004C16EB /* HomeController.swift */,
-				BFF74C2C1E2F525700CDFEA0 /* MainController.swift */,
-				BF362C4B1E166F3D0052B50D /* LoginController.swift */,
-				BF0A060A1E24AE34004834FA /* WebController.swift */,
-				BF6FC3E21E308F650072A1E0 /* PokemonController.swift */,
-				BF275DFC1E166C2C004C16EB /* Main.storyboard */,
+				BFB031231E3EC50B00821C97 /* Controllers */,
 				BF6FC3FB1E39C5190072A1E0 /* Views */,
 			);
 			path = IvStats;
@@ -140,6 +142,7 @@
 		BF6FC3F21E32EE070072A1E0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BF6FC3E81E31A51D0072A1E0 /* HUDHelper.swift */,
 				BF6FC3F01E32EE000072A1E0 /* Helper.swift */,
 			);
 			name = Helpers;
@@ -159,11 +162,22 @@
 			children = (
 				BFBACC001E2DF25800551FDE /* User.swift */,
 				BF7DCB111E1736790023B08A /* System.swift */,
-				BF6FC3E81E31A51D0072A1E0 /* HUDHelper.swift */,
 				BF6FC3F51E3540280072A1E0 /* Pokemon.swift */,
 				BF6FC3F71E35C56D0072A1E0 /* Candy.swift */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		BFB031231E3EC50B00821C97 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF275DFA1E166C2C004C16EB /* HomeController.swift */,
+				BFF74C2C1E2F525700CDFEA0 /* MainController.swift */,
+				BF362C4B1E166F3D0052B50D /* LoginController.swift */,
+				BF0A060A1E24AE34004834FA /* WebController.swift */,
+				BF6FC3E21E308F650072A1E0 /* PokemonController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

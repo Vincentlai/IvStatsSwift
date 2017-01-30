@@ -6,12 +6,14 @@ PODS:
     - Alamofire (~> 4.0)
     - ProtocolBuffers-Swift (~> 3.0)
   - ProtocolBuffers-Swift (3.0.0)
+  - RNCryptor (5.0.1)
 
 DEPENDENCIES:
   - MBProgressHUD (~> 1.0.0)
   - Neon
   - PGoApi (from `https://github.com/lsapan/pgoapi-swift`, branch `Swift3.0---Version-45`)
   - ProtocolBuffers-Swift (from `https://github.com/alexeyxo/protobuf-swift`, branch `ProtoBuf3.0-Swift3.0`)
+  - RNCryptor (~> 5.0)
 
 EXTERNAL SOURCES:
   PGoApi:
@@ -35,7 +37,8 @@ SPEC CHECKSUMS:
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
   PGoApi: 0c99fd6070c78a5151d050edd77ab5486a2ab57a
   ProtocolBuffers-Swift: 948824656ef9f507348481655d409628b0219be0
+  RNCryptor: 2e352a488779d1a9184ab629be22a7c5bc84acb5
 
-PODFILE CHECKSUM: 893788ccef5f11baaa307a022ed93f731c05822c
+PODFILE CHECKSUM: f5b5560006286004e63d4f642a0126a64060ac0c
 
 COCOAPODS: 1.1.1

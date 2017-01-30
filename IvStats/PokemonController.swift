@@ -23,17 +23,42 @@ class PokemonController: UIViewController
 
 
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var pokemonCollectionView: UICollectionView!
+    
     private var hud: MBProgressHUD!
+    private var pokemonCollectionview: UICollectionView!
+//    private var isGridView: Bool {
+//        get {
+//            if self.isGridView == nil {
+//                return true
+//            }
+//            return self.isGridView
+//        }
+//        set {
+//            self.isGridView = newValue
+//        }
+//        
+//    }
     var list = Pogoprotos.Networking.Responses.GetPlayerResponse()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.automaticallyAdjustsScrollViewInsets = false
-        let viewHiehgt = (self.tabBarController?.tabBar.frame.origin.y)! - (self.searchBar.frame.origin.y + self.searchBar.frame.height)
-        print("the collection view height should be \(viewHiehgt)")
-        let nowViewHeight = self.pokemonCollectionView.frame.height
-        print("now height is \(nowViewHeight)")
+        self.setCollectionView()
+    }
+    
+    private func setCollectionView() {
+        let rect = CGRect.init(x: self.view.frame.origin.x , y: self.searchBar.frame.origin.y + self.searchBar.frame.height, width: self.view.frame.width, height: (self.tabBarController?.tabBar.frame.origin.y)! - (self.searchBar.frame.origin.y + self.searchBar.frame.height))
         
+        let flowlayout = UICollectionViewFlowLayout()
+        flowlayout.scrollDirection = UICollectionViewScrollDirection.vertical
+        flowlayout.minimumInteritemSpacing = 2
+        flowlayout.minimumLineSpacing = 2
+        flowlayout.itemSize = CGSize.init(width: self.view.frame.width/3 - 10, height: 100)
+        self.pokemonCollectionview = UICollectionView.init(frame: rect, collectionViewLayout: flowlayout)
+        self.pokemonCollectionview.delegate = self
+        self.pokemonCollectionview.dataSource = self
+        self.pokemonCollectionview.showsVerticalScrollIndicator = true
+        self.pokemonCollectionview.backgroundColor = UIColor.clear
+        self.pokemonCollectionview.register(PokemonCollectionCell.self, forCellWithReuseIdentifier: "Pokemon Cell")
+        self.view.addSubview(self.pokemonCollectionview)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,18 +78,16 @@ class PokemonController: UIViewController
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return pokemonList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
-        let cell = pokemonCollectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCell", for: indexPath) as! PokemonCollectionCell
-        cell.pokemonName.text = pokemonList[indexPath.row].creationTime
+        let cell = self.pokemonCollectionview.dequeueReusableCell(withReuseIdentifier: "Pokemon Cell", for: indexPath) as! PokemonCollectionCell
+//        cell.size = CGSize.init(width: self.view.frame.width/3, height: 100)
+        cell.pokemonName.text = String(pokemonList[indexPath.row].pokemonIdInt)
         return cell
     }
-
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         return
@@ -89,7 +112,7 @@ class PokemonController: UIViewController
                 DispatchQueue.main.async {
                     self.hud.label.text = "Done"
                     self.hud.hide(animated: true, afterDelay: 1)
-                    self.pokemonCollectionView.reloadData()
+                    self.pokemonCollectionview.reloadData()
                 }
             }
         }

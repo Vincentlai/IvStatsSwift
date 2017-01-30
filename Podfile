@@ -11,4 +11,5 @@ target 'IvStats' do
   pod ‘ProtocolBuffers-Swift’, :git => ‘https://github.com/alexeyxo/protobuf-swift', :branch => 'ProtoBuf3.0-Swift3.0’
   pod 'Neon'
   pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'RNCryptor', '~> 5.0'
 end

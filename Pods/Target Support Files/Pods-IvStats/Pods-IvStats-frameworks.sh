@@ -89,6 +89,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Neon/Neon.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PGoApi/PGoApi.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ProtocolBuffers-Swift/ProtocolBuffers.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RNCryptor/RNCryptor.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
@@ -96,4 +97,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Neon/Neon.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PGoApi/PGoApi.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ProtocolBuffers-Swift/ProtocolBuffers.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RNCryptor/RNCryptor.framework"
 fi
