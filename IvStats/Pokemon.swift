@@ -19,11 +19,12 @@ enum Pokeball {
     case PokeballUnset
 }
 
+typealias PokemonId = Pogoprotos.Enums.PokemonId
+
 class Pokemon: NSObject{
     
     var id: UInt64 = UInt64(0)
-    var pokemonId: String = ""
-    var pokemonIdInt: Int = 0
+    var pokemonId: PokemonId = PokemonId.missingno
     var cp: Int = 0
     var stamina: Int = 0
     var staminaMax: Int = 0
@@ -31,9 +32,9 @@ class Pokemon: NSObject{
     var move2: Move = Move(name: "")
     var height: Float = 0
     var weight: Float = 0
-    var individualAttack: Int = 1
-    var individualDefense: Int = 1
-    var individualStamina: Int = 1
+    var individualAttack: Int = 0
+    var individualDefense: Int = 0
+    var individualStamina: Int = 0
     var cpMultiplier: Float = 0
     var pokeball: Pokeball = Pokeball.PokeballUnset
     var capturedCellId: UInt64 = UInt64(0)
@@ -41,12 +42,11 @@ class Pokemon: NSObject{
     var creationTimeInMs: UInt64 = UInt64(0)
     var isFavorite: Bool = false
     var nickname: String = ""
-    
     var battlesAttacked: Int = 0
     var battlesDefended: Int = 0
     var numUpgrades: Int = 0
-    
-    
+    var additionalCpMultiplier:Float = Float(0)
+
     init(withPokemonData pokemonData: Pogoprotos.Data.PokemonData) {
         super.init()
 
@@ -54,8 +54,7 @@ class Pokemon: NSObject{
             self.id = pokemonData.id
         }
         if pokemonData.hasPokemonId {
-            self.pokemonId = pokemonData.pokemonId.toString()
-            self.pokemonIdInt = pokemonData.pokemonId.hashValue
+            self.pokemonId = pokemonData.pokemonId
         }
         if pokemonData.hasCp {
             self.cp = Int(pokemonData.cp)
@@ -115,9 +114,20 @@ class Pokemon: NSObject{
             self.creationTimeInMs = pokemonData.creationTimeMs
             self.creationTime = Helper.dateConverter(withTimestamp: Int64(pokemonData.creationTimeMs))
         }
+        if pokemonData.hasAdditionalCpMultiplier {
+            self.additionalCpMultiplier = pokemonData.additionalCpMultiplier
+        }
     }
     
+    public func getIv() -> Double {
+        return Double(self.individualStamina + self.individualDefense + self.individualAttack) / 45.0
+    }
     
-    
-    
+    public func getDisplayName() -> String {
+        if self.nickname == "" {
+            return self.pokemonId.toString()
+        }else {
+            return self.nickname
+        }
+    }
 }

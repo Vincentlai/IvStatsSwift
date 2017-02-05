@@ -23,6 +23,8 @@ public protocol PGoAuth {
     var manager: SessionManager { get set }
     var banned: Bool { get set }
     
+    func getRefreshToken() -> String?
+    
     func login(withUsername username:String, withPassword password:String)
     func login(withToken token:String)
     func loginWithRefreshToken(withRefreshToken token:String?)

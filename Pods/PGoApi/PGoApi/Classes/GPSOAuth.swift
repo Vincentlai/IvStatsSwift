@@ -141,8 +141,8 @@ open class GPSOAuth: PGoAuth {
         }
     }
     
-    open func getRefreshToken() -> String {
-        return self.refreshToken!
+    open func getRefreshToken() -> String? {
+        return self.refreshToken
     }
     
     open func login(withUsername username: String, withPassword password: String) {
@@ -235,8 +235,6 @@ open class GPSOAuth: PGoAuth {
                         self.refreshToken = refreshToken
                         self.loggedIn = true
                         self.expires = expires
-                        let userDefault = UserDefaults.standard
-                        userDefault.set(self.refreshToken, forKey: "refreshToken")
                         self.delegate?.didReceiveAuth()
                     } else {
                         self.delegate?.didNotReceiveAuth()

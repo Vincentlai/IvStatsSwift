@@ -10,68 +10,114 @@ import UIKit
 import MBProgressHUD
 import PGoApi
 
-var user: User?
+var player: Player?
 var pokemonList = Array<Pokemon>()
 var candyList = Array<Candy>()
 
+enum ViewType {
+    case Grid
+    case List
+}
+
 class PokemonController: UIViewController
         , MBProgressHUDDelegate
-        , PGoApiDelegate
         , UICollectionViewDelegate
         , UICollectionViewDataSource
+        , UISearchBarDelegate
 {
-
 
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    
+    @IBOutlet weak var filterButton: UIBarButtonItem!
     private var hud: MBProgressHUD!
     private var pokemonCollectionview: UICollectionView!
-//    private var isGridView: Bool {
-//        get {
-//            if self.isGridView == nil {
-//                return true
-//            }
-//            return self.isGridView
-//        }
-//        set {
-//            self.isGridView = newValue
-//        }
-//        
-//    }
+
     var list = Pogoprotos.Networking.Responses.GetPlayerResponse()
+    
+    var viewType: ViewType?{
+        didSet {
+            self.changeViewType()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewType = .List
         self.setCollectionView()
+        
     }
+    
+    private func changeViewType() {
+        
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     
     private func setCollectionView() {
         let rect = CGRect.init(x: self.view.frame.origin.x , y: self.searchBar.frame.origin.y + self.searchBar.frame.height, width: self.view.frame.width, height: (self.tabBarController?.tabBar.frame.origin.y)! - (self.searchBar.frame.origin.y + self.searchBar.frame.height))
-        
         let flowlayout = UICollectionViewFlowLayout()
         flowlayout.scrollDirection = UICollectionViewScrollDirection.vertical
-        flowlayout.minimumInteritemSpacing = 2
-        flowlayout.minimumLineSpacing = 2
-        flowlayout.itemSize = CGSize.init(width: self.view.frame.width/3 - 10, height: 100)
+        if self.viewType! == .Grid {
+            flowlayout.minimumInteritemSpacing = 5
+            flowlayout.minimumLineSpacing = 5
+            let width = Helper.getPokemonCellWidth()
+            flowlayout.itemSize = CGSize.init(width: width, height: 130 )
+        }else {
+            flowlayout.minimumInteritemSpacing = 0
+            flowlayout.minimumLineSpacing = 2
+            let width = UIScreen.main.bounds.width
+            flowlayout.itemSize = CGSize.init(width: width, height: 80  )
+        }
+        
         self.pokemonCollectionview = UICollectionView.init(frame: rect, collectionViewLayout: flowlayout)
         self.pokemonCollectionview.delegate = self
         self.pokemonCollectionview.dataSource = self
         self.pokemonCollectionview.showsVerticalScrollIndicator = true
         self.pokemonCollectionview.backgroundColor = UIColor.clear
-        self.pokemonCollectionview.register(PokemonCollectionCell.self, forCellWithReuseIdentifier: "Pokemon Cell")
+        self.pokemonCollectionview.register(UINib.init(nibName: "PokemonGridCell", bundle: nil), forCellWithReuseIdentifier: "grid cell")
+        self.pokemonCollectionview.register(UINib.init(nibName: "PokemonListCell", bundle: nil), forCellWithReuseIdentifier: "list cell")
+        self.setCellInset()
         self.view.addSubview(self.pokemonCollectionview)
     }
     
+    private func setCellInset() {
+        if self.viewType! == .Grid {
+            self.pokemonCollectionview.contentInset = UIEdgeInsets.init(top: 5, left: 5, bottom: 5, right: 5)
+        }else {
+            self.pokemonCollectionview.contentInset = UIEdgeInsets.init(top: 5, left: 0, bottom: 5, right: 0)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-//        if user != nil {
-//            return
-//        }
-        if(request != nil){
-            DispatchQueue.global(qos: .default).async {
-                request!.getPlayer()
-                request!.makeRequest(intent: .getPlayer, delegate: self)
-                DispatchQueue.main.async {
-                    self.hud = HUDHelper.createHud(withView: self.view, title: "Loading Data...", detailText: nil, delegate: self)
-                    self.hud.show(animated: true)
+        self.doFetchPokemons()
+    }
+        private func doFetchPokemons() {
+        self.hud = HUDHelper.createHud(withView: self.view, title: "Loading Data...", detailText: nil, delegate: self)
+        self.hud.show(animated: true)
+        ApiManager.defaultManager.fetchPokemons {
+            (pokemons, error) in
+            let backgroundQueue = DispatchQueue(label: "backgroundQueue", qos: DispatchQoS.background)
+            backgroundQueue.async {
+                if let error = error {
+                    print("\(error.debugDescription)")
+                }
+                else{
+                    pokemonList = pokemons!
+                    pokemonList.sort(by: { (first, second) -> Bool in
+                        return first.creationTimeInMs < second.creationTimeInMs
+                    })
+                    DispatchQueue.main.async {
+                        self.hud.label.text = "Done"
+                        self.hud.hide(animated: true, afterDelay: 0.3)
+                        self.pokemonCollectionview.reloadData()
+                    }
+                    
                 }
             }
         }
@@ -83,39 +129,15 @@ class PokemonController: UIViewController
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
-        let cell = self.pokemonCollectionview.dequeueReusableCell(withReuseIdentifier: "Pokemon Cell", for: indexPath) as! PokemonCollectionCell
-//        cell.size = CGSize.init(width: self.view.frame.width/3, height: 100)
-        cell.pokemonName.text = String(pokemonList[indexPath.row].pokemonIdInt)
+        let cell = self.pokemonCollectionview.dequeueReusableCell(withReuseIdentifier: "list cell", for: indexPath)
+        if let pokemonCell = cell as? PokemonCollectionCell {
+            pokemonCell.pokemon = pokemonList[indexPath.row]
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         return
-    }
-    
-    func didReceiveApiResponse(_ intent: PGoApiIntent, response: PGoApiResponse){
-        if intent == .getPlayer {
-            user = User.init(withResponse: response)
-            DispatchQueue.global(qos: .default).async {
-                request!.getInventory()
-                request!.makeRequest(intent: .getInventory, delegate: self)
-                DispatchQueue.main.async {
-            
-                }
-            }
-        }else if intent == .getInventory{
-            DispatchQueue.global(qos: .default).async {
-                self.handleGetInventoryResponse(response: response)
-                pokemonList.sort(by: { (first, second) -> Bool in
-                    return first.creationTimeInMs < second.creationTimeInMs
-                })
-                DispatchQueue.main.async {
-                    self.hud.label.text = "Done"
-                    self.hud.hide(animated: true, afterDelay: 1)
-                    self.pokemonCollectionview.reloadData()
-                }
-            }
-        }
     }
     
     private func handleGetInventoryResponse(response: PGoApiResponse){
@@ -140,31 +162,8 @@ class PokemonController: UIViewController
                     }
                     
                 }
-                
             }
         }
     }
-    
-    
-    
-    func didReceiveApiError(_ intent: PGoApiIntent, statusCode: Int?) {
-        print("API Error: \(statusCode)")
-        self.hud.label.text = "Error"
-        self.hud.hide(animated: true, afterDelay: 3)
-    }
-    
-    func didReceiveApiException(_ intent: PGoApiIntent, exception: PGoApiExceptions) {
-        print("\(exception)")
-        if intent == .getInventory && exception == .delayRequired {
-            DispatchQueue.global(qos: .default).async {
-                request!.getInventory()
-                request!.makeRequest(intent: .getInventory, delegate: self)
-                return
-            }
-        }
-        self.hud.label.text = "Error"
-        self.hud.hide(animated: true, afterDelay: 3)
-    }
-
     
  }

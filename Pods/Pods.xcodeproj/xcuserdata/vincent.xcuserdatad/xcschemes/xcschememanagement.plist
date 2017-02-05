@@ -22,12 +22,12 @@
 		<key>PGoApi.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>Pods-IvStats.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>ProtocolBuffers-Swift.xcscheme</key>
 		<dict>

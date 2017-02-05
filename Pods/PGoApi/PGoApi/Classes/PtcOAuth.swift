@@ -132,7 +132,10 @@ open class PtcOAuth: PGoAuth {
     
     open func loginWithRefreshToken(withRefreshToken token:String?) {
     }
-
+    
+    open func getRefreshToken() -> String?{
+        return nil
+    }
     
     open func login(withUsername username:String, withPassword password:String) {
         self.username = username

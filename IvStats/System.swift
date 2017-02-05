@@ -20,32 +20,18 @@ import SystemConfiguration
     public var whiteTextColor = UIColor.white
     // rgb(63, 81, 181)
     public var googleColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
-    
+
+    // mediumspringgreen #00FA9A rgb(0,250,154)
+    public var highIvColor = UIColor(red: 0/255, green: 250/255, blue: 154/255, alpha: 1)
+    // orange #FFA500 rgb(255,165,0)
+    public var mediumIvColor = UIColor(red: 255/255, green: 165/255, blue: 0/255, alpha: 1)
+    // firebrick #B22222 rgb(178,34,34)
+    public var lowIvColor = UIColor(red: 178/255, green: 34/255, blue: 34/255, alpha: 1)
+
+    // gold #FFD700 rgb(255,215,0)
+    public var favoriteColor = UIColor(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
+
     // initialize font
     public var primaryFontFamily = "Helvetica"
     public var primaryFontSize: CGFloat = 18.0
     public var primaryFont = UIFont(name: primaryFontFamily, size: primaryFontSize)!
-
-    public func isConnectedToNetwork() -> Bool {
-        var zeroAddress = sockaddr_in()
-        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
-        zeroAddress.sin_family = sa_family_t(AF_INET)
-        
-        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
-            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
-                SCNetworkReachabilityCreateWithAddress(nil, $0)
-            }
-        }) else {
-            return false
-        }
-        
-        var flags: SCNetworkReachabilityFlags = []
-        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
-            return false
-        }
-        
-        let isReachable = flags.contains(.reachable)
-        let needsConnection = flags.contains(.connectionRequired)
-        
-        return (isReachable && !needsConnection)
-    }

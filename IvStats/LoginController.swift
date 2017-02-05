@@ -8,10 +8,9 @@
 
 import UIKit
 import PGoApi
-class LoginController: UIViewController, PGoAuthDelegate, PGoApiDelegate {
+class LoginController: UIViewController{
 
-    var auth: PGoAuth!
-    var authMethod: String!
+    var authMethod: AuthType!
     
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
@@ -22,7 +21,7 @@ class LoginController: UIViewController, PGoAuthDelegate, PGoApiDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        if (self.authMethod == "PTC") {
+        if (self.authMethod == AuthType.PTC) {
             loginButton.setTitle("Login With PTC", for: loginButton.state)
             loginButton.backgroundColor = backgroundColor
         }else {
@@ -33,22 +32,33 @@ class LoginController: UIViewController, PGoAuthDelegate, PGoApiDelegate {
     }
     
     @IBAction func login(_ login: Button) {
-        if(self.authMethod == "PTC"){
+        let handler = {
+            [unowned me = self] (error: NSError?) in
+            
+            if let error = error {
+//                me.hud.hide(animated: true)
+                me.showAlert("Error", message: error.localizedDescription)
+                //                    me.showAlert("Error", message: "Failed to Login.")
+            }
+            else{
+//                me.hud.hide(animated: true)
+                self.performSegue(withIdentifier: "Dashboard", sender: self)
+            }
+        }
+        
+        if(self.authMethod == AuthType.PTC){
             if(mainField.text! == "" || passwordField.text! == ""){
                 showAlert("Error", message: "Username or Password cannot be empty.")
                 return
             }
-            auth = PtcOAuth()
-            auth.delegate = self
-            auth.login(withUsername: mainField.text!, withPassword: passwordField.text!)
+            ApiManager.defaultManager.login(withUsername: mainField.text!, password: passwordField.text!, handler: handler)
+
         }else{
             if mainField.text! == "" {
                 showAlert("Error", message: "Authorization cannot be empty.")
                 return
             }
-            auth = GPSOAuth()
-            auth.delegate = self
-            auth.login(withToken: mainField.text!)
+            ApiManager.defaultManager.login(withToken: mainField.text!, handler: handler)
         }
     }
     
@@ -58,40 +68,4 @@ class LoginController: UIViewController, PGoAuthDelegate, PGoApiDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func didReceiveAuth() {
-        request = PGoApiRequest(auth: auth)
-        request!.simulateAppStart()
-        request!.makeRequest(intent: .login, delegate: self)
-    }
-    
-    func didNotReceiveAuth() {
-        showAlert("Error", message: "Failed to Login.")
-    }
-    
-    func didReceiveApiResponse(_ intent: PGoApiIntent, response: PGoApiResponse){
-        if intent == .login {
-            print("\(response)")
-            self.performSegue(withIdentifier: "Dashboard", sender: self)
-        }
-        
-    }
-    
-    func didReceiveApiError(_ intent: PGoApiIntent, statusCode: Int?) {
-        print("API Error: \(statusCode)")
-    }
-    
-    func didReceiveApiException(_ intent: PGoApiIntent, exception: PGoApiExceptions) {
-        print("\(exception)")
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

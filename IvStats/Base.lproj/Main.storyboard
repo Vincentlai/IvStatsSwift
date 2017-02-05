@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I9B-Ub-dUo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cma-pm-2z1">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -76,10 +76,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZXu-qW-RLm"/>
+                    <connections>
+                        <outlet property="googleLogin" destination="zkC-nR-ohN" id="nQ7-Vg-a9B"/>
+                        <outlet property="ptcLogin" destination="3oS-6X-LUn" id="hHP-O8-kJo"/>
+                        <segue destination="sOW-ep-ZRO" kind="showDetail" identifier="HasUserConfig" id="jx7-ah-72c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1127.2" y="37.331334332833585"/>
+            <point key="canvasLocation" x="1125" y="35"/>
         </scene>
         <!--Google-->
         <scene sceneID="Cmk-Dc-gYf">
@@ -214,10 +219,10 @@
             </objects>
             <point key="canvasLocation" x="1126" y="1322"/>
         </scene>
-        <!--Setting-->
+        <!--Player-->
         <scene sceneID="Bi5-cZ-r6e">
             <objects>
-                <viewController title="Setting" id="NPd-Yo-3P2" sceneMemberID="viewController">
+                <viewController title="Player" id="NPd-Yo-3P2" customClass="PlayerController" customModule="IvStats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wKB-hB-fXe"/>
                         <viewControllerLayoutGuide type="bottom" id="Xrb-9O-dfL"/>
@@ -227,16 +232,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Setting" id="iK1-ca-0hs"/>
+                    <navigationItem key="navigationItem" title="Player" id="iK1-ca-0hs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mgd-Hz-VIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1126" y="4415"/>
         </scene>
+        <!--Filter & Sort-->
+        <scene sceneID="3Xt-Gj-GMa">
+            <objects>
+                <viewController title="Filter &amp; Sort" automaticallyAdjustsScrollViewInsets="NO" id="iwn-Pe-RkL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lhb-xL-a5u"/>
+                        <viewControllerLayoutGuide type="bottom" id="fQN-e7-Kwa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Km-ff-FrS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hPt-nB-SFK">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hPt-nB-SFK" firstAttribute="leading" secondItem="5Km-ff-FrS" secondAttribute="leading" id="5jR-tm-yL9"/>
+                            <constraint firstItem="hPt-nB-SFK" firstAttribute="top" secondItem="lhb-xL-a5u" secondAttribute="bottom" id="EGp-UB-4Dt"/>
+                            <constraint firstAttribute="trailing" secondItem="hPt-nB-SFK" secondAttribute="trailing" id="rkh-OD-F8B"/>
+                            <constraint firstItem="hPt-nB-SFK" firstAttribute="bottom" secondItem="fQN-e7-Kwa" secondAttribute="top" id="wae-vW-tAr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Filter &amp; Sort" id="nkd-AR-gFc">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="fEv-MS-RBl">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rXc-ig-QZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-662.31884057971024" y="4413.5869565217399"/>
+        </scene>
         <!--Pokemon-->
         <scene sceneID="7UW-0B-BNG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8d1-su-RnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Pokemon" automaticallyAdjustsScrollViewInsets="NO" id="KiA-cc-xbl" customClass="PokemonController" customModule="IvStats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aJO-fb-hPg"/>
@@ -249,6 +289,10 @@
                             <searchBar contentMode="redraw" placeholder="Search for Pokemon" translatesAutoresizingMaskIntoConstraints="NO" id="Pws-sm-WDJ">
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -258,11 +302,24 @@
                             <constraint firstItem="Pws-sm-WDJ" firstAttribute="leading" secondItem="dgP-eQ-7yj" secondAttribute="leading" id="ZzO-du-Jut"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Pokemon" id="cGY-D4-fqJ"/>
+                    <navigationItem key="navigationItem" title="Pokemon" id="cGY-D4-fqJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="usm-vk-jQW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="kJH-Qm-eeY">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="iwn-Pe-RkL" kind="show" id="SU4-ma-I7E"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="filterButton" destination="kJH-Qm-eeY" id="nHt-Eu-Ski"/>
+                        <outlet property="refreshButton" destination="usm-vk-jQW" id="xve-hU-aY0"/>
                         <outlet property="searchBar" destination="Pws-sm-WDJ" id="Nxq-cM-bM2"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8d1-su-RnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="186.95652173913044" y="4414.402173913044"/>
         </scene>
@@ -288,37 +345,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Pk-vV-2rp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1127" y="2343"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="gtf-6f-BcZ">
-            <objects>
-                <viewController title="Main" id="I9B-Ub-dUo" customClass="MainController" customModule="IvStats" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="p1h-jK-069"/>
-                        <viewControllerLayoutGuide type="bottom" id="hyC-D6-1cv"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="g9j-Q4-AXf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="WNb-Mk-Pe2">
-                                <rect key="frame" x="174" y="335" width="66" height="66"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="WNb-Mk-Pe2" firstAttribute="centerY" secondItem="g9j-Q4-AXf" secondAttribute="centerY" id="LhC-Ph-EjG"/>
-                            <constraint firstItem="WNb-Mk-Pe2" firstAttribute="centerX" secondItem="g9j-Q4-AXf" secondAttribute="centerX" id="uEo-ri-tdV"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <segue destination="sOW-ep-ZRO" kind="showDetail" identifier="HasUserConfig" id="sBs-qy-K3d"/>
-                        <segue destination="cma-pm-2z1" kind="showDetail" identifier="NoUserConfig" action="showViewController:sender:" id="9rC-FV-zNV"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mfr-F6-yjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-923.1884057971015" y="36.684782608695656"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UW5-Y6-bXp">
@@ -355,6 +381,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MKA-MI-LYw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.99607843139999996" green="0.42352941179999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
@@ -403,7 +430,7 @@
         <image name="pika" width="16" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sBs-qy-K3d"/>
+        <segue reference="jx7-ah-72c"/>
         <segue reference="Dl9-gk-RMx"/>
     </inferredMetricsTieBreakers>
 </document>

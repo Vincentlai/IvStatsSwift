@@ -32,7 +32,7 @@ class WebController: UIViewController {
         if segue.identifier == "GoogleLogin" {
             let destination = segue.destination as! LoginController
             destination.navigationItem.title = "Google Login"
-            destination.authMethod = "Google"
+            destination.authMethod = AuthType.Google
         }
     }
 
