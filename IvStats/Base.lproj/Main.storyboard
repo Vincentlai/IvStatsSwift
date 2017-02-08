@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -241,7 +242,7 @@
         <!--Filter & Sort-->
         <scene sceneID="3Xt-Gj-GMa">
             <objects>
-                <viewController title="Filter &amp; Sort" automaticallyAdjustsScrollViewInsets="NO" id="iwn-Pe-RkL" sceneMemberID="viewController">
+                <viewController title="Filter &amp; Sort" automaticallyAdjustsScrollViewInsets="NO" id="iwn-Pe-RkL" customClass="SortController" customModule="IvStats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lhb-xL-a5u"/>
                         <viewControllerLayoutGuide type="bottom" id="fQN-e7-Kwa"/>
@@ -250,9 +251,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hPt-nB-SFK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="hPt-nB-SFK">
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <sections/>
                             </tableView>
                         </subviews>
@@ -267,8 +268,14 @@
                     <navigationItem key="navigationItem" title="Filter &amp; Sort" id="nkd-AR-gFc">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="fEv-MS-RBl">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="doSave:" destination="iwn-Pe-RkL" id="uMQ-ia-eZx"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="hPt-nB-SFK" id="h5H-rn-utZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXc-ig-QZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -303,17 +310,31 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pokemon" id="cGY-D4-fqJ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="usm-vk-jQW">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="kJH-Qm-eeY">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="iwn-Pe-RkL" kind="show" id="SU4-ma-I7E"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem image="ic_autorenew_white" id="usm-vk-jQW">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="refreshPokemon:" destination="KiA-cc-xbl" id="fpV-mA-Siz"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="cm_microphone_white" id="weM-kA-KOi"/>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem image="ic_more_horiz_white" id="kJH-Qm-eeY">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="iwn-Pe-RkL" kind="show" identifier="Sort" id="SU4-ma-I7E"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="ic_view_list_white" id="dlK-mb-Dxe">
+                                <connections>
+                                    <action selector="changeView:" destination="KiA-cc-xbl" id="rMm-SU-681"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="changeViewButton" destination="dlK-mb-Dxe" id="aB5-Wc-sAJ"/>
                         <outlet property="filterButton" destination="kJH-Qm-eeY" id="nHt-Eu-Ski"/>
                         <outlet property="refreshButton" destination="usm-vk-jQW" id="xve-hU-aY0"/>
                         <outlet property="searchBar" destination="Pws-sm-WDJ" id="Nxq-cM-bM2"/>
@@ -426,7 +447,11 @@
     </scenes>
     <resources>
         <image name="Pokeball" width="24" height="24"/>
+        <image name="cm_microphone_white" width="24" height="24"/>
+        <image name="ic_autorenew_white" width="24" height="24"/>
         <image name="ic_launcher" width="66" height="66"/>
+        <image name="ic_more_horiz_white" width="24" height="24"/>
+        <image name="ic_view_list_white" width="24" height="24"/>
         <image name="pika" width="16" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>

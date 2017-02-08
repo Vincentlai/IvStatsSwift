@@ -24,6 +24,9 @@ class PokemonCollectionCell: UICollectionViewCell {
     @IBOutlet weak var favoriteIconInList: UIImageView!
     @IBOutlet weak var pokemonImageInList: UIImageView!
     @IBOutlet weak var pokemonNameInList: UILabel!
+    
+    var viewType: ViewType?
+    
     var pokemon: Pokemon? {
         didSet {
             self.updataCell()
@@ -31,51 +34,95 @@ class PokemonCollectionCell: UICollectionViewCell {
     }
     
     private func updataCell(){
+        
+        if self.viewType! == .Grid {
+            cpLabel.textColor = primaryTextColor
+        }else {
+            cpLabelInList.textColor = primaryTextColor
+        }
+        
+        if self.viewType! == .Grid {
+            self.layer.borderWidth = 0.5
+            self.layer.cornerRadius = 4.0
+            self.layer.borderColor = (UIColor.black).cgColor
+        }
         // set cp
         let cp = String(describing: (pokemon?.cp)!)
-        cpLabelInList.text = cp
-        // set ib
+        if self.viewType! == .Grid {
+            cpLabel.text = cp
+        }else {
+            cpLabelInList.text = cp
+        }
+        // set iv
         let iv = (pokemon?.getIv())! * 100
-        ivLabelInList.text = String(format: "%.1f%%", (pokemon?.getIv())! * 100)
-        self.setIvColor(withIv: iv)
+        self.setIvTextAndColor(withIv: iv)
         // set display name
-        pokemonNameInList.text = pokemon?.getDisplayName()
+        if self.viewType! == .Grid {
+            pokemonName.text = pokemon?.getDisplayName()
+        }else {
+            pokemonNameInList.text = pokemon?.getDisplayName()
+        }
         // set image
         let imageId = pokemon?.pokemonId.rawValue
         let imageName = "p" + String(Int(imageId!))
         if let image = UIImage(named: imageName){
-            pokemonImageInList.image = image
+            if self.viewType! == .Grid {
+                pokemonImage.image = image
+            }else {
+                pokemonImageInList.image = image
+            }
         }
         // set favorite icon
-        if (pokemon?.isFavorite)! {
-            favoriteIconInList.image = favoriteIconInList.image!.withRenderingMode(.alwaysTemplate)
-            favoriteIconInList.tintColor = favoriteColor
-            favoriteIconInList.isHidden = false
+        if self.viewType! == .Grid {
+            self.setFavorite(icon: favoriteIcon)
         }else {
-            favoriteIconInList.isHidden = true
+            self.setFavorite(icon: favoriteIconInList)
         }
     }
     
-    
-    private func setIvColor(withIv iv: Double){
-        if iv >= 80 {
-            ivLabelInList.textColor = highIvColor
-        }else if iv < 80 && iv >= 40 {
-            ivLabelInList.textColor = mediumIvColor
-        }else if iv < 40 && iv >= 20 {
-            ivLabelInList.textColor = lowIvColor
+    private func setFavorite(icon: UIImageView){
+        if (pokemon?.isFavorite)! {
+            icon.image = icon.image!.withRenderingMode(.alwaysTemplate)
+            icon.tintColor = favoriteColor
+            icon.isHidden = false
         }else {
-            ivLabelInList.textColor = UIColor.black
+            icon.isHidden = true
         }
+    }
+    
+    private func setIvTextAndColor(withIv iv: Double){
+        if self.viewType == .Grid {
+            ivLabel.text = String(format: "%.1f%%", (pokemon?.getIv())! * 100)
+            if iv >= 80 {
+                ivLabel.textColor = highIvColor
+            }else if iv < 80 && iv >= 40 {
+                ivLabel.textColor = mediumIvColor
+            }else if iv < 40 && iv >= 20 {
+                ivLabel.textColor = lowIvColor
+            }else {
+                ivLabel.textColor = UIColor.black
+            }
+        }else {
+            ivLabelInList.text = String(format: "%.1f%%", (pokemon?.getIv())! * 100)
+            if iv >= 80 {
+                ivLabelInList.textColor = highIvColor
+            }else if iv < 80 && iv >= 40 {
+                ivLabelInList.textColor = mediumIvColor
+            }else if iv < 40 && iv >= 20 {
+                ivLabelInList.textColor = lowIvColor
+            }else {
+                ivLabelInList.textColor = UIColor.black
+            }
+        }
+
+    }
+    
+    override func awakeFromNib() {
+
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
-//        self.layer.borderWidth = 0.5
-//        self.layer.cornerRadius = 4.0
-//        self.layer.borderColor = (UIColor.black).cgColor
-        cpLabelInList.textColor = primaryTextColor
 
     }
     
