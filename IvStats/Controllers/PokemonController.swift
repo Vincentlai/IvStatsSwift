@@ -19,6 +19,12 @@ enum ViewType {
     case List
 }
 
+public protocol PokemonControllerDelegate {
+    func sortPokemon(fromController: UIViewController, sortType: SortType?)
+    func fitlerPokemon()
+}
+
+
 class PokemonController: UIViewController
         , MBProgressHUDDelegate
         , UICollectionViewDelegate
@@ -41,6 +47,8 @@ class PokemonController: UIViewController
             PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: false)
         }
     }
+    public let MenuItems: [MenuItemType] = [MenuItemType.Sort, MenuItemType.Filter, MenuItemType.Swap]
+    public var dropdownMenu: UITableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,6 +206,8 @@ class PokemonController: UIViewController
 
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Sort" {
             if let destination = segue.destination as? SortController {
@@ -205,10 +215,32 @@ class PokemonController: UIViewController
             }
         }
     }
-    
- }
-
-public protocol PokemonControllerDelegate {
-    func sortPokemon(fromController: UIViewController, sortType: SortType?)
-    func fitlerPokemon()
 }
+
+extension PokemonController: UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.popover.dismiss()
+    }
+    
+}
+
+extension PokemonController: UITableViewDataSource{
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.dropdownMenu!.dequeueReusableCell(withIdentifier: "Dropdown", for: indexPath)
+        if let dropdownMenuCell = cell as? DropdownMenu {
+            dropdownMenuCell.menuItem = MenuItems[indexPath.row]
+        }
+        return cell
+
+    }
+    
+}
+
+
+

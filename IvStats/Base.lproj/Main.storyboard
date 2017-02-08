@@ -293,13 +293,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search for Pokemon" translatesAutoresizingMaskIntoConstraints="NO" id="Pws-sm-WDJ">
+                            <searchBar contentMode="center" placeholder="Search for Pokemon" translatesAutoresizingMaskIntoConstraints="NO" id="Pws-sm-WDJ">
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -317,7 +315,7 @@
                                     <action selector="refreshPokemon:" destination="KiA-cc-xbl" id="fpV-mA-Siz"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="cm_microphone_white" id="weM-kA-KOi"/>
+                            <barButtonItem image="cm_more_vert_white" id="weM-kA-KOi"/>
                         </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem image="ic_more_horiz_white" id="kJH-Qm-eeY">
@@ -447,7 +445,7 @@
     </scenes>
     <resources>
         <image name="Pokeball" width="24" height="24"/>
-        <image name="cm_microphone_white" width="24" height="24"/>
+        <image name="cm_more_vert_white" width="24" height="24"/>
         <image name="ic_autorenew_white" width="24" height="24"/>
         <image name="ic_launcher" width="66" height="66"/>
         <image name="ic_more_horiz_white" width="24" height="24"/>
