@@ -22,7 +22,7 @@ enum MenuItemType {
     }
 }
 
-class DropdownMenu: UITableViewCell {
+class DropdownMenuItem: UITableViewCell {
 
     @IBOutlet weak var menuIcon: UIImageView!
     @IBOutlet weak var menuLable: UILabel!

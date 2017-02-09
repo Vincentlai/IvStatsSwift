@@ -37,9 +37,9 @@
 		BFC3B48D1E4AF26C0083CD56 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B48C1E4AF26C0083CD56 /* Popover.swift */; };
 		BFC3B4901E4AF5410083CD56 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B48E1E4AF5410083CD56 /* HomeController.swift */; };
 		BFC3B4911E4AF5410083CD56 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B48F1E4AF5410083CD56 /* LoginController.swift */; };
-		BFC3B4981E4AFDB10083CD56 /* DropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B4961E4AFDB10083CD56 /* DropdownMenu.swift */; };
-		BFC3B4991E4AFDB10083CD56 /* DropdownMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFC3B4971E4AFDB10083CD56 /* DropdownMenu.xib */; };
+		BFC3B4981E4AFDB10083CD56 /* DropdownMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B4961E4AFDB10083CD56 /* DropdownMenuItem.swift */; };
 		BFC3B49B1E4B0C3C0083CD56 /* PokemonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B49A1E4B0C3C0083CD56 /* PokemonController.swift */; };
+		BFC3B49D1E4C3D300083CD56 /* DropdownMenuItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFC3B49C1E4C3D2F0083CD56 /* DropdownMenuItem.xib */; };
 		BFE1E1661E21E7EC000C61B2 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE1E1651E21E7EC000C61B2 /* Button.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,9 +79,9 @@
 		BFC3B48C1E4AF26C0083CD56 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		BFC3B48E1E4AF5410083CD56 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = Controllers/HomeController.swift; sourceTree = "<group>"; };
 		BFC3B48F1E4AF5410083CD56 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = Controllers/LoginController.swift; sourceTree = "<group>"; };
-		BFC3B4961E4AFDB10083CD56 /* DropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownMenu.swift; sourceTree = "<group>"; };
-		BFC3B4971E4AFDB10083CD56 /* DropdownMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropdownMenu.xib; sourceTree = "<group>"; };
+		BFC3B4961E4AFDB10083CD56 /* DropdownMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownMenuItem.swift; sourceTree = "<group>"; };
 		BFC3B49A1E4B0C3C0083CD56 /* PokemonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokemonController.swift; path = Controllers/PokemonController.swift; sourceTree = "<group>"; };
+		BFC3B49C1E4C3D2F0083CD56 /* DropdownMenuItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropdownMenuItem.xib; sourceTree = "<group>"; };
 		BFE1E1651E21E7EC000C61B2 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +184,7 @@
 		BF6FC3FB1E39C5190072A1E0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BFC3B49C1E4C3D2F0083CD56 /* DropdownMenuItem.xib */,
 				BFC3B48C1E4AF26C0083CD56 /* Popover.swift */,
 				BF14B5F71E442EA50001B100 /* PokemonGridCell.xib */,
 				BF14B5FD1E4745C60001B100 /* PokemonListCell.xib */,
@@ -191,8 +192,7 @@
 				BFE1E1651E21E7EC000C61B2 /* Button.swift */,
 				BF14B6071E48112B0001B100 /* SortViewCell.swift */,
 				BF14B6081E48112B0001B100 /* SortViewCell.xib */,
-				BFC3B4961E4AFDB10083CD56 /* DropdownMenu.swift */,
-				BFC3B4971E4AFDB10083CD56 /* DropdownMenu.xib */,
+				BFC3B4961E4AFDB10083CD56 /* DropdownMenuItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,7 +291,7 @@
 				BF14B5FA1E444ECD0001B100 /* Media.xcassets in Resources */,
 				BF14B5FE1E4745C60001B100 /* PokemonListCell.xib in Resources */,
 				BF275E031E166C2C004C16EB /* LaunchScreen.storyboard in Resources */,
-				BFC3B4991E4AFDB10083CD56 /* DropdownMenu.xib in Resources */,
+				BFC3B49D1E4C3D300083CD56 /* DropdownMenuItem.xib in Resources */,
 				BF6FC3F41E33FE010072A1E0 /* Assets.xcassets in Resources */,
 				BF14B5F81E442EA60001B100 /* PokemonGridCell.xib in Resources */,
 				BF275DFE1E166C2C004C16EB /* Main.storyboard in Resources */,
@@ -375,7 +375,7 @@
 				BFBACC011E2DF25800551FDE /* Player.swift in Sources */,
 				BF14B5F61E43055C0001B100 /* PlayerController.swift in Sources */,
 				BFC3B49B1E4B0C3C0083CD56 /* PokemonController.swift in Sources */,
-				BFC3B4981E4AFDB10083CD56 /* DropdownMenu.swift in Sources */,
+				BFC3B4981E4AFDB10083CD56 /* DropdownMenuItem.swift in Sources */,
 				BF14B5FC1E4723B20001B100 /* Filter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

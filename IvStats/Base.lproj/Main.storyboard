@@ -315,7 +315,11 @@
                                     <action selector="refreshPokemon:" destination="KiA-cc-xbl" id="fpV-mA-Siz"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="cm_more_vert_white" id="weM-kA-KOi"/>
+                            <barButtonItem image="cm_more_vert_white" id="weM-kA-KOi">
+                                <connections>
+                                    <action selector="showDropdownMenu:" destination="KiA-cc-xbl" id="HPH-Bb-Xmj"/>
+                                </connections>
+                            </barButtonItem>
                         </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem image="ic_more_horiz_white" id="kJH-Qm-eeY">
@@ -333,6 +337,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="changeViewButton" destination="dlK-mb-Dxe" id="aB5-Wc-sAJ"/>
+                        <outlet property="dropdownButton" destination="weM-kA-KOi" id="cDT-2g-ksF"/>
                         <outlet property="filterButton" destination="kJH-Qm-eeY" id="nHt-Eu-Ski"/>
                         <outlet property="refreshButton" destination="usm-vk-jQW" id="xve-hU-aY0"/>
                         <outlet property="searchBar" destination="Pws-sm-WDJ" id="Nxq-cM-bM2"/>

@@ -49,6 +49,7 @@ class PokemonController: UIViewController
     }
     public let MenuItems: [MenuItemType] = [MenuItemType.Sort, MenuItemType.Filter, MenuItemType.Swap]
     public var dropdownMenu: UITableView?
+    var popover: Popover!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,9 +133,9 @@ class PokemonController: UIViewController
                 }
                 else{
                     pokemonList = pokemons!
-                    pokemonList.filter({ (Pokemon) -> Bool in
-                        return true
-                    })
+//                    pokemonList.filter({ (Pokemon) -> Bool in
+//                        return true
+//                    })
                     if self.sortType == nil {
                         self.sortType = SortManager.sortManager.selectedSortType!
                     }else {
@@ -185,7 +186,35 @@ class PokemonController: UIViewController
         }
     }
     
-    
+    @IBOutlet weak var dropdownButton: UIBarButtonItem!
+    @IBAction func showDropdownMenu(_ sender: UIBarButtonItem) {
+        self.dropdownMenu = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: 135))
+        dropdownMenu?.delegate = self
+        dropdownMenu?.dataSource = self
+        dropdownMenu?.isScrollEnabled = false
+        dropdownMenu?.separatorStyle = .none
+        dropdownMenu?.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 4, right: 0)
+//        dropdownMenu?.register(DropdownMenu.self, forCellReuseIdentifier: "Dropdown")
+        dropdownMenu?.register(UINib.init(nibName: "DropdownMemuItem", bundle: nil), forCellReuseIdentifier: "dropdown menu item")
+        self.popover = Popover(options: [.type(.down),
+                                         .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))])
+//        self.popover.willShowHandler = {
+//            print("willShowHandler")
+//        }
+//        self.popover.didShowHandler = {
+//            print("didDismissHandler")
+//        }
+//        self.popover.willDismissHandler = {
+//            print("willDismissHandler")
+//        }
+//        self.popover.didDismissHandler = {
+//            print("didDismissHandler")
+//        }
+        let startPoint = CGPoint(x: self.view.frame.origin.x , y: self.searchBar.frame.origin.y)
+        self.popover.show(self.dropdownMenu!, point: startPoint)
+//        self.popover.show(self.dropdownMenu!, fromView: self.dropdownButton)
+        
+    }
     
     @IBAction func refreshPokemon(_ sender: UIBarButtonItem) {
         self.doFetchPokemons()
@@ -206,8 +235,6 @@ class PokemonController: UIViewController
 
     }
     
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Sort" {
             if let destination = segue.destination as? SortController {
@@ -220,7 +247,7 @@ class PokemonController: UIViewController
 extension PokemonController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.popover.dismiss()
+        self.popover.dismiss()
     }
     
 }
@@ -232,10 +259,13 @@ extension PokemonController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.dropdownMenu!.dequeueReusableCell(withIdentifier: "Dropdown", for: indexPath)
-        if let dropdownMenuCell = cell as? DropdownMenu {
+        let cell = self.dropdownMenu!.dequeueReusableCell(withIdentifier: "dropdown menu item")!
+        if let dropdownMenuCell = cell as? DropdownMenuItem {
             dropdownMenuCell.menuItem = MenuItems[indexPath.row]
         }
+//        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+//        cell.textLabel?.text = MenuItems[indexPath.row].toString()
+        
         return cell
 
     }
