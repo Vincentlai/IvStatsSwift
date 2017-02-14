@@ -54,8 +54,7 @@ class PokemonCollectionCell: UICollectionViewCell {
             cpLabelInList.text = cp
         }
         // set iv
-        let iv = (pokemon?.getIv())! * 100
-        self.setIvTextAndColor(withIv: iv)
+        self.setIvTextAndColor()
         // set display name
         if self.viewType! == .Grid {
             pokemonName.text = pokemon?.getDisplayName()
@@ -63,9 +62,7 @@ class PokemonCollectionCell: UICollectionViewCell {
             pokemonNameInList.text = pokemon?.getDisplayName()
         }
         // set image
-        let imageId = pokemon?.pokemonId.rawValue
-        let imageName = "p" + String(Int(imageId!))
-        if let image = UIImage(named: imageName){
+        if let image = UIImage(named: (pokemon?.getImageName())!){
             if self.viewType! == .Grid {
                 pokemonImage.image = image
             }else {
@@ -90,29 +87,14 @@ class PokemonCollectionCell: UICollectionViewCell {
         }
     }
     
-    private func setIvTextAndColor(withIv iv: Double){
+    private func setIvTextAndColor(){
+        let iv = (pokemon?.getIv())!
         if self.viewType == .Grid {
-            ivLabel.text = String(format: "%.1f%%", (pokemon?.getIv())! * 100)
-            if iv >= 80 {
-                ivLabel.textColor = highIvColor
-            }else if iv < 80 && iv >= 40 {
-                ivLabel.textColor = mediumIvColor
-            }else if iv < 40 && iv >= 20 {
-                ivLabel.textColor = lowIvColor
-            }else {
-                ivLabel.textColor = UIColor.black
-            }
+            ivLabel.text = pokemon?.getIvText()
+            ivLabel.textColor = PokemonHelper.getPokemonIvTextColor(withIv: iv)
         }else {
-            ivLabelInList.text = String(format: "%.1f%%", (pokemon?.getIv())! * 100)
-            if iv >= 80 {
-                ivLabelInList.textColor = highIvColor
-            }else if iv < 80 && iv >= 40 {
-                ivLabelInList.textColor = mediumIvColor
-            }else if iv < 40 && iv >= 20 {
-                ivLabelInList.textColor = lowIvColor
-            }else {
-                ivLabelInList.textColor = UIColor.black
-            }
+            ivLabelInList.text = pokemon?.getIvText()
+            ivLabelInList.textColor = PokemonHelper.getPokemonIvTextColor(withIv: iv)
         }
 
     }

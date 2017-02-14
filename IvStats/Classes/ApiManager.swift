@@ -262,7 +262,7 @@ extension ApiManager: PGoApiDelegate {
             if response.subresponses.count > 0
             {
                 var pokemonList = Array<Pokemon>()
-                
+
                 let inventory = response.subresponses[0] as! Pogoprotos.Networking.Responses.GetInventoryResponse
                 if inventory.hasSuccess && inventory.success {
                     if inventory.hasInventoryDelta && inventory.inventoryDelta.inventoryItems.count != 0{

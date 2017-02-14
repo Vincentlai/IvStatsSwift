@@ -8,7 +8,13 @@
 
 import Foundation
 import PGoApi
+import UIKit
 class Helper{
+    
+    class func createUIColorFromRGBA(withR r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor
+    {
+        return UIColor(red: r/255, green: g/255, blue: b/255, alpha: a)
+    }
     
     class func dateConverter(withTimestamp timestamp: Int64) -> String{
         let dateFormat = "yyyy-MM-dd HH:mm:ss"

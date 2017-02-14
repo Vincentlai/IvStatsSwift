@@ -24,7 +24,6 @@ public protocol PokemonControllerDelegate {
     func fitlerPokemon()
 }
 
-
 class PokemonController: UIViewController
         , MBProgressHUDDelegate
         , UICollectionViewDelegate
@@ -32,7 +31,7 @@ class PokemonController: UIViewController
         , UISearchBarDelegate
         , PokemonControllerDelegate
 {
-
+    var searchbar: UISearchBar?
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var filterButton: UIBarButtonItem!
@@ -47,12 +46,13 @@ class PokemonController: UIViewController
             PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: false)
         }
     }
+    private var selectedPokemon: Pokemon?
     public let MenuItems: [MenuItemType] = [MenuItemType.Sort, MenuItemType.Filter, MenuItemType.Swap]
     public var dropdownMenu: UITableView?
     var popover: Popover!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()      
         self.viewType = .Grid
         self.setCollectionView()
     }
@@ -170,8 +170,10 @@ class PokemonController: UIViewController
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        return
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        self.selectedPokemon = pokemonList[indexPath.row]
+        performSegue(withIdentifier: "Pokemon Detail", sender: self)
     }
     
     @IBAction func changeView(_ sender: UIBarButtonItem) {
@@ -186,33 +188,22 @@ class PokemonController: UIViewController
         }
     }
     
-    @IBOutlet weak var dropdownButton: UIBarButtonItem!
-    @IBAction func showDropdownMenu(_ sender: UIBarButtonItem) {
-        self.dropdownMenu = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: 135))
+    @IBAction func optionsButtonClicked(_ sender: UIBarButtonItem) {
+        self.dropdownMenu = UITableView(frame: CGRect(x: 0, y: 0, width: 150, height: 120))
         dropdownMenu?.delegate = self
         dropdownMenu?.dataSource = self
         dropdownMenu?.isScrollEnabled = false
         dropdownMenu?.separatorStyle = .none
-        dropdownMenu?.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 4, right: 0)
-//        dropdownMenu?.register(DropdownMenu.self, forCellReuseIdentifier: "Dropdown")
-        dropdownMenu?.register(UINib.init(nibName: "DropdownMemuItem", bundle: nil), forCellReuseIdentifier: "dropdown menu item")
-        self.popover = Popover(options: [.type(.down),
-                                         .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))])
-//        self.popover.willShowHandler = {
-//            print("willShowHandler")
-//        }
-//        self.popover.didShowHandler = {
-//            print("didDismissHandler")
-//        }
-//        self.popover.willDismissHandler = {
-//            print("willDismissHandler")
-//        }
-//        self.popover.didDismissHandler = {
-//            print("didDismissHandler")
-//        }
-        let startPoint = CGPoint(x: self.view.frame.origin.x , y: self.searchBar.frame.origin.y)
+        dropdownMenu?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let dropdownMenuOptions: [PopoverOption] = [.type(.down),
+                                  .cornerRadius(4),
+                                  .showBlackOverlay(true),
+                                  .blackOverlayColor(UIColor.init(white: 0, alpha: 0.4)),
+                                  .sideEdge(5)]
+        dropdownMenu?.register(DropdownMenuItem.self, forCellReuseIdentifier: "dropdown menu item")
+        self.popover = Popover(options: dropdownMenuOptions)
+        let startPoint = CGPoint(x: self.view.frame.size.width - 27, y: self.searchBar.frame.origin.y - 5)
         self.popover.show(self.dropdownMenu!, point: startPoint)
-//        self.popover.show(self.dropdownMenu!, fromView: self.dropdownButton)
         
     }
     
@@ -241,13 +232,35 @@ class PokemonController: UIViewController
                 destination.delegate = self
             }
         }
+        else if segue.identifier == "Pokemon Detail" {
+            let destination = segue.destination as! PokemonDetailController
+            destination.pokemon = self.selectedPokemon
+        }
     }
+   
 }
+
+
 
 extension PokemonController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            performSegue(withIdentifier: "Sort", sender: self)
+            break
+        case 1:
+            performSegue(withIdentifier: "Filter", sender: self)
+            break
+        default: break
+//            performSegue(withIdentifier: "Sort", sender: self)
+            
+        }
         self.popover.dismiss()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40.0
     }
     
 }
@@ -259,14 +272,11 @@ extension PokemonController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.dropdownMenu!.dequeueReusableCell(withIdentifier: "dropdown menu item")!
+        let cell = dropdownMenu?.dequeueReusableCell(withIdentifier: "dropdown menu item", for: indexPath)
         if let dropdownMenuCell = cell as? DropdownMenuItem {
             dropdownMenuCell.menuItem = MenuItems[indexPath.row]
         }
-//        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-//        cell.textLabel?.text = MenuItems[indexPath.row].toString()
-        
-        return cell
+        return cell!
 
     }
     

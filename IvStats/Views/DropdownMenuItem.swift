@@ -24,17 +24,25 @@ enum MenuItemType {
 
 class DropdownMenuItem: UITableViewCell {
 
-    @IBOutlet weak var menuIcon: UIImageView!
-    @IBOutlet weak var menuLable: UILabel!
+    var menuIcon: UIImageView!
+    var menuLabel: UILabel!
     
     var menuItem: MenuItemType? {
         didSet{
             self.updateUI()
         }
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        menuLable.textColor = UIColor.white
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.menuIcon = UIImageView.init(frame: CGRect.init(x: 8, y: 8, width: 24, height: 24))
+        self.menuLabel = UILabel.init(frame: CGRect.init(x: 40, y: 0, width: 110, height: 40))
+        self.contentView.addSubview(menuIcon)
+        self.contentView.addSubview(menuLabel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     private func updateUI() {
@@ -43,16 +51,19 @@ class DropdownMenuItem: UITableViewCell {
             
         case MenuItemType.Sort:
             menuIcon.image = #imageLiteral(resourceName: "ic_sort_white")
-            menuLable.text = menuItem?.toString()
+            menuLabel.text = menuItem?.toString()
             break
         case MenuItemType.Filter:
             menuIcon.image = #imageLiteral(resourceName: "ic_filter_list_white")
-            menuLable.text = menuItem?.toString()
+            menuLabel.text = menuItem?.toString()
             break
         default:
             menuIcon.image = #imageLiteral(resourceName: "ic_swap_vert_white")
-            menuLable.text = menuItem?.toString()
+            menuLabel.text = menuItem?.toString()
         }
+        menuIcon.image = menuIcon.image!.withRenderingMode(.alwaysTemplate)
+        menuIcon.tintColor = UIColor.black
     }
+    
   
 }

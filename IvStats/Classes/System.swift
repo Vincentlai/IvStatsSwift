@@ -21,13 +21,13 @@ import SystemConfiguration
     // rgb(63, 81, 181)
     public var googleColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
 
-    // mediumspringgreen #00FA9A rgb(0,250,154)
-    public var highIvColor = UIColor(red: 0/255, green: 250/255, blue: 154/255, alpha: 1)
+    // forestgreen #228B22 rgb(34,139,34)
+    public var highIvColor = Helper.createUIColorFromRGBA(withR: 34, g: 139, b: 34, a: 1)
     // orange #FFA500 rgb(255,165,0)
     public var mediumIvColor = UIColor(red: 255/255, green: 165/255, blue: 0/255, alpha: 1)
     // firebrick #B22222 rgb(178,34,34)
     public var lowIvColor = UIColor(red: 178/255, green: 34/255, blue: 34/255, alpha: 1)
-
+    public var trashIvColor = UIColor.black
     // gold #FFD700 rgb(255,215,0)
     public var favoriteColor = UIColor(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
 

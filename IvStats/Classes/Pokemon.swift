@@ -20,6 +20,9 @@ enum Pokeball {
 }
 
 typealias PokemonId = Pogoprotos.Enums.PokemonId
+typealias PokemonType = Pogoprotos.Enums.PokemonType
+typealias PokemonMove = Pogoprotos.Enums.PokemonMove
+typealias PokemonFamilyId = Pogoprotos.Enums.PokemonFamilyId
 
 class Pokemon: NSObject{
     
@@ -49,7 +52,6 @@ class Pokemon: NSObject{
 
     init(withPokemonData pokemonData: Pogoprotos.Data.PokemonData) {
         super.init()
-
         if pokemonData.hasId {
             self.id = pokemonData.id
         }
@@ -119,8 +121,35 @@ class Pokemon: NSObject{
         }
     }
     
+    public func getLevel() -> Float
+    {
+        let totalCpMultiplier = cpMultiplier + additionalCpMultiplier
+        var level: Float = Float(0)
+        if totalCpMultiplier < 0.736
+        {
+            level = 58.35178527 * totalCpMultiplier * totalCpMultiplier - 2.838007664 * totalCpMultiplier + 0.8539209906;
+        }
+        else
+        {
+            level = 171.0112688 * totalCpMultiplier - 95.20425243;
+        }
+        return round((level) * 2) / 2.0;
+    }
+    
+    public func getImageName() -> String
+    {
+        let imageId = pokemonId.rawValue
+        let imageName = "p" + String(Int(imageId))
+        return imageName
+    }
+    
     public func getIv() -> Double {
-        return Double(self.individualStamina + self.individualDefense + self.individualAttack) / 45.0
+        return Double(self.individualStamina + self.individualDefense + self.individualAttack) / 45.0 * 100.0
+    }
+    
+    public func getIvText() -> String
+    {
+        return String(format: "%.1f%%", getIv())
     }
     
     public func getDisplayName() -> String {
