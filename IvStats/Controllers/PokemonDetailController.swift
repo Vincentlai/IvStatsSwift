@@ -2,85 +2,92 @@
 //  PokemonDetailController.swift
 //  IvStats
 //
-//  Created by LaiQiang on 2017-02-10.
+//  Created by LaiQiang on 2017-02-13.
 //  Copyright © 2017 LaiQiang. All rights reserved.
 //
 
 import UIKit
 
-class PokemonDetailController: UIViewController {
+class PokemonDetailController: UITableViewController {
 
-    @IBOutlet weak var cpValue: UILabel!
-    @IBOutlet weak var levelValue: UILabel!
-    @IBOutlet weak var ivValue: UILabel!
-    @IBOutlet weak var hpValue: UILabel!
-    @IBOutlet weak var attackValue: UILabel!
-    @IBOutlet weak var defenseValue: UILabel!
-    @IBOutlet weak var staminaValue: UILabel!
-    
-    @IBOutlet weak var pokemonImage: UIImageView!
-    @IBOutlet weak var favoriteIcon: UIImageView!
-    
-//    @IBOutlet weak var cpValue: UILabel!
-    
     var pokemon: Pokemon?
-    
-    override func viewDidLoad()
-    {
+    var moveSet: [PokemonMove]?
+    override func viewDidLoad() {
         super.viewDidLoad()
-        self.updatePokemon()
-//        self.getEggPokemon()
-    }
-    
-    private func getEggPokemon()
-    {
-        for index in 1...251
-        {
-            let id: PokemonId = PokemonId(rawValue: Int32(index))!
-            if let proto = PokemonHelper.getPokemonPrototype(withPokemonId: id)
-            {
-                print("\(proto.pokemonId.toString())   \(proto.baseAttack)    \(proto.baseDefense)   \(proto.baseStamina)    \(proto.maxCp)")
-            }
-        }
-    }
-    
-    private func updatePokemon()
-    {
         // set page title
         self.navigationItem.title = pokemon?.getDisplayName()
-        // set favorite icon
-        self.setFavorite(icon: favoriteIcon)
-        // set cp
-        let cpText = NSMutableAttributedString.init(string: "CP: " + (pokemon?.cp.description)!)
-        cpText.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGray, range: NSRange.init(location: 0, length: 3))
-        cpText.addAttribute(NSForegroundColorAttributeName, value: primaryTextColor, range: NSRange.init(location: 4, length: cpText.length-4))
-        cpValue.attributedText = cpText
-        // set image 
-        if let image = UIImage(named: (pokemon?.getImageName())!)
-        {
-            pokemonImage.image = image
+        self.moveSet = pokemon?.getMoveSet()
+    }
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        if section == 0
+        {// basic infor
+            return 1
         }
-        // set iv
-        ivValue.text = pokemon?.getIvText()
-        ivValue.textColor = PokemonHelper.getPokemonIvTextColor(withIv: (pokemon?.getIv())!)
-        // set hp
-        hpValue.text = pokemon?.stamina.description
-        // set level
-        levelValue.text = pokemon?.getLevel().description
-        // set attack defense stamina
-        attackValue.text = pokemon?.individualAttack.description
-        defenseValue.text = pokemon?.individualDefense.description
-        staminaValue.text = pokemon?.individualStamina.description
+        else if section == 1
+        {
+            //moves
+            if let set = self.moveSet
+            {
+                return set.count
+            }
+            else
+            {
+                return 0
+            }
+        }
+        else
+        {
+            return 0
+        }
+        
+    }
+
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicInfo", for: indexPath) as! PokemonBasicInfoCell
+            cell.pokemon = self.pokemon
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.isUserInteractionEnabled = false
+            return cell
+        }
+        else if indexPath.section == 1
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicInfo", for: indexPath) as! PokemonBasicInfoCell
+            cell.pokemon = self.pokemon
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.isUserInteractionEnabled = false
+            return cell
+        }
+        else
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicInfo", for: indexPath) as! PokemonBasicInfoCell
+            cell.pokemon = self.pokemon
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.isUserInteractionEnabled = false
+            return cell
+        }
+
     }
     
-    private func setFavorite(icon: UIImageView)
-    {
-        if (pokemon?.isFavorite)! {
-            icon.image = icon.image!.withRenderingMode(.alwaysTemplate)
-            icon.tintColor = favoriteColor
-            icon.isHidden = false
-        }else {
-            icon.isHidden = true
-        }
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
+    */
+
 }

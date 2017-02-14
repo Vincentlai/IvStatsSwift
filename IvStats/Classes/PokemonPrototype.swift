@@ -38,7 +38,7 @@ struct PokemonPrototype {
     var baseQuickMoveSet: [PokemonMove]
     var baseMainMoveSet: [PokemonMove]
     var pokemonEgg: PokemonEggType
- 
+    
 }
 
 

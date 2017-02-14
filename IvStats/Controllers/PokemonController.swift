@@ -240,8 +240,6 @@ class PokemonController: UIViewController
    
 }
 
-
-
 extension PokemonController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

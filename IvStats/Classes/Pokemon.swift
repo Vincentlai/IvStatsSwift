@@ -9,10 +9,6 @@
 import Foundation
 import PGoApi
 
-struct Move {
-    var name: String
-}
-
 enum Pokeball {
     case Pokeball
     case Masterball
@@ -31,8 +27,8 @@ class Pokemon: NSObject{
     var cp: Int = 0
     var stamina: Int = 0
     var staminaMax: Int = 0
-    var move1: Move = Move(name: "")
-    var move2: Move = Move(name: "")
+    var move1: PokemonMove = PokemonMove.moveUnset
+    var move2: PokemonMove = PokemonMove.moveUnset
     var height: Float = 0
     var weight: Float = 0
     var individualAttack: Int = 0
@@ -68,10 +64,10 @@ class Pokemon: NSObject{
             self.staminaMax = Int(pokemonData.staminaMax)
         }
         if pokemonData.hasMove1 {
-            self.move1 = Move(name: pokemonData.move1.toString())
+            self.move1 = pokemonData.move1
         }
         if pokemonData.hasMove2 {
-            self.move2 = Move(name: pokemonData.move2.toString())
+            self.move2 = pokemonData.move2
         }
         if pokemonData.hasHeightM {
             self.height = pokemonData.heightM
@@ -119,6 +115,11 @@ class Pokemon: NSObject{
         if pokemonData.hasAdditionalCpMultiplier {
             self.additionalCpMultiplier = pokemonData.additionalCpMultiplier
         }
+    }
+    
+    public func getMoveSet() -> [PokemonMove]
+    {
+        return [move1, move2]
     }
     
     public func getLevel() -> Float
