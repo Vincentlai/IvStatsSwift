@@ -45,6 +45,9 @@ class Pokemon: NSObject{
     var battlesDefended: Int = 0
     var numUpgrades: Int = 0
     var additionalCpMultiplier:Float = Float(0)
+    
+    var isBestAttackMoveSet: Bool = false
+    var isBestDefenseMoveSet: Bool = false
 
     init(withPokemonData pokemonData: Pogoprotos.Data.PokemonData) {
         super.init()
@@ -115,6 +118,19 @@ class Pokemon: NSObject{
         if pokemonData.hasAdditionalCpMultiplier {
             self.additionalCpMultiplier = pokemonData.additionalCpMultiplier
         }
+        self.setMoveStats()
+    }
+    
+    private func setMoveStats()
+    {
+        let moveSet = self.getMoveSet()
+        let pokemonPorototype = PokemonHelper.getPokemonPrototype(withPokemonId: self.pokemonId)
+        if moveSet == (pokemonPorototype?.bestAttackMoveSet)! {
+            self.isBestAttackMoveSet = true
+        }
+        if moveSet == (pokemonPorototype?.bestDefenseMoveSet)! {
+            self.isBestDefenseMoveSet = true
+        }
     }
     
     public func getMoveSet() -> [PokemonMove]
@@ -155,9 +171,33 @@ class Pokemon: NSObject{
     
     public func getDisplayName() -> String {
         if self.nickname == "" {
-            return self.pokemonId.toString()
+            var name = self.pokemonId.toString()
+            name = name.replacingOccurrences(of: "_MALE", with: "♂")
+            name = name.replacingOccurrences(of: "_FEMALE", with: "♀")
+            name = name.lowercased()
+            name = name.capitalized
+            return name
         }else {
             return self.nickname
         }
+    }
+    
+    public func getMaxCp() -> Int
+    {
+        let cpMultiplier =  PokemonCPHelper.getCpMultiplier(byLevel: 40)
+        let cp = (Int)((Double)(individualAttack) * pow(Double(individualDefense), 0.5) * pow((Double)(individualStamina), 0.5) * pow((Double)(cpMultiplier), 2) / 10);
+        return cp
+    }
+    
+    public func getMaxCp(byLevel level: CGFloat) -> Int
+    {
+        var currentLevel = level
+        if currentLevel > 40.0
+        {
+            currentLevel = 40.0
+        }
+        let cpMultiplier =  PokemonCPHelper.getCpMultiplier(byLevel: currentLevel)
+        let cp = (Int)(Double(individualAttack) * pow(Double(individualDefense), 0.5) * pow(Double(individualStamina), 0.5) * pow(Double(cpMultiplier), 2) / 10);
+        return cp
     }
 }

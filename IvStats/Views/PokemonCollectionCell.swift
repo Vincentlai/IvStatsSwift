@@ -17,13 +17,19 @@ class PokemonCollectionCell: UICollectionViewCell {
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var pokemonName: UILabel!
     @IBOutlet weak var favoriteIcon: UIImageView!
-  
+    @IBOutlet weak var bestMove1: UIImageView!
+    @IBOutlet weak var bestMove2: UIImageView!
     
+  
     @IBOutlet weak var ivLabelInList: UILabel!
     @IBOutlet weak var cpLabelInList: UILabel!
     @IBOutlet weak var favoriteIconInList: UIImageView!
     @IBOutlet weak var pokemonImageInList: UIImageView!
     @IBOutlet weak var pokemonNameInList: UILabel!
+    @IBOutlet weak var bestMove1InList: UIImageView!
+    @IBOutlet weak var bestMove2InList: UIImageView!
+    
+    
     
     var viewType: ViewType?
     
@@ -75,6 +81,50 @@ class PokemonCollectionCell: UICollectionViewCell {
         }else {
             self.setFavorite(icon: favoriteIconInList)
         }
+        // set best move set icon
+        self.setBestMoveIcons()
+    }
+    
+    private func setBestMoveIcons()
+    {
+        let isBestAttackMoveSet = self.pokemon!.isBestAttackMoveSet
+        let isBestDefenseMoveSet = self.pokemon!.isBestDefenseMoveSet
+        if self.viewType! == .Grid {
+            bestMove1.isHidden = true
+            bestMove2.isHidden = true
+            if isBestAttackMoveSet && isBestDefenseMoveSet{
+                bestMove1.image = #imageLiteral(resourceName: "attack")
+                bestMove2.image = #imageLiteral(resourceName: "defense")
+                bestMove1.isHidden = false
+                bestMove2.isHidden = false
+            } else if isBestAttackMoveSet {
+                bestMove1.image = #imageLiteral(resourceName: "attack")
+                bestMove1.isHidden = false
+                bestMove2.isHidden = true
+            } else if isBestDefenseMoveSet {
+                bestMove1.image = #imageLiteral(resourceName: "defense")
+                bestMove1.isHidden = false
+                bestMove2.isHidden = true
+            }
+        } else {
+            bestMove1InList.isHidden = true
+            bestMove2InList.isHidden = true
+            if isBestAttackMoveSet && isBestDefenseMoveSet{
+                bestMove1InList.image = #imageLiteral(resourceName: "attack")
+                bestMove2InList.image = #imageLiteral(resourceName: "defense")
+                bestMove1InList.isHidden = false
+                bestMove2InList.isHidden = false
+            } else if isBestAttackMoveSet {
+                bestMove1InList.image = #imageLiteral(resourceName: "attack")
+                bestMove1InList.isHidden = false
+                bestMove2InList.isHidden = true
+            } else if isBestDefenseMoveSet {
+                bestMove1InList.image = #imageLiteral(resourceName: "defense")
+                bestMove1InList.isHidden = false
+                bestMove2InList.isHidden = true
+            }
+        }
+
     }
     
     private func setFavorite(icon: UIImageView){

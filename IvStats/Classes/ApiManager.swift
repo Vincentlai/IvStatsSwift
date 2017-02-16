@@ -311,5 +311,16 @@ extension ApiManager: PGoApiDelegate {
     
     func didReceiveApiException(_ intent: PGoApiIntent, exception: PGoApiExceptions) {
         print("\(exception)")
+        let error = IvStatsException.init(Exception: exception)
+        if intent == .login {
+            self.loginHandler?(error.nserror())
+            self.loginHandler = nil
+        } else if intent == .getPlayer {
+            self.fetchPlayerInfoHandler?(nil, error.nserror())
+            self.fetchPlayerInfoHandler = nil
+        } else {
+            self.fetchDataHandler?(nil, error.nserror())
+            self.fetchDataHandler = nil
+        }
     }
 }

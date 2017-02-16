@@ -20,6 +20,7 @@ import SystemConfiguration
     public var whiteTextColor = UIColor.white
     // rgb(63, 81, 181)
     public var googleColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
+    public var lightBgColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
 
     // forestgreen #228B22 rgb(34,139,34)
     public var highIvColor = Helper.createUIColorFromRGBA(withR: 34, g: 139, b: 34, a: 1)
@@ -35,6 +36,9 @@ import SystemConfiguration
     public var primaryFontFamily = "Helvetica"
     public var primaryFontSize: CGFloat = 18.0
     public var primaryFont = UIFont(name: primaryFontFamily, size: primaryFontSize)!
+    public var secondaryLabelFontFamily = "Kailasa"
+    public var secondaryLabelFontSize: CGFloat = 15.0
+
     //rgb(168, 168, 120)
     public var normalTypeColor = Helper.createUIColorFromRGBA(withR: 168, g: 168, b: 120, a: 1)
     //rgb(192, 32, 56)

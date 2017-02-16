@@ -12,4 +12,5 @@ target 'IvStats' do
   pod 'Neon'
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'RNCryptor', '~> 5.0'
+  pod 'Cartography', '~> 1.0'
 end

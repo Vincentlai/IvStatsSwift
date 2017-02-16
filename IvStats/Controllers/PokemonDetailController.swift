@@ -7,23 +7,39 @@
 //
 
 import UIKit
+import Cartography
 
 class PokemonDetailController: UITableViewController {
 
     var pokemon: Pokemon?
     var moveSet: [PokemonMove]?
+    var pokemonPorototype: PokemonPrototype?
+    var quickMoveSet: [PokemonMove]?
+    var mainMoveSet: [PokemonMove]?
+    var bestAttackMoveSet: [PokemonMove]?
+    var bestDefenseMoveSet: [PokemonMove]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // set page title
         self.navigationItem.title = pokemon?.getDisplayName()
-        self.moveSet = pokemon?.getMoveSet()
+        self.loadPokemonData()
     }
 
+    private func loadPokemonData()
+    {
+        self.moveSet = pokemon?.getMoveSet()
+        self.pokemonPorototype = PokemonHelper.getPokemonPrototype(withPokemonId: (self.pokemon!.pokemonId))
+        self.quickMoveSet = pokemonPorototype?.baseQuickMoveSet
+        self.mainMoveSet = pokemonPorototype?.baseMainMoveSet
+        self.bestAttackMoveSet = pokemonPorototype?.bestAttackMoveSet
+        self.bestDefenseMoveSet = pokemonPorototype?.bestDefenseMoveSet
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int
     {
-        return 1
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -44,35 +60,138 @@ class PokemonDetailController: UITableViewController {
                 return 0
             }
         }
-        else
+        else if section == 2
         {
-            return 0
+            if self.quickMoveSet == nil
+            {
+                return 0
+            }
+            else
+            {
+                return self.quickMoveSet!.count
+            }
+        }else
+        {
+            if self.mainMoveSet == nil
+            {
+                return 0
+            }
+            else
+            {
+                return self.mainMoveSet!.count
+            }
         }
         
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0
+        {
+            return 325
+        }
+        else
+        {
+            return 50
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        return footerView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section != 0 {
+            return 40
+        }
+        else{
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+
+        if section == 0
+        {
+            return nil
+        }
+        let headView = UIView()
+        let headerName = UILabel()
+        headView.addSubview(headerName)
+        constrain(headerName)
+        {
+            (view) in
+            view.left == view.superview!.left + 5
+            view.centerY == view.superview!.centerY
+            view.width == view.superview!.width
+            view.height == 20
+        }
+        headView.backgroundColor = lightBgColor
+        headerName.font = UIFont.init(name: primaryFontFamily, size: 16)
+        if section == 1
+        {
+            var title: String = "Move Set"
+            if self.pokemon!.isBestAttackMoveSet && self.pokemon!.isBestDefenseMoveSet
+            {
+                title.append(" -> Best Attack/Defense Move Set")
+            }
+            else if self.pokemon!.isBestAttackMoveSet {
+                title.append(" -> Best Attack Move Set")
+            }
+            else if self.pokemon!.isBestDefenseMoveSet {
+                title.append(" -> Best Defense Move Set")
+            }
+           headerName.text = title
+            return headView
+        }else if section == 2 {
+            headerName.text = "Base Quick Move Set"
+            return headView
+        }else {
+            headerName.text = "Base Main Move Set"
+            return headView
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicInfo", for: indexPath) as! PokemonBasicInfoCell
             cell.pokemon = self.pokemon
+            cell.setBestMoveIcons(isBestAttackMoveSet: self.pokemon!.isBestAttackMoveSet, isBestDefenseMoveSet: self.pokemon!.isBestDefenseMoveSet)
+            cell.pokemonPrototype = self.pokemonPorototype
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.isUserInteractionEnabled = false
             return cell
         }
         else if indexPath.section == 1
         {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicInfo", for: indexPath) as! PokemonBasicInfoCell
-            cell.pokemon = self.pokemon
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentMoveSet", for: indexPath) as! PokemonMoveSetCell
+            cell.move = self.moveSet?[indexPath.row]
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.isUserInteractionEnabled = false
+            return cell
+        }
+        else if indexPath.section == 2
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentMoveSet", for: indexPath) as! PokemonMoveSetCell
+            let move = self.quickMoveSet?[indexPath.row]
+            cell.move = move
+            cell.addIcon(isBestAttack: PokemonHelper.isBestAttackMove(withMove: move!, prototype: self.pokemonPorototype!), isBestDefense: PokemonHelper.isBestDefenseMove(withMove: move!, prototype: self.pokemonPorototype!))
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.isUserInteractionEnabled = false
             return cell
         }
         else
         {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicInfo", for: indexPath) as! PokemonBasicInfoCell
-            cell.pokemon = self.pokemon
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentMoveSet", for: indexPath) as! PokemonMoveSetCell
+            let move = self.mainMoveSet?[indexPath.row]
+            cell.move = move
+            cell.addIcon(isBestAttack: PokemonHelper.isBestAttackMove(withMove: move!, prototype: self.pokemonPorototype!), isBestDefense: PokemonHelper.isBestDefenseMove(withMove: move!, prototype: self.pokemonPorototype!))
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.isUserInteractionEnabled = false
             return cell

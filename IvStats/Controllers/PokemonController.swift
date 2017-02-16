@@ -130,6 +130,11 @@ class PokemonController: UIViewController
             backgroundQueue.async {
                 if let error = error {
                     print("\(error.debugDescription)")
+                    DispatchQueue.main.async {
+                        self.hud.label.text = "Error"
+                        self.hud.hide(animated: true, afterDelay: 0.3)
+                        self.showAlert("Error", message: error.description)
+                    }
                 }
                 else{
                     pokemonList = pokemons!
@@ -149,6 +154,19 @@ class PokemonController: UIViewController
                 }
             }
         }
+    }
+    
+    func showAlert(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        //        let handler = {
+        //            (action: UIAlertAction) in
+        //            print("heiheihei")
+        //
+        //        }
+        //        let action = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.cancel, handler: handler)
+        //        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

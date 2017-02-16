@@ -436,31 +436,93 @@
                                             <rect key="frame" x="47" y="314" width="320" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fighting" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvC-Xi-vOU">
+                                            <rect key="frame" x="23" y="151" width="60" height="21"/>
+                                            <color key="backgroundColor" red="0.99607843139999996" green="0.42352941179999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="DPG-u5-lxM"/>
+                                                <constraint firstAttribute="height" constant="21" id="Rso-ux-FFj"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="14"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="-1" height="-1"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fighting" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8C-c7-xaZ">
+                                            <rect key="frame" x="23" y="125" width="60" height="21"/>
+                                            <color key="backgroundColor" red="0.99607843139999996" green="0.42352941179999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="8wy-21-qPW"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="A5a-FY-TJr"/>
+                                                <constraint firstAttribute="height" constant="21" id="JCh-qP-zTF"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="UG6-WU-4iI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="14"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="-1" height="-1"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ixj-TJ-Fdc">
+                                            <rect key="frame" x="23" y="23" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="51P-wP-8AT"/>
+                                                <constraint firstAttribute="height" constant="24" id="HpS-oK-aEq"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ent-hi-VnT">
+                                            <rect key="frame" x="23" y="53" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="HZl-7m-Yn8"/>
+                                                <constraint firstAttribute="width" constant="24" id="tFX-C9-ehy"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="zaI-v8-6VI" firstAttribute="centerX" secondItem="kGF-A0-dZd" secondAttribute="centerX" id="5vp-iW-A11"/>
+                                        <constraint firstItem="P8C-c7-xaZ" firstAttribute="leading" secondItem="kGF-A0-dZd" secondAttribute="leadingMargin" constant="15" id="7NE-pg-xLI"/>
                                         <constraint firstItem="zaI-v8-6VI" firstAttribute="top" secondItem="TJD-H8-cEq" secondAttribute="bottom" constant="8" id="8co-O9-NZg"/>
                                         <constraint firstItem="TJD-H8-cEq" firstAttribute="top" secondItem="m53-Bg-EpR" secondAttribute="bottom" constant="7.6666666666666572" id="9fZ-Mo-TS0"/>
+                                        <constraint firstItem="lvC-Xi-vOU" firstAttribute="bottom" secondItem="k4c-Iv-rg2" secondAttribute="bottom" id="CdC-Re-iXK"/>
                                         <constraint firstItem="OIl-zr-Q1b" firstAttribute="width" secondItem="zaI-v8-6VI" secondAttribute="width" id="CwS-Km-ZTv"/>
                                         <constraint firstItem="OIl-zr-Q1b" firstAttribute="centerX" secondItem="kGF-A0-dZd" secondAttribute="centerX" id="Cwn-45-xkG"/>
                                         <constraint firstItem="m53-Bg-EpR" firstAttribute="centerX" secondItem="kGF-A0-dZd" secondAttribute="centerX" id="DUw-sK-YUK"/>
                                         <constraint firstItem="lOI-0a-aL6" firstAttribute="top" secondItem="kGF-A0-dZd" secondAttribute="topMargin" constant="6" id="Dj0-vv-cVS"/>
+                                        <constraint firstItem="lvC-Xi-vOU" firstAttribute="top" secondItem="P8C-c7-xaZ" secondAttribute="bottom" constant="5" id="EaM-7P-bCD"/>
                                         <constraint firstItem="lOI-0a-aL6" firstAttribute="centerX" secondItem="kGF-A0-dZd" secondAttribute="centerX" id="I8x-r2-G75"/>
                                         <constraint firstItem="UMM-T6-1xz" firstAttribute="top" secondItem="kGF-A0-dZd" secondAttribute="topMargin" constant="11" id="LuU-W8-oCt"/>
                                         <constraint firstItem="k4c-Iv-rg2" firstAttribute="centerX" secondItem="lOI-0a-aL6" secondAttribute="centerX" id="NE9-Pf-9Ca"/>
                                         <constraint firstItem="k4c-Iv-rg2" firstAttribute="top" secondItem="lOI-0a-aL6" secondAttribute="bottom" constant="-8" id="U5L-6b-dlZ"/>
+                                        <constraint firstItem="ixj-TJ-Fdc" firstAttribute="leading" secondItem="P8C-c7-xaZ" secondAttribute="leading" id="YE8-m8-ZAo"/>
+                                        <constraint firstItem="ent-hi-VnT" firstAttribute="top" secondItem="ixj-TJ-Fdc" secondAttribute="bottom" constant="6" id="Zpc-rx-Lu0"/>
+                                        <constraint firstItem="ent-hi-VnT" firstAttribute="leading" secondItem="P8C-c7-xaZ" secondAttribute="leading" id="aEq-ba-EM3"/>
                                         <constraint firstItem="UMM-T6-1xz" firstAttribute="trailing" secondItem="kGF-A0-dZd" secondAttribute="trailingMargin" id="c8p-4G-Wb7"/>
                                         <constraint firstItem="m53-Bg-EpR" firstAttribute="top" secondItem="k4c-Iv-rg2" secondAttribute="bottom" constant="8" id="dgK-qf-xEn"/>
                                         <constraint firstItem="zaI-v8-6VI" firstAttribute="top" secondItem="kGF-A0-dZd" secondAttribute="top" constant="254" id="hcE-C2-6TK"/>
+                                        <constraint firstItem="lvC-Xi-vOU" firstAttribute="leading" secondItem="kGF-A0-dZd" secondAttribute="leadingMargin" constant="15" id="hkw-Sn-W4e"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="OIl-zr-Q1b" secondAttribute="bottom" constant="2" id="ixb-aL-XCt"/>
                                         <constraint firstItem="TJD-H8-cEq" firstAttribute="top" secondItem="kGF-A0-dZd" secondAttribute="top" constant="245" id="odn-m1-bhY"/>
                                         <constraint firstItem="OIl-zr-Q1b" firstAttribute="top" secondItem="zaI-v8-6VI" secondAttribute="bottom" constant="7" id="oyU-jI-Ewp"/>
                                         <constraint firstItem="TJD-H8-cEq" firstAttribute="centerX" secondItem="kGF-A0-dZd" secondAttribute="centerX" id="ubc-wO-voF"/>
                                         <constraint firstItem="TJD-H8-cEq" firstAttribute="width" secondItem="m53-Bg-EpR" secondAttribute="width" id="wBC-VK-dvl"/>
+                                        <constraint firstItem="ixj-TJ-Fdc" firstAttribute="top" secondItem="kGF-A0-dZd" secondAttribute="topMargin" constant="15" id="z4O-SF-KkA"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="attackValue" destination="6kp-Ez-ADi" id="Zbj-eb-GFn"/>
+                                    <outlet property="bestMoveIcon1" destination="ixj-TJ-Fdc" id="qvM-pA-eXM"/>
+                                    <outlet property="bestMoveIcon2" destination="ent-hi-VnT" id="oFd-Ci-eSY"/>
                                     <outlet property="cpValue" destination="lOI-0a-aL6" id="f3w-HB-GJz"/>
                                     <outlet property="defenseValue" destination="Ijr-qb-xf6" id="Rad-Ui-4dR"/>
                                     <outlet property="favoriteIcon" destination="UMM-T6-1xz" id="quD-yX-qzZ"/>
@@ -469,15 +531,71 @@
                                     <outlet property="levelValue" destination="TYP-FK-HGY" id="DRU-bZ-Osd"/>
                                     <outlet property="pokemonImage" destination="k4c-Iv-rg2" id="scf-A4-Ls5"/>
                                     <outlet property="staminaValue" destination="JWp-Qo-WP9" id="a2E-wH-h3c"/>
+                                    <outlet property="type1" destination="lvC-Xi-vOU" id="duu-BX-C5H"/>
+                                    <outlet property="type2" destination="P8C-c7-xaZ" id="o44-Vu-yxh"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="DAA-Mw-IAu">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentMoveSet" rowHeight="50" id="DAA-Mw-IAu" customClass="PokemonMoveSetCell" customModule="IvStats" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="353" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DAA-Mw-IAu" id="WHS-NS-yzR">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Bubble" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJV-1l-jnE">
+                                            <rect key="frame" x="125" y="15" width="180.33333333333331" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="VPE-nY-jOP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DPS 10.5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6r-rR-Jdj">
+                                            <rect key="frame" x="325.33333333333326" y="16" width="68.666666666666686" height="19.666666666666664"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="68.670000000000002" id="oPL-rd-A0x"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fighting" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOA-EN-LaR">
+                                            <rect key="frame" x="50" y="15" width="60" height="21"/>
+                                            <color key="backgroundColor" red="0.99607843139999996" green="0.42352941179999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Dfw-pC-lEo"/>
+                                                <constraint firstAttribute="width" constant="60" id="FWo-YE-joU"/>
+                                                <constraint firstAttribute="height" constant="21" id="cu5-ta-kBV"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="qTO-b0-a4A"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="14"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="-1" height="-1"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="BOA-EN-LaR" firstAttribute="centerY" secondItem="WHS-NS-yzR" secondAttribute="centerY" id="6ha-gM-DIW"/>
+                                        <constraint firstItem="D6r-rR-Jdj" firstAttribute="centerY" secondItem="WHS-NS-yzR" secondAttribute="centerY" id="EQp-hw-GjQ"/>
+                                        <constraint firstItem="oJV-1l-jnE" firstAttribute="centerY" secondItem="WHS-NS-yzR" secondAttribute="centerY" id="OIy-21-SFn"/>
+                                        <constraint firstAttribute="trailing" secondItem="D6r-rR-Jdj" secondAttribute="trailing" constant="20" id="YOL-Hs-gHG"/>
+                                        <constraint firstItem="D6r-rR-Jdj" firstAttribute="leading" secondItem="oJV-1l-jnE" secondAttribute="trailing" constant="20" id="eqK-f7-lxv"/>
+                                        <constraint firstItem="oJV-1l-jnE" firstAttribute="leading" secondItem="BOA-EN-LaR" secondAttribute="trailing" constant="15" id="klp-jj-6aj"/>
+                                        <constraint firstItem="BOA-EN-LaR" firstAttribute="leading" secondItem="WHS-NS-yzR" secondAttribute="leading" constant="50" id="zdI-EF-RKb"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dpsLabel" destination="D6r-rR-Jdj" id="nk5-ig-jkK"/>
+                                    <outlet property="moveLabel" destination="oJV-1l-jnE" id="L5u-eF-7Yl"/>
+                                    <outlet property="typeLabel" destination="BOA-EN-LaR" id="wu7-LF-W3L"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -729,7 +847,7 @@
         <image name="pika" width="16" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jx7-ah-72c"/>
+        <segue reference="XTo-Yy-FqI"/>
         <segue reference="Dl9-gk-RMx"/>
     </inferredMetricsTieBreakers>
 </document>
