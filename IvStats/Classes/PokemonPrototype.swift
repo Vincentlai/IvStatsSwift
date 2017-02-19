@@ -38,6 +38,22 @@ struct PokemonPrototype {
     var baseQuickMoveSet: [PokemonMove]
     var baseMainMoveSet: [PokemonMove]
     var pokemonEgg: PokemonEggType
+
+    public func getDisplayName() -> String {
+        var name = self.pokemonId.toString()
+        name = name.replacingOccurrences(of: "_MALE", with: "♂")
+        name = name.replacingOccurrences(of: "_FEMALE", with: "♀")
+        name = name.lowercased()
+        name = name.capitalized
+        return name
+    }
+    
+    public func getImageName() -> String
+    {
+        let imageId = pokemonId.rawValue
+        let imageName = "p" + String(Int(imageId))
+        return imageName
+    }
 }
 
 

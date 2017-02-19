@@ -83,6 +83,7 @@ class PokemonCollectionCell: UICollectionViewCell {
         }
         // set best move set icon
         self.setBestMoveIcons()
+
     }
     
     private func setBestMoveIcons()

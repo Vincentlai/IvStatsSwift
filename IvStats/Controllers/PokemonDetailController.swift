@@ -18,7 +18,8 @@ class PokemonDetailController: UITableViewController {
     var mainMoveSet: [PokemonMove]?
     var bestAttackMoveSet: [PokemonMove]?
     var bestDefenseMoveSet: [PokemonMove]?
-    
+    var candyNumber: Int32 = 0
+    var maxCpAt40: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // set page title
@@ -34,12 +35,14 @@ class PokemonDetailController: UITableViewController {
         self.mainMoveSet = pokemonPorototype?.baseMainMoveSet
         self.bestAttackMoveSet = pokemonPorototype?.bestAttackMoveSet
         self.bestDefenseMoveSet = pokemonPorototype?.bestDefenseMoveSet
+        self.candyNumber = PokemonHelper.getCandy(forPokemonFamily: pokemonPorototype!.familyId)
+        self.maxCpAt40 = pokemon!.getMaxCp()
     }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int
     {
-        return 4
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -70,7 +73,7 @@ class PokemonDetailController: UITableViewController {
             {
                 return self.quickMoveSet!.count
             }
-        }else
+        }else if section == 3
         {
             if self.mainMoveSet == nil
             {
@@ -80,14 +83,23 @@ class PokemonDetailController: UITableViewController {
             {
                 return self.mainMoveSet!.count
             }
+        }else if section == 4 {
+            return 1
+        }else {
+            return 0
         }
+        
         
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0
         {
-            return 325
+            return 390
+        }
+        else if indexPath.section == 4
+        {
+            return 100
         }
         else
         {
@@ -151,8 +163,11 @@ class PokemonDetailController: UITableViewController {
         }else if section == 2 {
             headerName.text = "Base Quick Move Set"
             return headView
-        }else {
+        }else if section == 3{
             headerName.text = "Base Main Move Set"
+            return headView
+        }else {
+            headerName.text = "CP Calculator"
             return headView
         }
     }
@@ -164,6 +179,9 @@ class PokemonDetailController: UITableViewController {
             cell.pokemon = self.pokemon
             cell.setBestMoveIcons(isBestAttackMoveSet: self.pokemon!.isBestAttackMoveSet, isBestDefenseMoveSet: self.pokemon!.isBestDefenseMoveSet)
             cell.pokemonPrototype = self.pokemonPorototype
+            cell.setPokemonCandy(withCandy: self.candyNumber)
+            cell.setMaxCp(withMaxCp: self.maxCpAt40)
+            cell.setCaptureDate(withCaptureDate: self.pokemon!.creationTime)
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.isUserInteractionEnabled = false
             return cell
@@ -186,7 +204,7 @@ class PokemonDetailController: UITableViewController {
             cell.isUserInteractionEnabled = false
             return cell
         }
-        else
+        else if indexPath.section == 3
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentMoveSet", for: indexPath) as! PokemonMoveSetCell
             let move = self.mainMoveSet?[indexPath.row]
@@ -195,6 +213,15 @@ class PokemonDetailController: UITableViewController {
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.isUserInteractionEnabled = false
             return cell
+        }
+        else
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CpCalculator", for: indexPath) as! PokemonCpCalculatorCell
+            cell.pokemon = self.pokemon
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+//            cell.isUserInteractionEnabled = false
+            return cell
+
         }
 
     }

@@ -243,16 +243,23 @@
         <scene sceneID="cn9-ro-ejX">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="UNs-Lu-hji" customClass="PokemonDetailController" customModule="IvStats" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="325" sectionHeaderHeight="28" sectionFooterHeight="28" id="eEx-pU-7vB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="390" sectionHeaderHeight="28" sectionFooterHeight="28" id="eEx-pU-7vB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4hr-JW-cIM">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicInfo" rowHeight="325" id="O9d-73-D8Z" customClass="PokemonBasicInfoCell" customModule="IvStats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="325"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicInfo" rowHeight="390" id="O9d-73-D8Z" customClass="PokemonBasicInfoCell" customModule="IvStats" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="49" width="414" height="390"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O9d-73-D8Z" id="kGF-A0-dZd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="325"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="390"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_white" translatesAutoresizingMaskIntoConstraints="NO" id="UMM-T6-1xz">
@@ -287,14 +294,14 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="57"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYP-FK-HGY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="37.666666666666657"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                             <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="20"/>
                                                             <color key="textColor" red="0.48627450979999998" green="0.47058823529999999" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUG-80-BfT">
-                                                            <rect key="frame" x="0.0" y="37.666666666666657" width="80" height="19.333333333333343"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                            <rect key="frame" x="0.0" y="40" width="80" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -307,14 +314,14 @@
                                                     <rect key="frame" x="120" y="0.0" width="80" height="57"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="80%" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4b-0L-thS">
-                                                            <rect key="frame" x="17" y="0.0" width="46.333333333333343" height="37.666666666666657"/>
+                                                            <rect key="frame" x="17" y="0.0" width="46.333333333333343" height="40"/>
                                                             <fontDescription key="fontDescription" name="Kailasa-Bold" family="Kailasa" pointSize="23"/>
                                                             <color key="textColor" red="0.99607843139999996" green="0.42352941179999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="IV Score %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEe-3a-wVB">
-                                                            <rect key="frame" x="2" y="37.666666666666657" width="76.333333333333343" height="19.333333333333343"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                            <rect key="frame" x="6" y="40" width="68" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -334,7 +341,7 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYG-tB-gKM">
                                                             <rect key="frame" x="0.0" y="33" width="80" height="24"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -350,23 +357,23 @@
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zaI-v8-6VI">
-                                            <rect key="frame" x="47" y="254" width="320" height="53"/>
+                                            <rect key="frame" x="47" y="253.99999999999997" width="320" height="54.333333333333286"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4PX-o0-OWJ">
-                                                    <rect key="frame" x="0.0" y="3" width="80" height="47"/>
+                                                    <rect key="frame" x="0.0" y="3" width="80" height="48.333333333333314"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kp-Ez-ADi">
-                                                            <rect key="frame" x="28" y="0.0" width="24" height="28"/>
+                                                            <rect key="frame" x="28" y="0.0" width="24" height="29.333333333333314"/>
                                                             <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="20"/>
                                                             <color key="textColor" red="0.48627450979999998" green="0.47058823529999999" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vka-mI-UA4">
-                                                            <rect key="frame" x="17" y="28" width="46" height="19"/>
+                                                            <rect key="frame" x="19.666666666666671" y="29.333333333333314" width="41" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="19" id="7IA-mm-88p"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -376,10 +383,10 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vos-8G-yTe">
-                                                    <rect key="frame" x="120" y="0.66666666666665719" width="80" height="52.000000000000028"/>
+                                                    <rect key="frame" x="120" y="1.3333333333333428" width="80" height="51.999999999999972"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ijr-qb-xf6">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="33.000000000000028"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="32.999999999999972"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="80" id="0Pr-Ne-TfK"/>
                                                             </constraints>
@@ -388,11 +395,11 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Defense" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaO-zu-A7x">
-                                                            <rect key="frame" x="10.333333333333343" y="33.000000000000028" width="59.666666666666657" height="19"/>
+                                                            <rect key="frame" x="13.333333333333343" y="32.999999999999972" width="53.333333333333314" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="19" id="xcI-jk-EbY"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -402,10 +409,10 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="whN-Nt-tRO">
-                                                    <rect key="frame" x="240" y="0.66666666666665719" width="80" height="52.000000000000028"/>
+                                                    <rect key="frame" x="240" y="1.3333333333333428" width="80" height="51.999999999999972"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWp-Qo-WP9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="33.000000000000028"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="32.999999999999972"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="80" id="b8D-qy-AOO"/>
                                                             </constraints>
@@ -414,11 +421,11 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stamina" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVa-VJ-rz5">
-                                                            <rect key="frame" x="11" y="33.000000000000028" width="58" height="19"/>
+                                                            <rect key="frame" x="14.333333333333314" y="32.999999999999972" width="51.666666666666686" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="19" id="MiQ-y6-0Z4"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -433,8 +440,11 @@
                                             </constraints>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIl-zr-Q1b">
-                                            <rect key="frame" x="47" y="314" width="320" height="1"/>
+                                            <rect key="frame" x="47" y="314.66666666666669" width="320" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="QDs-de-jSx"/>
+                                            </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fighting" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvC-Xi-vOU">
                                             <rect key="frame" x="23" y="151" width="60" height="21"/>
@@ -488,9 +498,100 @@
                                                 <constraint firstAttribute="width" constant="24" id="tFX-C9-ehy"/>
                                             </constraints>
                                         </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Xts-am-mcK">
+                                            <rect key="frame" x="47" y="322.66666666666674" width="320" height="53.333333333333314"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1hh-CZ-8Jt">
+                                                    <rect key="frame" x="0.0" y="3.3333333333333144" width="80" height="47"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ax8-tl-upx">
+                                                            <rect key="frame" x="28" y="0.0" width="24" height="28"/>
+                                                            <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="20"/>
+                                                            <color key="textColor" red="0.48627450979999998" green="0.47058823529999999" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Candy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfD-en-Au7">
+                                                            <rect key="frame" x="19.666666666666671" y="28" width="41" height="19"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="19" id="5Gg-LL-8SR"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="yr6-Am-Q6y"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="w9x-8S-RIq">
+                                                    <rect key="frame" x="120" y="0.66666666666662877" width="80" height="52"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAg-UT-0k7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="33"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="80" id="7hg-ON-Vn4"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="20"/>
+                                                            <color key="textColor" red="0.48627450979999998" green="0.47058823529999999" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MaxCP @40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96k-iU-4jM">
+                                                            <rect key="frame" x="0.0" y="33" width="80" height="19"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="19" id="ShI-3O-yax"/>
+                                                                <constraint firstAttribute="width" constant="80" id="d8R-1d-Ru9"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="3OF-YU-siv"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bPV-nM-n9A">
+                                                    <rect key="frame" x="240" y="0.0" width="80" height="53.333333333333314"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="2016-01-01 00:01:01" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6O-TP-7TP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="34.333333333333314"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="80" id="b97-kn-tgm"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Kailasa-Bold" family="Kailasa" pointSize="10"/>
+                                                            <color key="textColor" red="0.48627450979999998" green="0.47058823529999999" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Captured @" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ski-9b-ED9">
+                                                            <rect key="frame" x="2" y="34.333333333333314" width="76" height="19"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="19" id="Sij-DC-p0e"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="1ba-Z1-Lwy"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqn-56-PcJ">
+                                            <rect key="frame" x="47" y="383" width="320" height="1"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="Mjf-lM-23L"/>
+                                                <constraint firstAttribute="width" constant="320" id="eZq-Sz-fRD"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Xts-am-mcK" firstAttribute="top" secondItem="OIl-zr-Q1b" secondAttribute="bottom" constant="7" id="047-jW-962"/>
                                         <constraint firstItem="zaI-v8-6VI" firstAttribute="centerX" secondItem="kGF-A0-dZd" secondAttribute="centerX" id="5vp-iW-A11"/>
+                                        <constraint firstItem="Vqn-56-PcJ" firstAttribute="leading" secondItem="Xts-am-mcK" secondAttribute="leading" id="7Cz-MR-KSk"/>
                                         <constraint firstItem="P8C-c7-xaZ" firstAttribute="leading" secondItem="kGF-A0-dZd" secondAttribute="leadingMargin" constant="15" id="7NE-pg-xLI"/>
                                         <constraint firstItem="zaI-v8-6VI" firstAttribute="top" secondItem="TJD-H8-cEq" secondAttribute="bottom" constant="8" id="8co-O9-NZg"/>
                                         <constraint firstItem="TJD-H8-cEq" firstAttribute="top" secondItem="m53-Bg-EpR" secondAttribute="bottom" constant="7.6666666666666572" id="9fZ-Mo-TS0"/>
@@ -501,17 +602,20 @@
                                         <constraint firstItem="lOI-0a-aL6" firstAttribute="top" secondItem="kGF-A0-dZd" secondAttribute="topMargin" constant="6" id="Dj0-vv-cVS"/>
                                         <constraint firstItem="lvC-Xi-vOU" firstAttribute="top" secondItem="P8C-c7-xaZ" secondAttribute="bottom" constant="5" id="EaM-7P-bCD"/>
                                         <constraint firstItem="lOI-0a-aL6" firstAttribute="centerX" secondItem="kGF-A0-dZd" secondAttribute="centerX" id="I8x-r2-G75"/>
+                                        <constraint firstAttribute="bottom" secondItem="Vqn-56-PcJ" secondAttribute="bottom" constant="6" id="IzY-sz-5Po"/>
                                         <constraint firstItem="UMM-T6-1xz" firstAttribute="top" secondItem="kGF-A0-dZd" secondAttribute="topMargin" constant="11" id="LuU-W8-oCt"/>
                                         <constraint firstItem="k4c-Iv-rg2" firstAttribute="centerX" secondItem="lOI-0a-aL6" secondAttribute="centerX" id="NE9-Pf-9Ca"/>
                                         <constraint firstItem="k4c-Iv-rg2" firstAttribute="top" secondItem="lOI-0a-aL6" secondAttribute="bottom" constant="-8" id="U5L-6b-dlZ"/>
                                         <constraint firstItem="ixj-TJ-Fdc" firstAttribute="leading" secondItem="P8C-c7-xaZ" secondAttribute="leading" id="YE8-m8-ZAo"/>
                                         <constraint firstItem="ent-hi-VnT" firstAttribute="top" secondItem="ixj-TJ-Fdc" secondAttribute="bottom" constant="6" id="Zpc-rx-Lu0"/>
                                         <constraint firstItem="ent-hi-VnT" firstAttribute="leading" secondItem="P8C-c7-xaZ" secondAttribute="leading" id="aEq-ba-EM3"/>
+                                        <constraint firstItem="Xts-am-mcK" firstAttribute="height" secondItem="zaI-v8-6VI" secondAttribute="height" id="aO1-31-lIa"/>
                                         <constraint firstItem="UMM-T6-1xz" firstAttribute="trailing" secondItem="kGF-A0-dZd" secondAttribute="trailingMargin" id="c8p-4G-Wb7"/>
                                         <constraint firstItem="m53-Bg-EpR" firstAttribute="top" secondItem="k4c-Iv-rg2" secondAttribute="bottom" constant="8" id="dgK-qf-xEn"/>
+                                        <constraint firstItem="Xts-am-mcK" firstAttribute="leading" secondItem="OIl-zr-Q1b" secondAttribute="leading" id="feT-Iz-FAh"/>
+                                        <constraint firstItem="Vqn-56-PcJ" firstAttribute="top" secondItem="Xts-am-mcK" secondAttribute="bottom" constant="7" id="fyA-1b-1q7"/>
                                         <constraint firstItem="zaI-v8-6VI" firstAttribute="top" secondItem="kGF-A0-dZd" secondAttribute="top" constant="254" id="hcE-C2-6TK"/>
                                         <constraint firstItem="lvC-Xi-vOU" firstAttribute="leading" secondItem="kGF-A0-dZd" secondAttribute="leadingMargin" constant="15" id="hkw-Sn-W4e"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="OIl-zr-Q1b" secondAttribute="bottom" constant="2" id="ixb-aL-XCt"/>
                                         <constraint firstItem="TJD-H8-cEq" firstAttribute="top" secondItem="kGF-A0-dZd" secondAttribute="top" constant="245" id="odn-m1-bhY"/>
                                         <constraint firstItem="OIl-zr-Q1b" firstAttribute="top" secondItem="zaI-v8-6VI" secondAttribute="bottom" constant="7" id="oyU-jI-Ewp"/>
                                         <constraint firstItem="TJD-H8-cEq" firstAttribute="centerX" secondItem="kGF-A0-dZd" secondAttribute="centerX" id="ubc-wO-voF"/>
@@ -523,12 +627,15 @@
                                     <outlet property="attackValue" destination="6kp-Ez-ADi" id="Zbj-eb-GFn"/>
                                     <outlet property="bestMoveIcon1" destination="ixj-TJ-Fdc" id="qvM-pA-eXM"/>
                                     <outlet property="bestMoveIcon2" destination="ent-hi-VnT" id="oFd-Ci-eSY"/>
+                                    <outlet property="candyValue" destination="ax8-tl-upx" id="Ecs-xU-E40"/>
+                                    <outlet property="captureDataValue" destination="N6O-TP-7TP" id="OUq-xt-WIu"/>
                                     <outlet property="cpValue" destination="lOI-0a-aL6" id="f3w-HB-GJz"/>
                                     <outlet property="defenseValue" destination="Ijr-qb-xf6" id="Rad-Ui-4dR"/>
                                     <outlet property="favoriteIcon" destination="UMM-T6-1xz" id="quD-yX-qzZ"/>
                                     <outlet property="hpValue" destination="YX2-0h-Z8m" id="Kvx-Mk-Rag"/>
                                     <outlet property="ivValue" destination="S4b-0L-thS" id="WUi-w3-pb3"/>
                                     <outlet property="levelValue" destination="TYP-FK-HGY" id="DRU-bZ-Osd"/>
+                                    <outlet property="maxCpValue" destination="zAg-UT-0k7" id="C5e-82-cOn"/>
                                     <outlet property="pokemonImage" destination="k4c-Iv-rg2" id="scf-A4-Ls5"/>
                                     <outlet property="staminaValue" destination="JWp-Qo-WP9" id="a2E-wH-h3c"/>
                                     <outlet property="type1" destination="lvC-Xi-vOU" id="duu-BX-C5H"/>
@@ -536,7 +643,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentMoveSet" rowHeight="50" id="DAA-Mw-IAu" customClass="PokemonMoveSetCell" customModule="IvStats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="353" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="439" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DAA-Mw-IAu" id="WHS-NS-yzR">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -595,6 +702,142 @@
                                     <outlet property="dpsLabel" destination="D6r-rR-Jdj" id="nk5-ig-jkK"/>
                                     <outlet property="moveLabel" destination="oJV-1l-jnE" id="L5u-eF-7Yl"/>
                                     <outlet property="typeLabel" destination="BOA-EN-LaR" id="wu7-LF-W3L"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CpCalculator" rowHeight="100" id="GAZ-Nf-0bv" customClass="PokemonCpCalculatorCell" customModule="IvStats" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="489" width="414" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GAZ-Nf-0bv" id="IYd-Pf-BBO">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="5Cc-Nv-YlG">
+                                            <rect key="frame" x="58.666666666666657" y="62" width="296.66666666666663" height="31"/>
+                                            <connections>
+                                                <action selector="levelValueChanged:" destination="GAZ-Nf-0bv" eventType="valueChanged" id="m7f-C5-Xur"/>
+                                            </connections>
+                                        </slider>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-e0-PQZ">
+                                            <rect key="frame" x="57" y="8" width="300" height="44.333333333333336"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hhZ-PI-dbG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="44.333333333333336"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="23.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9S-iJ-Ox9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="24.666666666666664"/>
+                                                            <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="15"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCx-gO-LnK">
+                                                            <rect key="frame" x="0.0" y="28.666666666666664" width="60" height="15.666666666666671"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="60" id="CNd-n0-iRt"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="8fV-Zu-d34"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qmx-Dz-67I">
+                                                    <rect key="frame" x="80" y="0.0" width="60" height="44.333333333333336"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2400" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcW-8M-PRB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="24.666666666666664"/>
+                                                            <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="15"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="CP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYS-Yl-kDI">
+                                                            <rect key="frame" x="0.0" y="28.666666666666664" width="60" height="15.666666666666671"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="3Ti-Uj-BMN"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="75v-Op-lMg">
+                                                    <rect key="frame" x="160" y="0.0" width="60" height="44.333333333333336"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAB-ib-12J">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="24.666666666666664"/>
+                                                            <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="15"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Candy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aD4-Pn-DhJ">
+                                                            <rect key="frame" x="0.0" y="28.666666666666664" width="60" height="15.666666666666671"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="pY5-p8-uCZ"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="drT-BM-YdK">
+                                                    <rect key="frame" x="240" y="0.0" width="60" height="44.333333333333336"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gB-fG-mbd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="24.666666666666664"/>
+                                                            <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="15"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Startdust" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BQ-F6-UcU">
+                                                            <rect key="frame" x="0.0" y="28.666666666666664" width="60" height="15.666666666666671"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="trK-GZ-2Wu"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeM-um-w7B">
+                                            <rect key="frame" x="22.000000000000004" y="70" width="31.333333333333339" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8c-K4-YC3">
+                                            <rect key="frame" x="361.33333333333326" y="70" width="30.666666666666686" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="NeM-um-w7B" secondAttribute="bottom" constant="4" id="BAd-wR-QCt"/>
+                                        <constraint firstItem="5Cc-Nv-YlG" firstAttribute="leading" secondItem="NeM-um-w7B" secondAttribute="trailing" constant="8" id="M8R-mD-6p5"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="k8c-K4-YC3" secondAttribute="trailing" constant="14" id="V0p-A9-qyw"/>
+                                        <constraint firstItem="OEc-e0-PQZ" firstAttribute="centerX" secondItem="IYd-Pf-BBO" secondAttribute="centerX" id="bWX-6r-J5d"/>
+                                        <constraint firstItem="5Cc-Nv-YlG" firstAttribute="centerX" secondItem="IYd-Pf-BBO" secondAttribute="centerX" id="fM0-FJ-gQo"/>
+                                        <constraint firstItem="NeM-um-w7B" firstAttribute="leading" secondItem="IYd-Pf-BBO" secondAttribute="leadingMargin" constant="14" id="q3W-bv-qdO"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="k8c-K4-YC3" secondAttribute="bottom" constant="4" id="u8t-ne-Yyl"/>
+                                        <constraint firstItem="k8c-K4-YC3" firstAttribute="leading" secondItem="5Cc-Nv-YlG" secondAttribute="trailing" constant="8" id="xoM-Jl-AmG"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5Cc-Nv-YlG" secondAttribute="bottom" id="xpy-Ho-phe"/>
+                                        <constraint firstAttribute="topMargin" secondItem="OEc-e0-PQZ" secondAttribute="top" id="yuW-Ka-55I"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="candyValue" destination="bAB-ib-12J" id="KzP-DG-yu7"/>
+                                    <outlet property="cpValue" destination="hcW-8M-PRB" id="Qes-q0-Bk1"/>
+                                    <outlet property="levelSlideBar" destination="5Cc-Nv-YlG" id="cGd-Gu-e0t"/>
+                                    <outlet property="levelValue" destination="T9S-iJ-Ox9" id="cMf-2c-U3Q"/>
+                                    <outlet property="minLevelValue" destination="NeM-um-w7B" id="wFR-ma-dWC"/>
+                                    <outlet property="startdustValue" destination="0gB-fG-mbd" id="uIk-ts-9wd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

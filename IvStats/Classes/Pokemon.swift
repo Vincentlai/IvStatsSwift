@@ -48,6 +48,17 @@ class Pokemon: NSObject{
     
     var isBestAttackMoveSet: Bool = false
     var isBestDefenseMoveSet: Bool = false
+    
+    var prototype: PokemonPrototype {
+        get {
+            return PokemonHelper.getPokemonPrototype(withPokemonId: self.pokemonId)!
+        }
+    }
+    var totalCpMultiplier: Float {
+        get {
+            return self.cpMultiplier + self.additionalCpMultiplier
+        }
+    }
 
     init(withPokemonData pokemonData: Pogoprotos.Data.PokemonData) {
         super.init()
@@ -124,11 +135,10 @@ class Pokemon: NSObject{
     private func setMoveStats()
     {
         let moveSet = self.getMoveSet()
-        let pokemonPorototype = PokemonHelper.getPokemonPrototype(withPokemonId: self.pokemonId)
-        if moveSet == (pokemonPorototype?.bestAttackMoveSet)! {
+        if moveSet == prototype.bestAttackMoveSet {
             self.isBestAttackMoveSet = true
         }
-        if moveSet == (pokemonPorototype?.bestDefenseMoveSet)! {
+        if moveSet == prototype.bestDefenseMoveSet {
             self.isBestDefenseMoveSet = true
         }
     }
@@ -140,7 +150,6 @@ class Pokemon: NSObject{
     
     public func getLevel() -> Float
     {
-        let totalCpMultiplier = cpMultiplier + additionalCpMultiplier
         var level: Float = Float(0)
         if totalCpMultiplier < 0.736
         {
@@ -182,14 +191,23 @@ class Pokemon: NSObject{
         }
     }
     
+    private func getPokemonPrototype() -> PokemonPrototype
+    {
+        let prototype = PokemonHelper.getPokemonPrototype(withPokemonId: self.pokemonId)
+        return prototype!
+    }
+    
     public func getMaxCp() -> Int
     {
+        let attack = self.individualAttack + prototype.baseAttack
+        let defense = self.individualDefense + prototype.baseDefense
+        let stamina = self.individualStamina + prototype.baseStamina
         let cpMultiplier =  PokemonCPHelper.getCpMultiplier(byLevel: 40)
-        let cp = (Int)((Double)(individualAttack) * pow(Double(individualDefense), 0.5) * pow((Double)(individualStamina), 0.5) * pow((Double)(cpMultiplier), 2) / 10);
+        let cp = (Int)((Double)(attack) * pow(Double(defense), 0.5) * pow((Double)(stamina), 0.5) * pow((Double)(cpMultiplier), 2) / 10);
         return cp
     }
     
-    public func getMaxCp(byLevel level: CGFloat) -> Int
+    public func getMaxCp(byLevel level: Float) -> Int
     {
         var currentLevel = level
         if currentLevel > 40.0
@@ -197,7 +215,114 @@ class Pokemon: NSObject{
             currentLevel = 40.0
         }
         let cpMultiplier =  PokemonCPHelper.getCpMultiplier(byLevel: currentLevel)
-        let cp = (Int)(Double(individualAttack) * pow(Double(individualDefense), 0.5) * pow(Double(individualStamina), 0.5) * pow(Double(cpMultiplier), 2) / 10);
+        let attack = self.individualAttack + prototype.baseAttack
+        let defense = self.individualDefense + prototype.baseDefense
+        let stamina = self.individualStamina + prototype.baseStamina
+        let cp = (Int)(Double(attack) * pow(Double(defense), 0.5) * pow(Double(stamina), 0.5) * pow(Double(cpMultiplier), 2) / 10);
         return cp
     }
+    
+    public func getCpAfterPowerup(withLevel targetLevel: Float?, currentCp: Int?) -> Int {
+        var level: Float = self.getLevel()
+        if targetLevel != nil {
+            level = targetLevel!
+        }
+        var cp: Int = self.cp
+        if currentCp != nil {
+            cp = currentCp!
+        }
+        var cpDifference: Double = 0
+        if (level <= 10) {
+            cpDifference = round(((Double)(cp) * 0.009426125469) / pow((Double)(self.totalCpMultiplier), 2))
+        }
+        else if (level <= 20) {
+            cpDifference = round(((Double)(cp) * 0.008919025675) / pow((Double)(self.totalCpMultiplier), 2))
+        }
+        else if (level <= 30) {
+            cpDifference = round(((Double)(cp) * 0.008924905903) / pow((Double)(self.totalCpMultiplier), 2));
+        }else {
+            cpDifference = round(((Double)(cp) * 0.00445946079) / pow((Double)(self.totalCpMultiplier), 2));
+        }
+        return (Int)(cpDifference) + cp
+    }
+    
+    public func getCandyCost(forLevel targetLevel: Float) -> Int {
+        var level = self.getLevel()
+        var candy = 0
+        while level < targetLevel {
+            if level < 11 {
+                candy += 1
+            } else if level < 21 {
+                candy += 2
+            } else if level < 26 {
+                candy += 3
+            } else if level < 31 {
+                candy += 4
+            } else if level < 33 {
+                candy += 6
+            } else if level < 35 {
+                candy += 8
+            } else if level < 37 {
+                candy += 10
+            } else if level < 39 {
+                candy += 12
+            } else {
+                candy += 15
+            }
+            level += 0.5
+        }
+        return candy
+    }
+    
+    public func getStartdustCost(forLevel targetLevel: Float) -> Int {
+        var level = self.getLevel()
+        var startdust = 0
+        while level < targetLevel {
+            if level <= 2.5 {
+                startdust += 200
+            } else if level <= 4.5 {
+                startdust += 400
+            } else if level <= 6.5 {
+                startdust += 600
+            } else if level <= 8.5 {
+                startdust += 800
+            } else if level <= 10.5 {
+                startdust += 1000
+            } else if level <= 12.5 {
+                startdust += 1300
+            } else if level <= 14.5 {
+                startdust += 1600
+            } else if level <= 16.5 {
+                startdust += 1900
+            } else if level <= 18.5 {
+                startdust += 2200
+            } else if level <= 20.5 {
+                startdust += 2500
+            } else if level <= 22.5 {
+                startdust += 3000
+            } else if level <= 24.5 {
+                startdust += 3500
+            } else if level <= 26.5 {
+                startdust += 4000
+            } else if level <= 28.5 {
+                startdust += 4500
+            } else if level <= 30.5 {
+                startdust += 5000
+            } else if level <= 32.5 {
+                startdust += 6000
+            } else if level <= 34.5 {
+                startdust += 7000
+            } else if level <= 36.5 {
+                startdust += 8000
+            } else if level <= 38.5 {
+                startdust += 9000
+            } else {
+                startdust += 10000
+            }
+            level += 0.5
+        }
+        return startdust
+    }
+    
+    
 }

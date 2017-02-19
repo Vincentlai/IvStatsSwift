@@ -27,6 +27,7 @@
 		BF275DF91E166C2C004C16EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF275DF81E166C2C004C16EB /* AppDelegate.swift */; };
 		BF275DFE1E166C2C004C16EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF275DFC1E166C2C004C16EB /* Main.storyboard */; };
 		BF275E031E166C2C004C16EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF275E011E166C2C004C16EB /* LaunchScreen.storyboard */; };
+		BF2BABF41E56D26C00839D06 /* PokemonCpCalculatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BABF31E56D26C00839D06 /* PokemonCpCalculatorCell.swift */; };
 		BF6FC3E51E30B2C30072A1E0 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FC3E41E30B2C30072A1E0 /* MBProgressHUD.framework */; };
 		BF6FC3E91E31A51D0072A1E0 /* HUDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6FC3E81E31A51D0072A1E0 /* HUDHelper.swift */; };
 		BF6FC3F41E33FE010072A1E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6FC3F31E33FE010072A1E0 /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		BF275DFD1E166C2C004C16EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF275E021E166C2C004C16EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF275E041E166C2C004C16EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF2BABF31E56D26C00839D06 /* PokemonCpCalculatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonCpCalculatorCell.swift; sourceTree = "<group>"; };
 		BF6FC3E41E30B2C30072A1E0 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
 		BF6FC3E81E31A51D0072A1E0 /* HUDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HUDHelper.swift; path = Helpers/HUDHelper.swift; sourceTree = "<group>"; };
 		BF6FC3EE1E31F0F90072A1E0 /* Pods_IvStats.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_IvStats.framework; path = "Pods/../build/Debug-iphoneos/Pods_IvStats.framework"; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				BFC3B4961E4AFDB10083CD56 /* DropdownMenuItem.swift */,
 				BFD6DA541E529EC000BEF487 /* PokemonBasicInfoCell.swift */,
 				BF0129391E52E6CC0003628F /* PokemonMoveSetCell.swift */,
+				BF2BABF31E56D26C00839D06 /* PokemonCpCalculatorCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				BF8EFDC71E555F3800E5BDF5 /* PokemonCPHelper.swift in Sources */,
 				BF14B6091E48112B0001B100 /* SortViewCell.swift in Sources */,
 				BFC3B4A71E512EBD0083CD56 /* PokemonPrototype.swift in Sources */,
+				BF2BABF41E56D26C00839D06 /* PokemonCpCalculatorCell.swift in Sources */,
 				BF14B6041E47FF100001B100 /* Sort.swift in Sources */,
 				BFC3B48D1E4AF26C0083CD56 /* Popover.swift in Sources */,
 				BF6FC3E91E31A51D0072A1E0 /* HUDHelper.swift in Sources */,

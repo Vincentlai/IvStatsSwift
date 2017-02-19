@@ -10,6 +10,18 @@ import Foundation
 import UIKit
 class PokemonHelper {
     
+    
+    class func getCandy(forPokemonFamily family: PokemonFamilyId) -> Int32
+    {
+        var candyNumber: Int32 = 0
+        candyList.forEach { (candy) in
+            if candy.familyId == family {
+                candyNumber = candy.candy
+            }
+        }
+        return candyNumber
+    }
+    
     class func isBestAttackMove(withMove move: PokemonMove, prototype: PokemonPrototype) -> Bool
     {
         let bestAttackMoveSet = prototype.bestAttackMoveSet
@@ -326,7 +338,7 @@ class PokemonHelper {
         case .dragonite: return PokemonPrototype.init(pokemonId: .dragonite, pokemonType: [.pokemonTypeDragon, .pokemonTypeFlying], familyId: .familyDratini, parentId: .dragonair, nextEvolutePokemonId: .missingno, nextEvolutionCandy: 0, secondEvolutePokemonId: .missingno, secondEvolutionCandy: 0, baseAttack: 263, baseDefense: 201, baseStamina: 182, maxCp: 3581, height: 2.2, weight: 210, baseCaptureRate: 0.04, baseFleeRate: 0.05, bestAttackMoveSet: [.dragonBreathFast, .hyperBeam], bestDefenseMoveSet: [.steelWingFast, .dragonPulse], baseQuickMoveSet: [.dragonBreathFast, .steelWingFast], baseMainMoveSet: [.dragonPulse, .hyperBeam, .dragonClaw], pokemonEgg: .Unknown)
         case .mewtwo: return PokemonPrototype.init(pokemonId: .mewtwo, pokemonType: [.pokemonTypePsychic], familyId: .familyMewtwo, parentId: .missingno, nextEvolutePokemonId: .missingno, nextEvolutionCandy: 0, secondEvolutePokemonId: .missingno, secondEvolutionCandy: 0, baseAttack: 330, baseDefense: 200, baseStamina: 212, maxCp: 4760, height: 2, weight: 122, baseCaptureRate: 0, baseFleeRate: 0.1, bestAttackMoveSet: [.psychoCutFast, .hyperBeam], bestDefenseMoveSet: [.confusionFast, .psychic], baseQuickMoveSet: [.psychoCutFast, .confusionFast], baseMainMoveSet: [.psychic, .shadowBall, .hyperBeam], pokemonEgg: .Unknown)
         case .mew: return PokemonPrototype.init(pokemonId: .mew, pokemonType: [.pokemonTypePsychic], familyId: .familyMew, parentId: .missingno, nextEvolutePokemonId: .missingno, nextEvolutionCandy: 0, secondEvolutePokemonId: .missingno, secondEvolutionCandy: 0, baseAttack: 210, baseDefense: 210, baseStamina: 200, maxCp: 3090, height: 0.4, weight: 4, baseCaptureRate: 0, baseFleeRate: 0.1, bestAttackMoveSet: [.poundFast, .psychic], bestDefenseMoveSet: [.poundFast, .hyperBeam], baseQuickMoveSet: [.poundFast], baseMainMoveSet: [.earthquake, .psychic, .dragonPulse, .thunder, .fireBlast, .solarBeam, .hyperBeam, .blizzard], pokemonEgg: .Unknown)
-//        case .chikorita: return "CHIKORITA"
+//        case .chikorita: return PokemonPrototype.init(pokemonId: .celebi, pokemonType: [.pokemonTypePsychic, .pokemonTypeGrass], familyId: .familyCelebi, parentId: .missingno, nextEvolutePokemonId: .missingno, nextEvolutionCandy: 0, secondEvolutePokemonId: .missingno, secondEvolutionCandy: 0, baseAttack: 210, baseDefense: 210, baseStamina: 200, maxCp: 0, height: 0.07625, weight: 0.625, baseCaptureRate: 0, baseFleeRate: 0, bestAttackMoveSet: [], bestDefenseMoveSet: [], baseQuickMoveSet: [], baseMainMoveSet: [], pokemonEgg: .Unknown)
 //        case .bayleef: return "BAYLEEF"
 //        case .meganium: return "MEGANIUM"
 //        case .cyndaquil: return "CYNDAQUIL"
@@ -427,7 +439,7 @@ class PokemonHelper {
 //        case .hoOh: return "HO_OH"
 //        case .celebi: return "CELEBI"
         default:
-            return nil
+            return PokemonPrototype(pokemonId: PokemonId.missingno,pokemonType: [PokemonType](), familyId: .familyUnset, parentId: .missingno, nextEvolutePokemonId: .missingno, nextEvolutionCandy: 0, secondEvolutePokemonId: .missingno, secondEvolutionCandy: 0, baseAttack: 0, baseDefense: 0, baseStamina: 0, maxCp: 0, height: 0, weight: 0, baseCaptureRate: 0, baseFleeRate: 0, bestAttackMoveSet: [PokemonMove](), bestDefenseMoveSet: [PokemonMove](), baseQuickMoveSet: [PokemonMove](), baseMainMoveSet: [PokemonMove](), pokemonEgg: .Unknown)
         }
     }
     

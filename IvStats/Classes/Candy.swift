@@ -9,8 +9,4 @@
 import Foundation
 import PGoApi
 
-struct Candy {
-    var familyName: String
-    var candyCount: Int
-    var pokemonId: Int
-}
+typealias Candy = Pogoprotos.Inventory.Candy

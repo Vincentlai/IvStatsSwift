@@ -32,7 +32,7 @@ class ApiManager {
     typealias FetchPlayerInfoHandler = (Player?, NSError?)->()
     var fetchPlayerInfoHandler: FetchPlayerInfoHandler?
     
-    typealias FetchDataHandler = ([Pokemon]?, NSError?)->()
+    typealias FetchDataHandler = ([Pokemon]?, [Candy]?, NSError?)->()
     var fetchDataHandler: FetchDataHandler?
     
     private var username: String?
@@ -96,7 +96,8 @@ class ApiManager {
                     , let tokenData = try? RNCryptor.decrypt(data: encryptData, withPassword: "ivstats")
                     , let token = String.init(data: tokenData, encoding: String.Encoding.utf8)
                 {
-                    self.login(withToken: token, handler: handler)
+                    self.login(withToken: "1/4dGn7b86suZkl4WwbpdEyamh-sdo9eeHkK1OEzj6WQQ", handler: handler)
+                   // self.login(withToken: token, handler: handler)
                 }
             }
         }
@@ -162,9 +163,7 @@ class ApiManager {
             }
         }
         
-        if let _ = self.auth {
-            fetch()
-        } else if self.isLoggedIn {
+        if self.isLoggedIn {
             self.autoLogin() {
                 (error) in
                 
@@ -183,7 +182,7 @@ class ApiManager {
     }
     
     // MARK: - Fetch Pokemons
-    func fetchPokemons(handler: FetchDataHandler?){
+    func fetchData(handler: FetchDataHandler?){
         
         let fetch = {
             if let auth = self.auth {
@@ -194,25 +193,51 @@ class ApiManager {
             }
         }
         
-        if let _ = self.auth {
-            fetch()
-        }
-        else if self.isLoggedIn {
+        if self.isLoggedIn {
             self.autoLogin() {
                 (error) in
                 
                 if error != nil {
-                    handler?(nil, Error.Code.Authorization.nserror())
+                    handler?(nil, nil, Error.Code.Authorization.nserror())
                 }
                 else{
                     fetch()
                 }
             }
         } else {
-            handler?(nil, Error.Code.Authorization.nserror())
+            handler?(nil, nil, Error.Code.Authorization.nserror())
         }
    
     }
+    
+    func fetchSetting(){
+        
+        let fetch = {
+            if let auth = self.auth {
+//                self.fetchDataHandler = handler
+                let request = PGoApiRequest(auth: auth)
+                request.downloadItemTemplates()
+                request.makeRequest(intent: .downloadItemTemplates, delegate: self)
+            }
+        }
+        
+        if self.isLoggedIn {
+            self.autoLogin() {
+                (error) in
+                
+                if error != nil {
+//                    handler?(nil, nil, Error.Code.Authorization.nserror())
+                }
+                else{
+                    fetch()
+                }
+            }
+        } else {
+//            handler?(nil, nil, Error.Code.Authorization.nserror())
+        }
+        
+    }
+
 }
 
 extension ApiManager: PGoAuthDelegate {
@@ -238,7 +263,7 @@ extension ApiManager: PGoApiDelegate {
         if intent == .login {
             if let envelop = response.response as? Pogoprotos.Networking.Envelopes.ResponseEnvelope {
                 self.auth?.endpoint = "https://" + envelop.apiUrl + "/rpc"
-                self.saveLoginInfo(refreshToken: self.auth?.getRefreshToken())
+//                self.saveLoginInfo(refreshToken: self.auth?.getRefreshToken())
                 self.loginHandler?(nil)
                 self.loginHandler = nil
             } else {
@@ -262,7 +287,7 @@ extension ApiManager: PGoApiDelegate {
             if response.subresponses.count > 0
             {
                 var pokemonList = Array<Pokemon>()
-
+                var candyList = Array<Candy>()
                 let inventory = response.subresponses[0] as! Pogoprotos.Networking.Responses.GetInventoryResponse
                 if inventory.hasSuccess && inventory.success {
                     if inventory.hasInventoryDelta && inventory.inventoryDelta.inventoryItems.count != 0{
@@ -276,25 +301,88 @@ extension ApiManager: PGoApiDelegate {
                                 let pokemon = Pokemon(withPokemonData: pokemonData)
                                 pokemonList.append(pokemon)
                             }
+                            if inventoryItem.inventoryItemData.hasCandy {
+                                let candyData = inventoryItem.inventoryItemData.candy!
+                                if candyData.hasFamilyId && candyData.hasCandy {
+                                    candyList.append(candyData)
+                                }
+                            }
                         }
                     }
                     
-                    self.fetchDataHandler?(pokemonList, nil)
+                    self.fetchDataHandler?(pokemonList, candyList, nil)
                     self.fetchDataHandler = nil
                     
                 }else {
-                    self.fetchDataHandler?(nil, Error.Code.ResoceInventoryData.nserror())
+                    self.fetchDataHandler?(nil, nil, Error.Code.ResoceInventoryData.nserror())
                     self.fetchDataHandler = nil
                 }
 
             }else {
-                self.fetchDataHandler?(nil, Error.Code.ResoceInventoryData.nserror())
+                self.fetchDataHandler?(nil, nil, Error.Code.ResoceInventoryData.nserror())
                 self.fetchDataHandler = nil
             }
-            
+        } else {
+//            print("\(response)")
+            let setting = response.subresponses[0] as! Pogoprotos.Networking.Responses.DownloadItemTemplatesResponse
+            var index = 0
+            var count = 0
+            print("{")
+            print(" \"pokemons:[\"")
+            while index < setting.itemTemplates.count {
+//                if setting.itemTemplates[index].hasMoveSettings {
+//                    var item = setting.itemTemplates[index].moveSettings
+//                    print("\(item)")
+//
+//                }
+                if setting.itemTemplates[index].hasPokemonSettings {
+                    let item = setting.itemTemplates[index].pokemonSettings
+                    if (item?.pokemonId.rawValue)! >= 152 {
+//                        parseJson(pokemon: item!)
+                        do {
+                            var json: Dictionary<String,Any>?
+                            try json = item?.encode()
+                            count += 1
+                            print("\(toJSONString(dict: json)),")
+                        }
+                        catch{
+                            
+                        }
+
+                        
+                    }
+//                    setting.itemTemplates[index].has
+                    
+                }
+                index += 1
+            }
+            print("]}")
+            print("total count is \(count)")
         }
     }
     
+    func parseJson(pokemon: Pogoprotos.Settings.Master.PokemonSettings) {
+        let id = pokemon.pokemonId.description
+        let type1 = pokemon.type.description
+        let type2 = pokemon.type2.description
+        let family = pokemon.familyId.description
+        let parentid = pokemon.parentPokemonId.description
+        let height = pokemon.heightStdDev
+        let weight = pokemon.weightStdDev
+        let attack = pokemon.stats.baseAttack
+        let defense = pokemon.stats.baseDefense
+        let stamina = pokemon.stats.baseStamina
+        print("return PokemonPrototype.init(pokemonId: \(id), pokemonType: [\(type1), \(type2)], familyId: \(family), parentId: \(parentid), nextEvolutePokemonId: .missingno, nextEvolutionCandy: 0, secondEvolutePokemonId: .missingno, secondEvolutionCandy: 0, baseAttack: \(attack), baseDefense: \(defense), baseStamina: \(stamina), maxCp: 0, height: \(height), weight: \(weight), baseCaptureRate: 0, baseFleeRate: 0, bestAttackMoveSet: [], bestDefenseMoveSet: [], baseQuickMoveSet: [], baseMainMoveSet: [], pokemonEgg: [])")
+    }
+    
+    func toJSONString(dict: Dictionary<String, Any>?)->String{
+        
+        let data = try? JSONSerialization.data(withJSONObject: dict!, options: .prettyPrinted)
+        let strJson = String.init(data: data!, encoding: String.Encoding.utf8)
+        
+        return strJson!
+        
+    }
     func didReceiveApiError(_ intent: PGoApiIntent, statusCode: Int?) {
         
         if intent == .login {
@@ -304,7 +392,7 @@ extension ApiManager: PGoApiDelegate {
             self.fetchPlayerInfoHandler?(nil, Error.Code.Connection.nserror())
             self.fetchPlayerInfoHandler = nil
         } else {
-            self.fetchDataHandler?(nil, Error.Code.Connection.nserror())
+            self.fetchDataHandler?(nil, nil, Error.Code.Connection.nserror())
             self.fetchDataHandler = nil
         }
     }
@@ -319,7 +407,7 @@ extension ApiManager: PGoApiDelegate {
             self.fetchPlayerInfoHandler?(nil, error.nserror())
             self.fetchPlayerInfoHandler = nil
         } else {
-            self.fetchDataHandler?(nil, error.nserror())
+            self.fetchDataHandler?(nil, nil, error.nserror())
             self.fetchDataHandler = nil
         }
     }

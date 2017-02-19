@@ -25,6 +25,10 @@ class PokemonBasicInfoCell: UITableViewCell {
     @IBOutlet weak var type2: UILabel!
     @IBOutlet weak var bestMoveIcon1: UIImageView!
     @IBOutlet weak var bestMoveIcon2: UIImageView!
+    @IBOutlet weak var candyValue: UILabel!
+    @IBOutlet weak var maxCpValue: UILabel!
+    @IBOutlet weak var captureDataValue: UILabel!
+    
     
     
     var pokemon: Pokemon? {
@@ -83,6 +87,17 @@ class PokemonBasicInfoCell: UITableViewCell {
         attackValue.text = pokemon?.individualAttack.description
         defenseValue.text = pokemon?.individualDefense.description
         staminaValue.text = pokemon?.individualStamina.description
+//        var cpafter: Int
+//        var level:Float = 23
+////        var cp = 2285
+//        for index in 1...20 {
+//            cpafter = (pokemon?.getMaxCp(byLevel: level))!
+////            cpafter = (pokemon?.getCpAfterPowerup(withLevel: level, currentCp: cp))!
+////            cp = cpafter
+//            print("\(cpafter) at level \(level)")
+//            level += 0.5
+//
+//        }
     }
     
     public func setBestMoveIcons(isBestAttackMoveSet: Bool, isBestDefenseMoveSet: Bool)
@@ -100,6 +115,30 @@ class PokemonBasicInfoCell: UITableViewCell {
             bestMoveIcon1.image = #imageLiteral(resourceName: "defense")
             bestMoveIcon1.isHidden = false
             bestMoveIcon2.isHidden = true
+        }
+    }
+    
+    public func setPokemonCandy(withCandy candy: Int32)
+    {
+        candyValue.text = candy.description
+    }
+    
+    public func setMaxCp(withMaxCp maxCp: Int)
+    {
+        if maxCp == 0 {
+            maxCpValue.text = "N/A"
+        } else {
+            maxCpValue.text = maxCp.description
+        }
+    }
+    
+    public func setCaptureDate(withCaptureDate date: String)
+    {
+        if date == ""
+        {
+            captureDataValue.text = "N/A"
+        }else {
+            captureDataValue.text = date
         }
     }
     

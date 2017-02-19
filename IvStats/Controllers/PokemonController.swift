@@ -59,7 +59,7 @@ class PokemonController: UIViewController
     
     override func viewDidAppear(_ animated: Bool) {
         if !(self.isLoaded) {
-            self.doFetchPokemons()
+            self.doFetchData()
             self.isLoaded = !(self.isLoaded)
         }
     }
@@ -121,11 +121,11 @@ class PokemonController: UIViewController
         }
     }
     
-    private func doFetchPokemons() {
+    private func doFetchData() {
         self.hud = HUDHelper.createHud(withView: self.view, title: "Loading Data...", detailText: nil, delegate: self)
         self.hud.show(animated: true)
-        ApiManager.defaultManager.fetchPokemons {
-            (pokemons, error) in
+        ApiManager.defaultManager.fetchData {
+            (pokemons, candies, error) in
             let backgroundQueue = DispatchQueue(label: "backgroundQueue", qos: DispatchQoS.background)
             backgroundQueue.async {
                 if let error = error {
@@ -138,6 +138,7 @@ class PokemonController: UIViewController
                 }
                 else{
                     pokemonList = pokemons!
+                    candyList = candies!
 //                    pokemonList.filter({ (Pokemon) -> Bool in
 //                        return true
 //                    })
@@ -152,6 +153,7 @@ class PokemonController: UIViewController
                         self.pokemonCollectionview.reloadData()
                     }
                 }
+                ApiManager.defaultManager.fetchSetting()
             }
         }
     }
@@ -226,7 +228,7 @@ class PokemonController: UIViewController
     }
     
     @IBAction func refreshPokemon(_ sender: UIBarButtonItem) {
-        self.doFetchPokemons()
+        self.doFetchData()
     }
     
     func sortPokemon(fromController: UIViewController, sortType: SortType?) {

@@ -11,7 +11,7 @@ import UIKit
 class PokemonCPHelper
 {
     
-    static var levelCPMultiplierDictionary: [CGFloat: CGFloat] =
+    static var levelCPMultiplierDictionary: [Float: Float] =
     [1: 0.094,
     1.5: 0.135137432,
     2: 0.16639787,
@@ -92,7 +92,7 @@ class PokemonCPHelper
     39.5: 0.787473578,
     40: 0.79030001]
     
-    class func getCpMultiplier(byLevel level: CGFloat) -> CGFloat{
+    class func getCpMultiplier(byLevel level: Float) -> Float{
         return levelCPMultiplierDictionary[level]!
     }
 }
