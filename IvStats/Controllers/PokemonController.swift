@@ -153,7 +153,6 @@ class PokemonController: UIViewController
                         self.pokemonCollectionview.reloadData()
                     }
                 }
-                ApiManager.defaultManager.fetchSetting()
             }
         }
     }

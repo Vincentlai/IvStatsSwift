@@ -8344,8 +8344,6 @@ public extension Pogoprotos.Networking.Requests.Messages {
             return hashCode
         }
     }
-
-
     //Meta information declaration start
 
     override public class func className() -> String {
