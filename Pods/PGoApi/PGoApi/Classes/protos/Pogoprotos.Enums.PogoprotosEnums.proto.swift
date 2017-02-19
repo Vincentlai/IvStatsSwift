@@ -2542,6 +2542,45 @@ public extension Pogoprotos.Enums {
     case fireFangFast = 240
     case rockSmashFast = 241
     case transformFast = 242
+    case counterFast = 243
+    case powderSnowFast = 244
+    case closeCombat = 245
+    case dynamicPunch = 246
+    case focusBlast = 247
+    case auroraBeam = 248
+    case chargeBeamFast = 249
+    case voltSwitchFast = 250
+    case wildCharge = 251
+    case zapCannon = 252
+    case dragonTailFast = 253
+    case avalanche = 254
+    case airSlashFast = 255
+    case braveBird = 256
+    case skyAttack = 257
+    case sandTomb = 258
+    case rockBlast = 259
+    case infestationFast = 260
+    case struggleBugFast = 261
+    case silverWind = 262
+    case astonishFast = 263
+    case hexFast = 264
+    case nightShade = 265
+    case ironTailFast = 266
+    case gyroBall = 267
+    case heavySlam = 268
+    case fireSpinFast = 269
+    case overheat = 270
+    case bulletSeedFast = 271
+    case grassKnot = 272
+    case energyBall = 273
+    case extrasensoryFast = 274
+    case futuresight = 275
+    case mirrorCoat = 276
+    case outrage = 277
+    case snarlFast = 278
+    case crunch = 279
+    case foulPlay = 280
+    case hiddenPowerFast = 281
     public func toString() -> String {
       switch self {
       case .moveUnset: return "MOVE_UNSET"
@@ -2725,6 +2764,45 @@ public extension Pogoprotos.Enums {
       case .fireFangFast: return "FIRE_FANG_FAST"
       case .rockSmashFast: return "ROCK_SMASH_FAST"
       case .transformFast: return "TRANSFORM_FAST"
+      case .counterFast: return "COUNTER_FAST"
+      case .powderSnowFast: return "POWDER_SNOW_FAST"
+      case .closeCombat: return "CLOSE_COMBAT"
+      case .dynamicPunch: return "DYNAMIC_PUNCH"
+      case .focusBlast: return "FOCUS_BLAST"
+      case .auroraBeam: return "AURORA_BEAM"
+      case .chargeBeamFast: return "CHARGE_BEAM_FAST"
+      case .voltSwitchFast: return "VOLT_SWITCH_FAST"
+      case .wildCharge: return "WILD_CHARGE"
+      case .zapCannon: return "ZAP_CANNON"
+      case .dragonTailFast: return "DRAGON_TAIL_FAST"
+      case .avalanche: return "AVALANCHE"
+      case .airSlashFast: return "AIR_SLASH_FAST"
+      case .braveBird: return "BRAVE_BIRD"
+      case .skyAttack: return "SKY_ATTACK"
+      case .sandTomb: return "SAND_TOMB"
+      case .rockBlast: return "ROCK_BLAST"
+      case .infestationFast: return "INFESTATION_FAST"
+      case .struggleBugFast: return "STRUGGLE_BUG_FAST"
+      case .silverWind: return "SILVER_WIND"
+      case .astonishFast: return "ASTONISH_FAST"
+      case .hexFast: return "HEX_FAST"
+      case .nightShade: return "NIGHT_SHADE"
+      case .ironTailFast: return "IRON_TAIL_FAST"
+      case .gyroBall: return "GYRO_BALL"
+      case .heavySlam: return "HEAVY_SLAM"
+      case .fireSpinFast: return "FIRE_SPIN_FAST"
+      case .overheat: return "OVERHEAT"
+      case .bulletSeedFast: return "BULLET_SEED_FAST"
+      case .grassKnot: return "GRASS_KNOT"
+      case .energyBall: return "ENERGY_BALL"
+      case .extrasensoryFast: return "EXTRASENSORY_FAST"
+      case .futuresight: return "FUTURESIGHT"
+      case .mirrorCoat: return "MIRROR_COAT"
+      case .outrage: return "OUTRAGE"
+      case .snarlFast: return "SNARL_FAST"
+      case .crunch: return "CRUNCH"
+      case .foulPlay: return "FOUL_PLAY"
+      case .hiddenPowerFast: return "HIDDEN_POWER_FAST"
       }
     }
     public static func fromString(str:String) throws -> Pogoprotos.Enums.PokemonMove {
@@ -2910,6 +2988,45 @@ public extension Pogoprotos.Enums {
       case "FIRE_FANG_FAST":  return .fireFangFast
       case "ROCK_SMASH_FAST":  return .rockSmashFast
       case "TRANSFORM_FAST":  return .transformFast
+      case "COUNTER_FAST": return .counterFast
+      case "POWDER_SNOW_FAST": return .powderSnowFast
+      case "CLOSE_COMBAT": return .closeCombat
+      case "DYNAMIC_PUNCH": return .dynamicPunch
+      case "FOCUS_BLAST": return .focusBlast
+      case "AURORA_BEAM": return .auroraBeam
+      case "CHARGE_BEAM_FAST": return .chargeBeamFast
+      case "VOLT_SWITCH_FAST": return .voltSwitchFast
+      case "WILD_CHARGE": return .wildCharge
+      case "ZAP_CANNON": return .zapCannon
+      case "DRAGON_TAIL_FAST": return .dragonTailFast
+      case "AVALANCHE": return .avalanche
+      case "AIR_SLASH_FAST": return .airSlashFast
+      case "BRAVE_BIRD": return .braveBird
+      case "SKY_ATTACK": return .skyAttack
+      case "SAND_TOMB": return .sandTomb
+      case "ROCK_BLAST": return .rockBlast
+      case "INFESTATION_FAST": return .infestationFast
+      case "STRUGGLE_BUG_FAST": return .struggleBugFast
+      case "SILVER_WIND": return .silverWind
+      case "ASTONISH_FAST": return .astonishFast
+      case "HEX_FAST": return .hexFast
+      case "NIGHT_SHADE": return .nightShade
+      case "IRON_TAIL_FAST": return .ironTailFast
+      case "GYRO_BALL": return .gyroBall
+      case "HEAVY_SLAM": return .heavySlam
+      case "FIRE_SPIN_FAST": return .fireSpinFast
+      case "OVERHEAT": return .overheat
+      case "BULLET_SEED_FAST": return .bulletSeedFast
+      case "GRASS_KNOT": return .grassKnot
+      case "ENERGY_BALL": return .energyBall
+      case "EXTRASENSORY_FAST": return .extrasensoryFast
+      case "FUTURESIGHT": return .futuresight
+      case "MIRROR_COAT": return .mirrorCoat
+      case "OUTRAGE": return .outrage
+      case "SNARL_FAST": return .snarlFast
+      case "CRUNCH": return .crunch
+      case "FOUL_PLAY": return .foulPlay
+      case "HIDDEN_POWER_FAST": return .hiddenPowerFast
       default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
       }
     }
@@ -3098,6 +3215,45 @@ public extension Pogoprotos.Enums {
       case .fireFangFast: return ".fireFangFast"
       case .rockSmashFast: return ".rockSmashFast"
       case .transformFast: return ".transformFast"
+      case .counterFast: return ".counterFast"
+      case .powderSnowFast: return ".powderSnowFast"
+      case .closeCombat: return ".closeCombat"
+      case .dynamicPunch: return ".dynamicPunch"
+      case .focusBlast: return ".focusBlast"
+      case .auroraBeam: return ".auroraBeam"
+      case .chargeBeamFast: return ".chargeBeamFast"
+      case .voltSwitchFast: return ".voltSwitchFast"
+      case .wildCharge: return ".wildCharge"
+      case .zapCannon: return ".zapCannon"
+      case .dragonTailFast: return ".dragonTailFast"
+      case .avalanche: return ".avalanche"
+      case .airSlashFast: return ".airSlashFast"
+      case .braveBird: return ".braveBird"
+      case .skyAttack: return ".skyAttack"
+      case .sandTomb: return ".sandTomb"
+      case .rockBlast: return ".rockBlast"
+      case .infestationFast: return ".infestationFast"
+      case .struggleBugFast: return ".struggleBugFast"
+      case .silverWind: return ".silverWind"
+      case .astonishFast: return ".astonishFast"
+      case .hexFast: return ".hexFast"
+      case .nightShade: return ".nightShade"
+      case .ironTailFast: return ".ironTailFast"
+      case .gyroBall: return ".gyroBall"
+      case .heavySlam: return ".heavySlam"
+      case .fireSpinFast: return ".fireSpinFast"
+      case .overheat: return ".overheat"
+      case .bulletSeedFast: return ".bulletSeedFast"
+      case .grassKnot: return ".grassKnot"
+      case .energyBall: return ".energyBall"
+      case .extrasensoryFast: return ".extrasensoryFast"
+      case .futuresight: return ".futuresight"
+      case .mirrorCoat: return ".mirrorCoat"
+      case .outrage: return ".outrage"
+      case .snarlFast: return ".snarlFast"
+      case .crunch: return ".crunch"
+      case .foulPlay: return ".foulPlay"
+      case .hiddenPowerFast: return ".hiddenPowerFast"
       }
     }
   }
