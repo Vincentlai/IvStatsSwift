@@ -12,9 +12,11 @@ class SortController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     var sortList: [Sort]?
     var indexOfSelectedSortType: Int?
+    var isReversed: Bool = false
     public var delegate: PokemonControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var reverseSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,14 @@ class SortController: UIViewController, UITableViewDelegate, UITableViewDataSour
     private func doGetSortList() {
         sortList = SortManager.sortManager.sortList
         self.indexOfSelectedSortType = SortManager.sortManager.indexOfSelectedSortType
+        self.isReversed = SortManager.sortManager.isReversed
+        reverseSwitch.isOn = self.isReversed
     }
+    
+    @IBAction func ReverseList(_ sender: UISwitch) {
+        self.isReversed = sender.isOn
+    }
+    
 
     // MARK: - Table view data source
 
@@ -65,9 +74,9 @@ class SortController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func doSave(_ sender: UIBarButtonItem) {
-        SortManager.sortManager.saveSort(list: self.sortList!)
+        SortManager.sortManager.saveSort(list: self.sortList!, reversed: self.isReversed)
         let sortType = self.sortList![self.indexOfSelectedSortType!].sortType
-        self.delegate!.sortPokemon(fromController: self, sortType: sortType)
+        self.delegate!.sortPokemon(fromController: self, sortType: sortType, reversed: self.isReversed)
         
     }
     

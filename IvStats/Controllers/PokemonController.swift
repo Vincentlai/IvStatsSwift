@@ -20,7 +20,7 @@ enum ViewType {
 }
 
 public protocol PokemonControllerDelegate {
-    func sortPokemon(fromController: UIViewController, sortType: SortType?)
+    func sortPokemon(fromController: UIViewController, sortType: SortType?, reversed: Bool)
     func fitlerPokemon()
 }
 
@@ -38,12 +38,13 @@ class PokemonController: UIViewController
     @IBOutlet weak var changeViewButton: UIBarButtonItem!
     
     private var hud: MBProgressHUD!
-    private var pokemonCollectionview: UICollectionView!
+    fileprivate var pokemonCollectionview: UICollectionView!
     var viewType: ViewType?
     private var isLoaded: Bool = false
-    private var sortType: SortType! {
+    fileprivate var isReversed: Bool = false
+    fileprivate var sortType: SortType! {
         didSet {
-            PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: false)
+            PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: self.isReversed)
         }
     }
     private var selectedPokemon: Pokemon?
@@ -93,11 +94,6 @@ class PokemonController: UIViewController
         return flowlayout
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
     private func setCollectionView() {
         let rect = CGRect.init(x: self.view.frame.origin.x , y: self.searchBar.frame.origin.y + self.searchBar.frame.height, width: self.view.frame.width, height: (self.tabBarController?.tabBar.frame.origin.y)! - (self.searchBar.frame.origin.y + self.searchBar.frame.height))
         var flowLayout = UICollectionViewFlowLayout()
@@ -139,13 +135,11 @@ class PokemonController: UIViewController
                 else{
                     pokemonList = pokemons!
                     candyList = candies!
-//                    pokemonList.filter({ (Pokemon) -> Bool in
-//                        return true
-//                    })
                     if self.sortType == nil {
+                        self.isReversed = SortManager.sortManager.isReversed
                         self.sortType = SortManager.sortManager.selectedSortType!
                     }else {
-                        PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: false)
+                        PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: self.isReversed)
                     }
                     DispatchQueue.main.async {
                         self.hud.label.text = "Done"
@@ -230,12 +224,13 @@ class PokemonController: UIViewController
         self.doFetchData()
     }
     
-    func sortPokemon(fromController: UIViewController, sortType: SortType?) {
+    func sortPokemon(fromController: UIViewController, sortType: SortType?, reversed: Bool) {
         _ = fromController.navigationController?.popViewController(animated: true)
         if sortType != nil {
-            if self.sortType == sortType {
+            if self.sortType == sortType && self.isReversed == reversed{
                 return
             }
+            self.isReversed = reversed
             self.sortType = sortType
             self.pokemonCollectionview.reloadData()
         }
@@ -269,9 +264,12 @@ extension PokemonController: UITableViewDelegate{
         case 1:
             performSegue(withIdentifier: "Filter", sender: self)
             break
-        default: break
-//            performSegue(withIdentifier: "Sort", sender: self)
-            
+        default:
+            self.isReversed = !self.isReversed
+            SortManager.sortManager.save(withType: self.sortType, reversed: self.isReversed)
+            PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: self.isReversed)
+            self.pokemonCollectionview.reloadData()
+            break
         }
         self.popover.dismiss()
     }

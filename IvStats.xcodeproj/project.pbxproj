@@ -40,6 +40,7 @@
 		BFB031271E3EC78000821C97 /* RNCryptor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB031261E3EC78000821C97 /* RNCryptor.framework */; };
 		BFB031291E3EC8A500821C97 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB031281E3EC8A500821C97 /* ApiManager.swift */; };
 		BFBACC011E2DF25800551FDE /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBACC001E2DF25800551FDE /* Player.swift */; };
+		BFBF7D291E59A7D1008C06A9 /* PokemonEvolveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D281E59A7D1008C06A9 /* PokemonEvolveCell.swift */; };
 		BFC3B48D1E4AF26C0083CD56 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B48C1E4AF26C0083CD56 /* Popover.swift */; };
 		BFC3B4901E4AF5410083CD56 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B48E1E4AF5410083CD56 /* HomeController.swift */; };
 		BFC3B4911E4AF5410083CD56 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B48F1E4AF5410083CD56 /* LoginController.swift */; };
@@ -92,6 +93,7 @@
 		BFB031261E3EC78000821C97 /* RNCryptor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RNCryptor.framework; path = "../../Library/Developer/Xcode/DerivedData/IvStats-clezezoarqjivfhbhmmhsuqizqzq/Build/Products/Debug-iphoneos/RNCryptor/RNCryptor.framework"; sourceTree = "<group>"; };
 		BFB031281E3EC8A500821C97 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		BFBACC001E2DF25800551FDE /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		BFBF7D281E59A7D1008C06A9 /* PokemonEvolveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonEvolveCell.swift; sourceTree = "<group>"; };
 		BFC3B48C1E4AF26C0083CD56 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		BFC3B48E1E4AF5410083CD56 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = Controllers/HomeController.swift; sourceTree = "<group>"; };
 		BFC3B48F1E4AF5410083CD56 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = Controllers/LoginController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				BFD6DA541E529EC000BEF487 /* PokemonBasicInfoCell.swift */,
 				BF0129391E52E6CC0003628F /* PokemonMoveSetCell.swift */,
 				BF2BABF31E56D26C00839D06 /* PokemonCpCalculatorCell.swift */,
+				BFBF7D281E59A7D1008C06A9 /* PokemonEvolveCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				BF14B5F61E43055C0001B100 /* PlayerController.swift in Sources */,
 				BFC3B49B1E4B0C3C0083CD56 /* PokemonController.swift in Sources */,
 				BFC3B4981E4AFDB10083CD56 /* DropdownMenuItem.swift in Sources */,
+				BFBF7D291E59A7D1008C06A9 /* PokemonEvolveCell.swift in Sources */,
 				BF01293C1E52EA9A0003628F /* PokemonMoveHelper.swift in Sources */,
 				BF14B5FC1E4723B20001B100 /* Filter.swift in Sources */,
 				BF01293A1E52E6CC0003628F /* PokemonMoveSetCell.swift in Sources */,

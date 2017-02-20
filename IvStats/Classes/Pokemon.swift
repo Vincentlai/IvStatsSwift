@@ -79,9 +79,13 @@ class Pokemon: NSObject{
         }
         if pokemonData.hasMove1 {
             self.move1 = pokemonData.move1
+        }else {
+            print(self.pokemonId.description)
         }
         if pokemonData.hasMove2 {
             self.move2 = pokemonData.move2
+        }else {
+            print(self.pokemonId.description)
         }
         if pokemonData.hasHeightM {
             self.height = pokemonData.heightM
@@ -135,12 +139,30 @@ class Pokemon: NSObject{
     private func setMoveStats()
     {
         let moveSet = self.getMoveSet()
-        if moveSet == prototype.bestAttackMoveSet {
+        let bestAttackMoveSet = PokemonMoveHelper.getBestAttackMoveSet(forPokemon: self.pokemonId)
+        let bestDefenseMoveSet = PokemonMoveHelper.getBestDefenseMoveSet(forPokemon: self.pokemonId)
+        if moveSet == bestAttackMoveSet {
             self.isBestAttackMoveSet = true
         }
-        if moveSet == prototype.bestDefenseMoveSet {
+        if moveSet == bestDefenseMoveSet {
             self.isBestDefenseMoveSet = true
         }
+    }
+    
+    public func getBestAttackMoveSet() -> [PokemonMove] {
+        return PokemonMoveHelper.getBestAttackMoveSet(forPokemon: self.pokemonId)
+    }
+    
+    public func getBestDefenseMoveSet() -> [PokemonMove] {
+        return PokemonMoveHelper.getBestDefenseMoveSet(forPokemon: self.pokemonId)
+    }
+    
+    public func getBaseQuickMoveSet() -> [PokemonMove]{
+        return PokemonMoveHelper.getBaseQuickMoveSet(forPokemon: self.pokemonId)
+    }
+    
+    public func getBaseMainMoveSet() -> [PokemonMove]{
+        return PokemonMoveHelper.getBaseMainMoveSet(forPokemon: self.pokemonId)
     }
     
     public func getMoveSet() -> [PokemonMove]

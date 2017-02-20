@@ -96,8 +96,8 @@ class ApiManager {
                     , let tokenData = try? RNCryptor.decrypt(data: encryptData, withPassword: "ivstats")
                     , let token = String.init(data: tokenData, encoding: String.Encoding.utf8)
                 {
-                    self.login(withToken: "1/4dGn7b86suZkl4WwbpdEyamh-sdo9eeHkK1OEzj6WQQ", handler: handler)
-                   // self.login(withToken: token, handler: handler)
+//                    self.login(withToken: "1/4dGn7b86suZkl4WwbpdEyamh-sdo9eeHkK1OEzj6WQQ", handler: handler)
+                    self.login(withToken: token, handler: handler)
                 }
             }
         }
@@ -235,7 +235,7 @@ extension ApiManager: PGoApiDelegate {
         if intent == .login {
             if let envelop = response.response as? Pogoprotos.Networking.Envelopes.ResponseEnvelope {
                 self.auth?.endpoint = "https://" + envelop.apiUrl + "/rpc"
-//                self.saveLoginInfo(refreshToken: self.auth?.getRefreshToken())
+                self.saveLoginInfo(refreshToken: self.auth?.getRefreshToken())
                 self.loginHandler?(nil)
                 self.loginHandler = nil
             } else {

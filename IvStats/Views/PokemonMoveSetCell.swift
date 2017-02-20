@@ -34,7 +34,7 @@ class PokemonMoveSetCell: UITableViewCell {
         let type = PokemonMoveHelper.getMoveType(forMove: self.move!)
         typeLabel.text = PokemonHelper.getTypeDisplayName(forType: type)
         moveLabel.text = PokemonMoveHelper.getMoveDisplayName(forMove: self.move!)
-        let dpsText = NSMutableAttributedString.init(string: "DPS " + PokemonMoveHelper.getMoveDPS(forMove: self.move!).description)
+        let dpsText = NSMutableAttributedString.init(string: "DPS " + String(format: "%.1f",PokemonMoveHelper.getMoveDPS(forMove: self.move!)))
         let range = NSRange.init(location: 0, length: 3)
         dpsText.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGray, range: range)
         if let font = UIFont.init(name: secondaryLabelFontFamily, size: secondaryLabelFontSize)

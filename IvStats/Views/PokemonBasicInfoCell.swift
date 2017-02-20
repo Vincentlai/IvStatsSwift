@@ -44,18 +44,6 @@ class PokemonBasicInfoCell: UITableViewCell {
         }
     }
     
-    private func getEggPokemon()
-    {
-        for index in 1...251
-        {
-            let id: PokemonId = PokemonId(rawValue: Int32(index))!
-            if let proto = PokemonHelper.getPokemonPrototype(withPokemonId: id)
-            {
-                print("\(proto.pokemonId.toString())   \(proto.baseAttack)    \(proto.baseDefense)   \(proto.baseStamina)    \(proto.maxCp)")
-            }
-        }
-    }
-    
     private func updatePokemon()
     {
 
@@ -87,17 +75,6 @@ class PokemonBasicInfoCell: UITableViewCell {
         attackValue.text = pokemon?.individualAttack.description
         defenseValue.text = pokemon?.individualDefense.description
         staminaValue.text = pokemon?.individualStamina.description
-//        var cpafter: Int
-//        var level:Float = 23
-////        var cp = 2285
-//        for index in 1...20 {
-//            cpafter = (pokemon?.getMaxCp(byLevel: level))!
-////            cpafter = (pokemon?.getCpAfterPowerup(withLevel: level, currentCp: cp))!
-////            cp = cpafter
-//            print("\(cpafter) at level \(level)")
-//            level += 0.5
-//
-//        }
     }
     
     public func setBestMoveIcons(isBestAttackMoveSet: Bool, isBestDefenseMoveSet: Bool)
@@ -163,6 +140,15 @@ class PokemonBasicInfoCell: UITableViewCell {
             type = PokemonHelper.getTypeDisplayName(forType: secondType)
             type2.text = type
             type2.isHidden = false
+        }
+        
+        let nextEvolve = self.pokemonPrototype!.nextEvolve
+        if nextEvolve.count != 0 {
+            if nextEvolve.count == 1 {
+                let nextEvolvePorototype: PokemonPrototype = PokemonHelper.getPokemonPrototype(withPokemonId: nextEvolve[0])!
+                let cpafter = nextEvolvePorototype.getCpAfterEvolve(withAttack: self.pokemon!.individualAttack, defense: self.pokemon!.individualDefense, stamina: self.pokemon!.individualStamina, level: self.pokemon!.getLevel())
+                print("pokemon: \(self.pokemon?.pokemonId) nextevolve is \(nextEvolvePorototype.pokemonId) with cp : \(cpafter)")
+            }
         }
     }
     

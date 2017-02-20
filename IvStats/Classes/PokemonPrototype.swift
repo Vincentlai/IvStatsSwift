@@ -21,23 +21,14 @@ struct PokemonPrototype {
     var pokemonType: [PokemonType]
     var familyId: PokemonFamilyId
     var parentId: PokemonId
-    var nextEvolutePokemonId: PokemonId
-    var nextEvolutionCandy: Int
-    var secondEvolutePokemonId: PokemonId
-    var secondEvolutionCandy: Int
     var baseAttack: Int
     var baseDefense: Int
     var baseStamina: Int
-    var maxCp: Int
     var height: Double
     var weight: Double
-    var baseCaptureRate: Double
-    var baseFleeRate: Double
-    var bestAttackMoveSet: [PokemonMove]
-    var bestDefenseMoveSet: [PokemonMove]
-    var baseQuickMoveSet: [PokemonMove]
-    var baseMainMoveSet: [PokemonMove]
-    var pokemonEgg: PokemonEggType
+    var nextEvolve: [PokemonId]
+    var candyToEvolve: Int
+    var buddyDistance: Float
 
     public func getDisplayName() -> String {
         var name = self.pokemonId.toString()
@@ -54,6 +45,22 @@ struct PokemonPrototype {
         let imageName = "p" + String(Int(imageId))
         return imageName
     }
+    
+    public func getCpAfterEvolve(withAttack attack: Int, defense: Int, stamina: Int, level: Float) -> Int {
+        var currentLevel = level
+        if currentLevel > 40.0
+        {
+            currentLevel = 40.0
+        }
+        let cpMultiplier =  PokemonCPHelper.getCpMultiplier(byLevel: currentLevel)
+        let attack = self.baseAttack + attack
+        let defense = self.baseDefense + defense
+        let stamina = self.baseStamina + stamina
+        let cp = (Int)(Double(attack) * pow(Double(defense), 0.5) * pow(Double(stamina), 0.5) * pow(Double(cpMultiplier), 2) / 10);
+        return cp
+    }
+    
+    
 }
 
 

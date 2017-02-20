@@ -20,6 +20,7 @@ class PokemonDetailController: UITableViewController {
     var bestDefenseMoveSet: [PokemonMove]?
     var candyNumber: Int32 = 0
     var maxCpAt40: Int = 0
+    var evolve: [PokemonId] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // set page title
@@ -31,18 +32,38 @@ class PokemonDetailController: UITableViewController {
     {
         self.moveSet = pokemon?.getMoveSet()
         self.pokemonPorototype = PokemonHelper.getPokemonPrototype(withPokemonId: (self.pokemon!.pokemonId))
-        self.quickMoveSet = pokemonPorototype?.baseQuickMoveSet
-        self.mainMoveSet = pokemonPorototype?.baseMainMoveSet
-        self.bestAttackMoveSet = pokemonPorototype?.bestAttackMoveSet
-        self.bestDefenseMoveSet = pokemonPorototype?.bestDefenseMoveSet
+        self.quickMoveSet = self.pokemon?.getBaseQuickMoveSet()
+        self.mainMoveSet = self.pokemon?.getBaseMainMoveSet()
+        self.bestAttackMoveSet = self.pokemon?.getBestAttackMoveSet()
+        self.bestDefenseMoveSet = self.pokemon?.getBestDefenseMoveSet()
         self.candyNumber = PokemonHelper.getCandy(forPokemonFamily: pokemonPorototype!.familyId)
         self.maxCpAt40 = pokemon!.getMaxCp()
+        let firstEvolve = self.pokemonPorototype!.nextEvolve
+        if firstEvolve.count != 0 {
+            for i in 0...firstEvolve.count-1 {
+                let nextEvolve = firstEvolve[i]
+                evolve.append(nextEvolve)
+            }
+            for i in 0...firstEvolve.count-1 {
+                let nextEvolve = firstEvolve[i]
+                let proto = PokemonHelper.getPokemonPrototype(withPokemonId: nextEvolve)
+                if proto!.nextEvolve.count != 0 {
+                    for j in 0...proto!.nextEvolve.count-1 {
+                        let secondEvolve = proto!.nextEvolve[j]
+                        evolve.append(secondEvolve)
+                    }
+                }
+                
+            }
+        }
+        
+
     }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int
     {
-        return 5
+        return 6
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -84,9 +105,13 @@ class PokemonDetailController: UITableViewController {
                 return self.mainMoveSet!.count
             }
         }else if section == 4 {
-            return 1
+            if self.evolve.count == 0 {
+                return 1
+            }else {
+                return self.evolve.count
+            }
         }else {
-            return 0
+            return 1
         }
         
         
@@ -97,9 +122,12 @@ class PokemonDetailController: UITableViewController {
         {
             return 390
         }
-        else if indexPath.section == 4
+        else if indexPath.section == 5
         {
             return 100
+        }
+        else if indexPath.section == 4 {
+            return 60
         }
         else
         {
@@ -108,7 +136,7 @@ class PokemonDetailController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
+        return 10
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -166,7 +194,11 @@ class PokemonDetailController: UITableViewController {
         }else if section == 3{
             headerName.text = "Base Main Move Set"
             return headView
-        }else {
+        }else if section == 4 {
+            headerName.text = "CP After Evolve"
+            return headView
+        }
+        else {
             headerName.text = "CP Calculator"
             return headView
         }
@@ -199,7 +231,7 @@ class PokemonDetailController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentMoveSet", for: indexPath) as! PokemonMoveSetCell
             let move = self.quickMoveSet?[indexPath.row]
             cell.move = move
-            cell.addIcon(isBestAttack: PokemonHelper.isBestAttackMove(withMove: move!, prototype: self.pokemonPorototype!), isBestDefense: PokemonHelper.isBestDefenseMove(withMove: move!, prototype: self.pokemonPorototype!))
+            cell.addIcon(isBestAttack: PokemonHelper.isBestAttackMove(withMove: move!, pokemon: self.pokemon!.pokemonId), isBestDefense: PokemonHelper.isBestDefenseMove(withMove: move!, pokemon: self.pokemon!.pokemonId))
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.isUserInteractionEnabled = false
             return cell
@@ -209,10 +241,26 @@ class PokemonDetailController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentMoveSet", for: indexPath) as! PokemonMoveSetCell
             let move = self.mainMoveSet?[indexPath.row]
             cell.move = move
-            cell.addIcon(isBestAttack: PokemonHelper.isBestAttackMove(withMove: move!, prototype: self.pokemonPorototype!), isBestDefense: PokemonHelper.isBestDefenseMove(withMove: move!, prototype: self.pokemonPorototype!))
+            cell.addIcon(isBestAttack: PokemonHelper.isBestAttackMove(withMove: move!, pokemon: self.pokemon!.pokemonId), isBestDefense: PokemonHelper.isBestDefenseMove(withMove: move!, pokemon: self.pokemon!.pokemonId))
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.isUserInteractionEnabled = false
             return cell
+        }
+        else if indexPath.section == 4{
+            if self.evolve.count != 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EvolveCell", for: indexPath) as! PokemonEvolveCell
+                cell.pokemon = self.pokemon
+                cell.evolveId = self.evolve[indexPath.row]
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.isUserInteractionEnabled = false
+                return cell
+            }else {
+                let cell = UITableViewCell.init(style: .default, reuseIdentifier: "noEvolve")
+                cell.textLabel?.text = "No Further Evolve"
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.isUserInteractionEnabled = false
+                return cell
+            }
         }
         else
         {

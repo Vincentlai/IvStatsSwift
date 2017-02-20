@@ -247,16 +247,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4hr-JW-cIM">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicInfo" rowHeight="390" id="O9d-73-D8Z" customClass="PokemonBasicInfoCell" customModule="IvStats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="49" width="414" height="390"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="390"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O9d-73-D8Z" id="kGF-A0-dZd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="390"/>
@@ -643,7 +636,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentMoveSet" rowHeight="50" id="DAA-Mw-IAu" customClass="PokemonMoveSetCell" customModule="IvStats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="439" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="418" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DAA-Mw-IAu" id="WHS-NS-yzR">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -705,7 +698,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CpCalculator" rowHeight="100" id="GAZ-Nf-0bv" customClass="PokemonCpCalculatorCell" customModule="IvStats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="489" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="468" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GAZ-Nf-0bv" id="IYd-Pf-BBO">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -713,6 +706,7 @@
                                     <subviews>
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="5Cc-Nv-YlG">
                                             <rect key="frame" x="58.666666666666657" y="62" width="296.66666666666663" height="31"/>
+                                            <color key="minimumTrackTintColor" red="0.99607843139999996" green="0.42352941179999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="levelValueChanged:" destination="GAZ-Nf-0bv" eventType="valueChanged" id="m7f-C5-Xur"/>
                                             </connections>
@@ -840,6 +834,52 @@
                                     <outlet property="startdustValue" destination="0gB-fG-mbd" id="uIk-ts-9wd"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EvolveCell" rowHeight="60" id="ue8-1e-KZu" customClass="PokemonEvolveCell" customModule="IvStats" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="568" width="414" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ue8-1e-KZu" id="EAh-9z-vCS">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p14" translatesAutoresizingMaskIntoConstraints="NO" id="uxS-Ga-EUW">
+                                            <rect key="frame" x="23" y="5" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="Sh7-Ry-kpF"/>
+                                                <constraint firstAttribute="height" constant="50" id="f6E-nV-qr5"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoV-fr-PBC">
+                                            <rect key="frame" x="363" y="19" width="35" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vph-XV-wV8">
+                                            <rect key="frame" x="171" y="15" width="72" height="31.333333333333336"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="72" id="Pn0-v3-Oy4"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Kailasa-Bold" family="Kailasa" pointSize="19"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XoV-fr-PBC" firstAttribute="centerY" secondItem="EAh-9z-vCS" secondAttribute="centerY" constant="-1" id="8ag-mC-Nrb"/>
+                                        <constraint firstItem="XoV-fr-PBC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vph-XV-wV8" secondAttribute="trailing" constant="20" id="N7w-8Q-HMf"/>
+                                        <constraint firstItem="Vph-XV-wV8" firstAttribute="centerX" secondItem="EAh-9z-vCS" secondAttribute="centerX" id="Qbb-0n-lu6"/>
+                                        <constraint firstItem="uxS-Ga-EUW" firstAttribute="leading" secondItem="EAh-9z-vCS" secondAttribute="leadingMargin" constant="15" id="UZ2-wY-dpe"/>
+                                        <constraint firstItem="Vph-XV-wV8" firstAttribute="centerY" secondItem="EAh-9z-vCS" secondAttribute="centerY" id="XXo-MC-HaA"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="XoV-fr-PBC" secondAttribute="trailing" constant="8" id="dlT-bA-yah"/>
+                                        <constraint firstItem="uxS-Ga-EUW" firstAttribute="centerY" secondItem="EAh-9z-vCS" secondAttribute="centerY" id="hez-D9-3fs"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cpValue" destination="Vph-XV-wV8" id="bby-tp-xBx"/>
+                                    <outlet property="pokemonImage" destination="uxS-Ga-EUW" id="QxX-cL-5Pg"/>
+                                    <outlet property="pokemonName" destination="XoV-fr-PBC" id="73q-RB-DHW"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="UNs-Lu-hji" id="ogg-YI-de6"/>
@@ -868,6 +908,36 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="Qnp-ai-Fny">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reverse List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucR-EE-Aom">
+                                            <rect key="frame" x="19" y="12" width="150" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="150" id="4mm-x6-yR9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gUi-60-579">
+                                            <rect key="frame" x="357" y="9" width="51" height="31"/>
+                                            <color key="onTintColor" red="0.99607843139999996" green="0.42352941179999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="ReverseList:" destination="iwn-Pe-RkL" eventType="valueChanged" id="kM2-Ac-59z"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="gUi-60-579" firstAttribute="centerY" secondItem="ucR-EE-Aom" secondAttribute="centerY" id="5B9-d1-ytL"/>
+                                        <constraint firstItem="gUi-60-579" firstAttribute="trailing" secondItem="Qnp-ai-Fny" secondAttribute="trailingMargin" id="L9R-bJ-5r5"/>
+                                        <constraint firstItem="ucR-EE-Aom" firstAttribute="top" secondItem="Qnp-ai-Fny" secondAttribute="top" constant="12" id="Yr5-Eg-FUI"/>
+                                        <constraint firstItem="ucR-EE-Aom" firstAttribute="leading" secondItem="Qnp-ai-Fny" secondAttribute="leading" constant="19" id="hDk-qW-5Vw"/>
+                                        <constraint firstAttribute="bottom" secondItem="ucR-EE-Aom" secondAttribute="bottom" constant="7" id="kCQ-p5-yyg"/>
+                                    </constraints>
+                                </view>
                                 <sections/>
                             </tableView>
                         </subviews>
@@ -891,6 +961,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
+                        <outlet property="reverseSwitch" destination="gUi-60-579" id="tNo-cE-lUt"/>
                         <outlet property="tableView" destination="hPt-nB-SFK" id="h5H-rn-utZ"/>
                     </connections>
                 </viewController>
@@ -929,7 +1000,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="center" placeholder="Search for Pokemon" translatesAutoresizingMaskIntoConstraints="NO" id="Pws-sm-WDJ">
+                            <searchBar contentMode="center" placeholder="Search Pokemon" translatesAutoresizingMaskIntoConstraints="NO" id="Pws-sm-WDJ">
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
@@ -1086,6 +1157,7 @@
         <image name="ic_more_horiz_white" width="24" height="24"/>
         <image name="ic_star_white" width="24" height="24"/>
         <image name="ic_view_list_white" width="24" height="24"/>
+        <image name="p14" width="120" height="120"/>
         <image name="p175" width="263" height="283"/>
         <image name="pika" width="16" height="14"/>
     </resources>

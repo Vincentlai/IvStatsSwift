@@ -16,6 +16,7 @@ public enum SortType: CustomStringConvertible {
     case Recent
     case Favorite
     case MaxCp
+    case Number
     case None
     
     func toString() -> String {
@@ -26,6 +27,7 @@ public enum SortType: CustomStringConvertible {
         case .Recent: return "By Recent"
         case .Favorite: return "By Favorite"
         case .MaxCp: return "By MaxCp"
+        case .Number: return "By Number"
         case .None: return "By None"
         }
     }
@@ -42,7 +44,8 @@ public enum SortType: CustomStringConvertible {
             case "By Recent": return SortType.Recent
             case "By Favorite": return SortType.Favorite
             case "By MaxCp": return SortType.MaxCp
-        default:  return SortType.None
+            case "By Number": return SortType.MaxCp
+        default:  return SortType.Recent
         }
     }
 }
@@ -57,8 +60,9 @@ struct Sort{
 }
 
 class SortManager {
-    static let sortNameList = [SortType.Recent, SortType.Cp, SortType.Iv, SortType.Name, SortType.Favorite, SortType.MaxCp]
+    static let sortNameList = [SortType.Recent, SortType.Cp, SortType.Iv, SortType.Name, SortType.Number, SortType.Favorite, SortType.MaxCp]
     var sortList = [Sort]()
+    var isReversed: Bool = false
     var indexOfSelectedSortType: Int = 0 {
         didSet {
             self.selectedSortType = sortList[self.indexOfSelectedSortType].sortType
@@ -67,6 +71,7 @@ class SortManager {
     var selectedSortType: SortType!
     static let sortManager = SortManager()
     static let sortKey = "Sort By"
+    static let reverseKey = "Sort Reversed"
     
     init() {
         let userDefault = UserDefaults.standard
@@ -93,10 +98,37 @@ class SortManager {
             self.selectedSortType = SortType.Recent
             sortList[0].enable = true
         }
+        let reverse = userDefault.bool(forKey: SortManager.reverseKey)
+        if reverse {
+            self.isReversed = true
+        }
+
     }
     
-    public func saveSort(list: [Sort]) {
+    public func save(withType type: SortType, reversed: Bool)
+    {
         let userDefault = UserDefaults.standard
+        self.isReversed = reversed
+        userDefault.set(self.isReversed, forKey: SortManager.reverseKey)
+        self.selectedSortType = type
+        for i in 0...self.sortList.count-1
+        {
+            if sortList[i].sortType == type
+            {
+                sortList[i].enable = true
+                self.indexOfSelectedSortType = i
+            }else {
+                sortList[i].enable = false
+            }
+        }
+        userDefault.set(type.toString(), forKey: SortManager.sortKey)
+        userDefault.synchronize()
+    }
+    
+    public func saveSort(list: [Sort], reversed: Bool) {
+        let userDefault = UserDefaults.standard
+        self.isReversed = reversed
+        userDefault.set(self.isReversed, forKey: SortManager.reverseKey)
         self.sortList = list
         var index = 0
         for sort in list {
