@@ -105,6 +105,20 @@ class SortManager {
 
     }
     
+    public func clearSortConfig()
+    {
+        let userDefault = UserDefaults.standard
+        if let _ = userDefault.string(forKey: SortManager.sortKey)
+        {
+            userDefault.removeObject(forKey: SortManager.sortKey)
+        }
+        let reverse = userDefault.bool(forKey: SortManager.reverseKey)
+        if reverse {
+            userDefault.removeObject(forKey: SortManager.reverseKey)
+        }
+        userDefault.synchronize()
+    }
+    
     public func save(withType type: SortType, reversed: Bool)
     {
         let userDefault = UserDefaults.standard

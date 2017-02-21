@@ -29,7 +29,7 @@ class ApiManager {
     typealias LoginHandler = (NSError?)->()
     var loginHandler: LoginHandler?
     
-    typealias FetchPlayerInfoHandler = (Player?, NSError?)->()
+    typealias FetchPlayerInfoHandler = (NSError?)->()
     var fetchPlayerInfoHandler: FetchPlayerInfoHandler?
     
     typealias FetchDataHandler = ([Pokemon]?, [Candy]?, NSError?)->()
@@ -79,6 +79,21 @@ class ApiManager {
         }
     }
     
+    func login(withRefreshToken token:String, handler: @escaping LoginHandler){
+        self.loginHandler = handler
+        self.token = token
+        self.authType = AuthType.Google
+        
+        self.auth = GPSOAuth()
+        self.auth?.delegate = self
+        self.isLoggedIn = true
+        if self.isLoggedIn {
+            self.auth?.loginWithRefreshToken(withRefreshToken: token)
+        }else{
+            self.auth?.login(withToken: token)
+        }
+    }
+    
     func autoLogin(handler: @escaping LoginHandler){
         
         let userDefault = UserDefaults.standard
@@ -100,26 +115,22 @@ class ApiManager {
                     self.login(withToken: token, handler: handler)
                 }
             }
+        }else {
+            self.loginHandler?(Error.Code.Login.nserror())
+            self.loginHandler = nil
         }
 
     }
     
     func logout() {
-        let userDefault = UserDefaults.standard
-        if authType == AuthType.PTC {
-            userDefault.removeObject(forKey: ApiManager.UsernameKey)
-            userDefault.removeObject(forKey: ApiManager.PassworkKey)
-        }else
-        {
-            userDefault.removeObject(forKey: ApiManager.TokenKey)
-        }
-        userDefault.removeObject(forKey: ApiManager.AuthTypeKey)
-        
+        SortManager.sortManager.clearSortConfig()
+        self.clearUserConfig()
         self.isLoggedIn = false
         self.auth = nil
     }
     
     func saveLoginInfo(refreshToken: String?) {
+        self.isLoggedIn = true
         let userDefault = UserDefaults.standard
         if authType == AuthType.PTC {
             if let username = self.username,
@@ -151,6 +162,20 @@ class ApiManager {
     
     }
     
+    private func clearUserConfig()
+    {
+        let userDefault = UserDefaults.standard
+        if authType == AuthType.PTC {
+            userDefault.removeObject(forKey: ApiManager.UsernameKey)
+            userDefault.removeObject(forKey: ApiManager.PassworkKey)
+        }else
+        {
+            userDefault.removeObject(forKey: ApiManager.TokenKey)
+        }
+        userDefault.removeObject(forKey: ApiManager.AuthTypeKey)
+        userDefault.synchronize()
+    }
+    
     // MARK: - Get Player Info
     func fetchPlayerInfo(handler: FetchPlayerInfoHandler?){
         
@@ -168,7 +193,7 @@ class ApiManager {
                 (error) in
                 
                 if error != nil {
-                    handler?(nil, Error.Code.Authorization.nserror())
+                    handler?(Error.Code.Authorization.nserror())
                 }
                 else{
                     fetch()
@@ -176,7 +201,7 @@ class ApiManager {
             }
             
         } else {
-            handler?(nil, Error.Code.Authorization.nserror())
+            handler?(Error.Code.Login.nserror())
         }
         
     }
@@ -205,7 +230,7 @@ class ApiManager {
                 }
             }
         } else {
-            handler?(nil, nil, Error.Code.Authorization.nserror())
+            handler?(nil, nil, Error.Code.Login.nserror())
         }
    
     }
@@ -244,18 +269,18 @@ extension ApiManager: PGoApiDelegate {
             }
 
         } else if intent == .getPlayer {
-            
             let playerInfo = response.subresponses.first as! Pogoprotos.Networking.Responses.GetPlayerResponse
             if playerInfo.hasSuccess && playerInfo.success && playerInfo.hasPlayerData {
-                let player = Player.init(withPlayerData: playerInfo.playerData)
-                self.fetchPlayerInfoHandler?(player, nil)
+                player.updatePlayer(withPlayerData: playerInfo.playerData)
+                self.fetchPlayerInfoHandler?(nil)
                 self.fetchPlayerInfoHandler = nil
             }
             else {
-                self.fetchPlayerInfoHandler?(nil, Error.Code.ResovePlayerData.nserror())
+                self.fetchPlayerInfoHandler?(Error.Code.ResovePlayerData.nserror())
                 self.fetchPlayerInfoHandler = nil
             }
         } else if intent == .getInventory {
+            
             if response.subresponses.count > 0
             {
                 var pokemonList = Array<Pokemon>()
@@ -279,8 +304,13 @@ extension ApiManager: PGoApiDelegate {
                                     candyList.append(candyData)
                                 }
                             }
+                            if inventoryItem.inventoryItemData.hasPlayerStats {
+                                let playerStats = inventoryItem.inventoryItemData.playerStats!
+                                player.updataPlayer(withPlayerStats: playerStats)
+                            }
                         }
                     }
+                        
                     
                     self.fetchDataHandler?(pokemonList, candyList, nil)
                     self.fetchDataHandler = nil
@@ -311,7 +341,7 @@ extension ApiManager: PGoApiDelegate {
             self.loginHandler?(Error.Code.Connection.nserror())
             self.loginHandler = nil
         } else if intent == .getPlayer {
-            self.fetchPlayerInfoHandler?(nil, Error.Code.Connection.nserror())
+            self.fetchPlayerInfoHandler?(Error.Code.Connection.nserror())
             self.fetchPlayerInfoHandler = nil
         } else {
             self.fetchDataHandler?(nil, nil, Error.Code.Connection.nserror())
@@ -326,7 +356,7 @@ extension ApiManager: PGoApiDelegate {
             self.loginHandler?(error.nserror())
             self.loginHandler = nil
         } else if intent == .getPlayer {
-            self.fetchPlayerInfoHandler?(nil, error.nserror())
+            self.fetchPlayerInfoHandler?(error.nserror())
             self.fetchPlayerInfoHandler = nil
         } else {
             self.fetchDataHandler?(nil, nil, error.nserror())

@@ -38,7 +38,6 @@ class LoginController: UIViewController{
             if let error = error {
 //                me.hud.hide(animated: true)
                 me.showAlert("Error", message: error.localizedDescription)
-                //                    me.showAlert("Error", message: "Failed to Login.")
             }
             else{
 //                me.hud.hide(animated: true)
@@ -59,6 +58,7 @@ class LoginController: UIViewController{
                 return
             }
             ApiManager.defaultManager.login(withToken: mainField.text!, handler: handler)
+//            ApiManager.defaultManager.login(withRefreshToken: "1/4dGn7b86suZkl4WwbpdEyamh-sdo9eeHkK1OEzj6WQQ", handler: handler)
         }
     }
     

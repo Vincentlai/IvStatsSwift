@@ -10,8 +10,9 @@ import UIKit
 import MBProgressHUD
 import PGoApi
 
-var player: Player?
+var player = Player()
 var pokemonList = Array<Pokemon>()
+var pokemonResultList = Array<Pokemon>()
 var candyList = Array<Candy>()
 
 enum ViewType {
@@ -31,7 +32,6 @@ class PokemonController: UIViewController
         , UISearchBarDelegate
         , PokemonControllerDelegate
 {
-    var searchbar: UISearchBar?
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var filterButton: UIBarButtonItem!
@@ -47,15 +47,36 @@ class PokemonController: UIViewController
             PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: self.isReversed)
         }
     }
+    private var isRefreshButtonEnabled: Bool = true {
+        didSet{
+            if isRefreshButtonEnabled {
+                refreshButton.isEnabled = true
+            }else {
+                refreshButton.isEnabled = false
+            }
+        }
+    }
     private var selectedPokemon: Pokemon?
-    public let MenuItems: [MenuItemType] = [MenuItemType.Sort, MenuItemType.Filter, MenuItemType.Swap]
+//    public let MenuItems: [MenuItemType] = [MenuItemType.Sort, MenuItemType.Filter, MenuItemType.Swap]
+        public let MenuItems: [MenuItemType] = [MenuItemType.Sort, MenuItemType.Swap]
     public var dropdownMenu: UITableView?
     var popover: Popover!
+    private var searchText: String = "" {
+        didSet{
+            if !searchText.isEmpty {
+                self.searchPokemon()
+            }else {
+                pokemonResultList = pokemonList
+            }
+            self.pokemonCollectionview.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()      
         self.viewType = .Grid
         self.setCollectionView()
+        searchBar.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -118,35 +139,81 @@ class PokemonController: UIViewController
     }
     
     private func doFetchData() {
+        self.isRefreshButtonEnabled = false
         self.hud = HUDHelper.createHud(withView: self.view, title: "Loading Data...", detailText: nil, delegate: self)
         self.hud.show(animated: true)
         ApiManager.defaultManager.fetchData {
-            (pokemons, candies, error) in
+            [unowned me = self](pokemons, candies, error) in
             let backgroundQueue = DispatchQueue(label: "backgroundQueue", qos: DispatchQoS.background)
             backgroundQueue.async {
                 if let error = error {
-                    print("\(error.debugDescription)")
                     DispatchQueue.main.async {
-                        self.hud.label.text = "Error"
-                        self.hud.hide(animated: true, afterDelay: 0.3)
-                        self.showAlert("Error", message: error.description)
+                        me.hud.hide(animated: true, afterDelay: 0.3)
+                        me.showAlert("Error", message: error.localizedDescription)
+                        me.isRefreshButtonEnabled = true
                     }
                 }
                 else{
                     pokemonList = pokemons!
                     candyList = candies!
-                    if self.sortType == nil {
-                        self.isReversed = SortManager.sortManager.isReversed
-                        self.sortType = SortManager.sortManager.selectedSortType!
-                    }else {
-                        PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: self.isReversed)
+                    if me.sortType == nil {
+                        me.isReversed = SortManager.sortManager.isReversed
+                        me.sortType = SortManager.sortManager.selectedSortType!
                     }
-                    DispatchQueue.main.async {
-                        self.hud.label.text = "Done"
-                        self.hud.hide(animated: true, afterDelay: 0.3)
-                        self.pokemonCollectionview.reloadData()
+                    PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: self.isReversed)
+                    me.searchPokemon()
+                    me.doFetchPlayerInfo(){
+                        [unowned me = self]
+                        (error: NSError?) in
+                        if error == nil{
+                            DispatchQueue.main.async {
+                                me.pokemonCollectionview.reloadData()
+                                me.hud.label.text = "Done"
+                                me.hud.hide(animated: true, afterDelay: 0.3)
+                                me.isRefreshButtonEnabled = true
+                            }
+                        }else {
+                            DispatchQueue.main.async {
+                                me.pokemonCollectionview.reloadData()
+                                me.hud.hide(animated: true, afterDelay: 0.3)
+                                me.showAlert("Error", message: error!.localizedDescription)
+                                me.isRefreshButtonEnabled = true
+                            }
+                        }
                     }
+
                 }
+            }
+        }
+    }
+    
+    private func doFetchPlayerInfo(handler: @escaping (NSError?) -> ()){
+        ApiManager.defaultManager.fetchPlayerInfo {
+            (error) in
+            if let error = error {
+                handler(error)
+            }
+            else{
+                handler(nil)
+            }
+        }
+    }
+
+    
+    // MARK: search pokemon
+    
+    fileprivate func searchPokemon()
+    {
+        if self.searchText.isEmpty
+        {
+            pokemonResultList = pokemonList
+            return
+        }
+        pokemonResultList.removeAll()
+        for pokemon in pokemonList {
+            if pokemon.getDisplayName().lowercased().contains(self.searchText)
+            {
+                pokemonResultList.append(pokemon)
             }
         }
     }
@@ -164,8 +231,38 @@ class PokemonController: UIViewController
         self.present(alert, animated: true, completion: nil)
     }
     
+    // MARK: search bar
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(true, animated: true)
+        return true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        self.searchText = ""
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        if let text = searchBar.text{
+            if text.isEmpty {
+                searchBar.setShowsCancelButton(false, animated: true)
+            }
+        }
+        return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokemonList.count
+        return pokemonResultList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -178,14 +275,14 @@ class PokemonController: UIViewController
         let cell = self.pokemonCollectionview.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
         if let pokemonCell = cell as? PokemonCollectionCell {
             pokemonCell.viewType = self.viewType
-            pokemonCell.pokemon = pokemonList[indexPath.row]
+            pokemonCell.pokemon = pokemonResultList[indexPath.row]
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        self.selectedPokemon = pokemonList[indexPath.row]
+        self.selectedPokemon = pokemonResultList[indexPath.row]
         performSegue(withIdentifier: "Pokemon Detail", sender: self)
     }
     
@@ -202,7 +299,7 @@ class PokemonController: UIViewController
     }
     
     @IBAction func optionsButtonClicked(_ sender: UIBarButtonItem) {
-        self.dropdownMenu = UITableView(frame: CGRect(x: 0, y: 0, width: 150, height: 120))
+        self.dropdownMenu = UITableView(frame: CGRect(x: 0, y: 0, width: 150, height: 80))
         dropdownMenu?.delegate = self
         dropdownMenu?.dataSource = self
         dropdownMenu?.isScrollEnabled = false
@@ -232,6 +329,7 @@ class PokemonController: UIViewController
             }
             self.isReversed = reversed
             self.sortType = sortType
+            self.searchPokemon()
             self.pokemonCollectionview.reloadData()
         }
     }
@@ -261,13 +359,14 @@ extension PokemonController: UITableViewDelegate{
         case 0:
             performSegue(withIdentifier: "Sort", sender: self)
             break
-        case 1:
-            performSegue(withIdentifier: "Filter", sender: self)
-            break
+//        case 1:
+//            performSegue(withIdentifier: "Filter", sender: self)
+//            break
         default:
             self.isReversed = !self.isReversed
             SortManager.sortManager.save(withType: self.sortType, reversed: self.isReversed)
             PokemonHelper.doSortPokemon(sortType: self.sortType, reverse: self.isReversed)
+            self.searchPokemon()
             self.pokemonCollectionview.reloadData()
             break
         }
@@ -283,7 +382,7 @@ extension PokemonController: UITableViewDelegate{
 extension PokemonController: UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

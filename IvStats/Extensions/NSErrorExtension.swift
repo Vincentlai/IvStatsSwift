@@ -41,7 +41,7 @@ class ExceptionHelper {
             "No Api Methods Called",
             comment: "Failed to resolve inventory data")
         case .banned: return NSLocalizedString(
-            "The account has been banned",
+            "The account may has been banned",
             comment: "Failed to resolve inventory data")
         case .notLoggedIn: return NSLocalizedString(
             "No user is logged in",
@@ -53,7 +53,7 @@ class ExceptionHelper {
             "No auth found",
             comment: "Failed to resolve inventory data")
         case .delayRequired: return NSLocalizedString(
-            "Delay Required",
+            "Every refresh may request a few seconds delay. Please try to refresh later.",
             comment: "Failed to resolve inventory data")
         case .invalidRequest: return NSLocalizedString(
             "Invalid Request",
@@ -62,10 +62,10 @@ class ExceptionHelper {
             "Session Invalidated",
             comment: "Failed to resolve inventory data")
         case .unknown: return NSLocalizedString(
-            "Unknown Error",
+            "Unknown Error. Pleasy try again later.",
             comment: "Failed to resolve inventory data")
         case .captchaRequired: return NSLocalizedString(
-            "Captcha Required",
+            "Captcha Required. Re-login may fix the problem.",
             comment: "Failed to resolve inventory data")
         }
     }

@@ -17,7 +17,7 @@ class PokemonCpCalculatorCell: UITableViewCell {
     @IBOutlet weak var minLevelValue: UILabel!
     @IBOutlet weak var cpValue: UILabel!
     @IBOutlet weak var candyValue: UILabel!
-    @IBOutlet weak var startdustValue: UILabel!
+    @IBOutlet weak var stardustValue: UILabel!
     
     let step: Float = 0.5
     var pokemon: Pokemon? {
@@ -33,7 +33,7 @@ class PokemonCpCalculatorCell: UITableViewCell {
     var targetLevel: Float = 0
     var cp: Int = 0
     var candy: Int = 0
-    var startdust: Int = 0
+    var stardust: Int = 0
     
     private func updateUI()
     {
@@ -43,7 +43,7 @@ class PokemonCpCalculatorCell: UITableViewCell {
         levelValue.text = self.targetLevel.description
         cpValue.text = self.cp.description
         candyValue.text = self.candy.description
-        startdustValue.text = self.startdust.description
+        stardustValue.text = self.stardust.description
     }
     
     @IBAction func levelValueChanged(_ sender: UISlider) {
@@ -55,7 +55,7 @@ class PokemonCpCalculatorCell: UITableViewCell {
         self.targetLevel = roundedValue
         self.cp = self.pokemon!.getMaxCp(byLevel: self.targetLevel)
         self.candy = self.pokemon!.getCandyCost(forLevel: self.targetLevel)
-        self.startdust = self.pokemon!.getStartdustCost(forLevel: targetLevel)
+        self.stardust = self.pokemon!.getStardustCost(forLevel: targetLevel)
         self.updateUI()
     }
     override func awakeFromNib() {

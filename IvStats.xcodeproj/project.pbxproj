@@ -52,6 +52,7 @@
 		BFD6DA571E529FC400BEF487 /* PokemonDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6DA561E529FC400BEF487 /* PokemonDetailController.swift */; };
 		BFDB68861E544F1B00D5F046 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDB68851E544F1B00D5F046 /* Cartography.framework */; };
 		BFE1E1661E21E7EC000C61B2 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE1E1651E21E7EC000C61B2 /* Button.swift */; };
+		BFFB66911E5AE5B60083CD5B /* playerInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB66901E5AE5B60083CD5B /* playerInfoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		BFD6DA561E529FC400BEF487 /* PokemonDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokemonDetailController.swift; path = Controllers/PokemonDetailController.swift; sourceTree = "<group>"; };
 		BFDB68851E544F1B00D5F046 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = "../../Library/Developer/Xcode/DerivedData/IvStats-clezezoarqjivfhbhmmhsuqizqzq/Build/Products/Debug-iphoneos/Cartography/Cartography.framework"; sourceTree = "<group>"; };
 		BFE1E1651E21E7EC000C61B2 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		BFFB66901E5AE5B60083CD5B /* playerInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = playerInfoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 				BF0129391E52E6CC0003628F /* PokemonMoveSetCell.swift */,
 				BF2BABF31E56D26C00839D06 /* PokemonCpCalculatorCell.swift */,
 				BFBF7D281E59A7D1008C06A9 /* PokemonEvolveCell.swift */,
+				BFFB66901E5AE5B60083CD5B /* playerInfoCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				BF14B6091E48112B0001B100 /* SortViewCell.swift in Sources */,
 				BFC3B4A71E512EBD0083CD56 /* PokemonPrototype.swift in Sources */,
 				BF2BABF41E56D26C00839D06 /* PokemonCpCalculatorCell.swift in Sources */,
+				BFFB66911E5AE5B60083CD5B /* playerInfoCell.swift in Sources */,
 				BF14B6041E47FF100001B100 /* Sort.swift in Sources */,
 				BFC3B48D1E4AF26C0083CD56 /* Popover.swift in Sources */,
 				BF6FC3E91E31A51D0072A1E0 /* HUDHelper.swift in Sources */,

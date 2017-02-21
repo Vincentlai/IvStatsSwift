@@ -296,54 +296,54 @@ class Pokemon: NSObject{
         return candy
     }
     
-    public func getStartdustCost(forLevel targetLevel: Float) -> Int {
+    public func getStardustCost(forLevel targetLevel: Float) -> Int {
         var level = self.getLevel()
-        var startdust = 0
+        var stardust = 0
         while level < targetLevel {
             if level <= 2.5 {
-                startdust += 200
+                stardust += 200
             } else if level <= 4.5 {
-                startdust += 400
+                stardust += 400
             } else if level <= 6.5 {
-                startdust += 600
+                stardust += 600
             } else if level <= 8.5 {
-                startdust += 800
+                stardust += 800
             } else if level <= 10.5 {
-                startdust += 1000
+                stardust += 1000
             } else if level <= 12.5 {
-                startdust += 1300
+                stardust += 1300
             } else if level <= 14.5 {
-                startdust += 1600
+                stardust += 1600
             } else if level <= 16.5 {
-                startdust += 1900
+                stardust += 1900
             } else if level <= 18.5 {
-                startdust += 2200
+                stardust += 2200
             } else if level <= 20.5 {
-                startdust += 2500
+                stardust += 2500
             } else if level <= 22.5 {
-                startdust += 3000
+                stardust += 3000
             } else if level <= 24.5 {
-                startdust += 3500
+                stardust += 3500
             } else if level <= 26.5 {
-                startdust += 4000
+                stardust += 4000
             } else if level <= 28.5 {
-                startdust += 4500
+                stardust += 4500
             } else if level <= 30.5 {
-                startdust += 5000
+                stardust += 5000
             } else if level <= 32.5 {
-                startdust += 6000
+                stardust += 6000
             } else if level <= 34.5 {
-                startdust += 7000
+                stardust += 7000
             } else if level <= 36.5 {
-                startdust += 8000
+                stardust += 8000
             } else if level <= 38.5 {
-                startdust += 9000
+                stardust += 9000
             } else {
-                startdust += 10000
+                stardust += 10000
             }
             level += 0.5
         }
-        return startdust
+        return stardust
     }
     
     

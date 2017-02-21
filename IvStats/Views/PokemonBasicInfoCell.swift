@@ -28,9 +28,7 @@ class PokemonBasicInfoCell: UITableViewCell {
     @IBOutlet weak var candyValue: UILabel!
     @IBOutlet weak var maxCpValue: UILabel!
     @IBOutlet weak var captureDataValue: UILabel!
-    
-    
-    
+     
     var pokemon: Pokemon? {
         didSet
         {
@@ -140,15 +138,6 @@ class PokemonBasicInfoCell: UITableViewCell {
             type = PokemonHelper.getTypeDisplayName(forType: secondType)
             type2.text = type
             type2.isHidden = false
-        }
-        
-        let nextEvolve = self.pokemonPrototype!.nextEvolve
-        if nextEvolve.count != 0 {
-            if nextEvolve.count == 1 {
-                let nextEvolvePorototype: PokemonPrototype = PokemonHelper.getPokemonPrototype(withPokemonId: nextEvolve[0])!
-                let cpafter = nextEvolvePorototype.getCpAfterEvolve(withAttack: self.pokemon!.individualAttack, defense: self.pokemon!.individualDefense, stamina: self.pokemon!.individualStamina, level: self.pokemon!.getLevel())
-                print("pokemon: \(self.pokemon?.pokemonId) nextevolve is \(nextEvolvePorototype.pokemonId) with cp : \(cpafter)")
-            }
         }
     }
     
