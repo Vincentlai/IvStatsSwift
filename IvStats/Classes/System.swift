@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import SystemConfiguration
 
+enum AlertStyle {
+    case Ok
+    case Cancel
+    case Logout
+}
     // initialize colors
     public var primaryColor = UIColor(red: 254/255, green: 108/255, blue: 111/255, alpha: 1)
     public var backgroundColor = UIColor(red: 254/255, green: 108/255, blue: 111/255, alpha: 1)

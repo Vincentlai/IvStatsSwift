@@ -1,0 +1,104 @@
+[17:56:19] () Configuration is up-to-date. Schema version: 6
+[17:56:19] () Validating config.json...
+[17:56:20] () Auth Configuration is up-to-date. Schema version: 6
+[17:56:20] () Validating auth.json...
+[17:56:22] (UPDATE) Perfect! You already have the newest Version 1.0.0.48
+[17:56:22] (INFO) Logging in using Ptc
+[17:56:22] (INFO) Your IP is: 
+[17:56:31] (INFO) Playing as 
+[17:56:36] (ATTENTION) Make sure Lat & Lng are right. Exit Program if not! Lat: -27.5301355332601 Lng: 153.274386409459
+[17:56:41] (INFO) ====== DisplayHighestsCP ======
+[17:56:41] (INFO) # CP  830/ 759 | (38.41% perfect)	| Lvl 13	 NAME: Kangaskhan	 MOVE1: MudSlapFast          MOVE2: Stomp                Candy: 52
+[17:56:41] (INFO) # CP  762/ 642 | (89.13% perfect)	| Lvl 11	 NAME: Kangaskhan	 MOVE1: LowKickFast          MOVE2: Stomp                Candy: 52
+[17:56:41] (INFO) # CP  679/ 584 | (78.78% perfect)	| Lvl 10	 NAME: Kangaskhan	 MOVE1: LowKickFast          MOVE2: BrickBreak           Candy: 52
+[17:56:41] (INFO) # CP  525/ 460 | (62.42% perfect)	| Lvl 08	 NAME: Kangaskhan	 MOVE1: MudSlapFast          MOVE2: BrickBreak           Candy: 52
+[17:56:41] (INFO) # CP  467/ 294 | (58.26% perfect)	| Lvl 13	 NAME: Krabby    	 MOVE1: MudShotFast          MOVE2: WaterPulse           Candy: 83
+[17:56:41] (INFO) # CP  463/ 398 | (77.25% perfect)	| Lvl 07	 NAME: Kangaskhan	 MOVE1: MudSlapFast          MOVE2: Earthquake           Candy: 52
+[17:56:41] (INFO) # CP  445/ 350 | (81.02% perfect)	| Lvl 06	 NAME: Pinsir    	 MOVE1: FuryCutterFast       MOVE2: ViceGrip             Candy: 39
+[17:56:41] (INFO) ====== DisplayHighestsPerfect ======
+[17:56:42] (INFO) # CP  278/ 307 | (92.25% perfect)	| Lvl 10	 NAME: Drowzee   	 MOVE1: ConfusionFast        MOVE2: Psychic              Candy: 14
+[17:56:42] (INFO) # CP  762/ 642 | (89.13% perfect)	| Lvl 11	 NAME: Kangaskhan	 MOVE1: LowKickFast          MOVE2: Stomp                Candy: 52
+[17:56:42] (INFO) # CP   39/  41 | (88.83% perfect)	| Lvl 02	 NAME: Staryu    	 MOVE1: TackleFast           MOVE2: Swift                Candy: 51
+[17:56:42] (INFO) # CP  236/ 228 | (87.71% perfect)	| Lvl 04	 NAME: Starmie   	 MOVE1: TackleFast           MOVE2: HydroPump            Candy: 51
+[17:56:42] (INFO) # CP  131/ 130 | (86.39% perfect)	| Lvl 05	 NAME: Goldeen   	 MOVE1: PeckFast             MOVE2: AquaTail             Candy: 60
+[17:56:42] (INFO) # CP   61/  80 | (85.71% perfect)	| Lvl 06	 NAME: Kakuna    	 MOVE1: PoisonStingFast      MOVE2: Struggle             Candy: 9
+[17:56:42] (INFO) # CP   42/  43 | (85.71% perfect)	| Lvl 03	 NAME: Rattata   	 MOVE1: QuickAttackFast      MOVE2: BodySlam             Candy: 5
+[17:56:42] (EGG) Incubator status update: 4.34km left
+[17:56:42] (EGG) Incubator status update: 0.73km left
+[17:56:42] (EGG) Incubator status update: 6.55km left
+[17:56:42] (EVOLVED) Potential Evolutions: 0
+[17:56:42] (INFO) Amount of Pokemon Seen: 61/151, Amount of Pokemon Caught: 51/151
+[17:56:48] (ATTENTION) No usable PokeStops found in your area. Is your maximum distance too small?
+[17:56:51] (INFO) Traveling to Pokestop: Redland City Council - Koalas Wildlife Awareness (433 m) (64 seconds) (route Google Walk)
+[17:57:01] (PKMN) (CatchEscape) | (Normal) Exeggcute Lvl: 4 CP: (99/115) IV: 35.00% | Chance: 78.21% | 58.13m dist | with a PokeBall (3 left). | lat: -27.530488 long: 153.273791 | Move1: ConfusionFast Move2: SeedBomb | Rarity :Common
+[17:57:17] (INFO) (CATCH LIMIT) 297/998
+[17:57:17] (PKMN) (CatchSuccess Attempt #2) | (Normal) Exeggcute Lvl: 4 CP: (99/115) IV: 35.00% | Chance: 78.21% | 58.13m dist | with a PokeBall (2 left). | 120 EXP earned | Candies: 30 | lat: -27.530488 long: 153.273791 | Move1: ConfusionFast Move2: SeedBomb | Rarity :Common
+[17:57:36] (POKESTOP) Name: William Ross Park XP: 50, Gems: 0, Items: 1 x ItemSuperPotion, 1 x ItemPotion, 1 x ItemPokeBall, Lat: -27.530208, Long: 153.274103, Alt: 7.20476513030229
+[17:57:36] (INFO) (POKESTOP LIMIT) 147/1998
+[17:57:38] (SNIPER) Sniper count 0
+[17:57:46] (SNIPER) Sniper count 0
+[17:57:52] (SNIPER) Sniper count 0
+[17:59:12] (INFO) (CATCH LIMIT) 295/998
+[17:59:12] (PKMN) (CatchSuccess) | (Normal) Staryu Lvl: 10 CP: (235/268) IV: 54.00% | Chance: 47.34% | 69.85m dist | with a PokeBall (2 left). | 160 EXP earned | Candies: 57 | lat: -27.530902 long: 153.273330 | Move1: TackleFast Move2: PowerGem | Rarity :Common
+[18:00:09] (INFO) (CATCH LIMIT) 294/998
+[18:00:09] (PKMN) (CatchSuccess) | (Normal) Mankey Lvl: 12 CP: (301/301) IV: 46.00% | Chance: 43.22% | 68.36m dist | with a PokeBall (1 left). | 120 EXP earned | Candies: 17 | lat: -27.529769 long: 153.272778 | Move1: ScratchFast Move2: LowSweep | Rarity :VeryCommon
+[18:02:24] (ERROR) Pokemon Servers might be offline / unstable. Trying again...
+[18:02:24] (ERROR) Error: System.AggregateException: One or more errors occurred. ---> PokemonGo.RocketAPI.Exceptions.HasherException: Pokefamer Hash API (http://pokehash.buddyauth.com/api/v121_2/hash) might down!
+   at PokemonGo.RocketAPI.Hash.PokefamerHasher.<RequestHashesAsync>d__4.MoveNext() in c:\projects\necrobot2\FeroxRev\Hash\PokefamerHasher.cs:line 32
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at PokemonGo.RocketAPI.Helpers.RequestBuilder.GenerateSignature(RequestEnvelope requestEnvelope) in c:\projects\necrobot2\FeroxRev\Helpers\RequestBuilder.cs:line 279
+   at PokemonGo.RocketAPI.Helpers.RequestBuilder.<GetRequestEnvelope>d__29.MoveNext() in c:\projects\necrobot2\FeroxRev\Helpers\RequestBuilder.cs:line 339
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at PokemonGo.RocketAPI.Rpc.Player.<UpdatePlayerLocation>d__1.MoveNext() in c:\projects\necrobot2\FeroxRev\Rpc\Player.cs:line 36
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at PoGo.NecroBot.Logic.Utils.LocationUtils.<UpdatePlayerLocationWithAltitude>d__0.MoveNext() in c:\projects\necrobot2\PoGo.NecroBot.Logic\Utils\LocationUtils.cs:line 21
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   at PoGo.NecroBot.Logic.Strategies.Walk.BaseWalkStrategy.<DoWalk>d__19.MoveNext() in c:\projects\necrobot2\PoGo.NecroBot.Logic\Strategies\Walk\BaseWalkStrategy.cs:line 186
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at PoGo.NecroBot.Logic.Strategies.Walk.GoogleStrategy.<Walk>d__4.MoveNext() in c:\projects\necrobot2\PoGo.NecroBot.Logic\Strategies\Walk\GoogleStrategy.cs:line 46
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at PoGo.NecroBot.Logic.Navigation.<Move>d__14.MoveNext() in c:\projects\necrobot2\PoGo.NecroBot.Logic\Navigation.cs:line 98
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at PoGo.NecroBot.Logic.Tasks.UseNearbyPokestopsTask.<WalkingToPokeStop>d__10.MoveNext() in c:\projects\necrobot2\PoGo.NecroBot.Logic\Tasks\UseNearbyPokestopsTask.cs:line 134
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   at PoGo.NecroBot.Logic.Tasks.UseNearbyPokestopsTask.<Execute>d__8.MoveNext() in c:\projects\necrobot2\PoGo.NecroBot.Logic\Tasks\UseNearbyPokestopsTask.cs:line 65
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   at PoGo.NecroBot.Logic.Tasks.FarmPokestopsTask.<Execute>d__1.MoveNext() in c:\projects\necrobot2\PoGo.NecroBot.Logic\Tasks\FarmPokestopsTask.cs:line 68
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   at PoGo.NecroBot.Logic.State.FarmState.<Execute>d__0.MoveNext() in c:\projects\necrobot2\PoGo.NecroBot.Logic\State\FarmState.cs:line 49
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   at PoGo.NecroBot.Logic.State.StateMachine.<Start>d__3.MoveNext() in c:\projects\necrobot2\PoGo.NecroBot.Logic\State\StateMachine.cs:line 93
+---> (Inner Exception #0) PokemonGo.RocketAPI.Exceptions.HasherException: Pokefamer Hash API (http://pokehash.buddyauth.com/api/v121_2/hash) might down!
+   at PokemonGo.RocketAPI.Hash.PokefamerHasher.<RequestHashesAsync>d__4.MoveNext() in c:\projects\necrobot2\FeroxRev\Hash\PokefamerHasher.cs:line 32<---
+
+[18:02:24] (INFO) Logging in using Ptc
+[18:02:25] (ERROR) Pokefamer Hash API (http://pokehash.buddyauth.com/api/v121_2/hash) might down!
+[18:02:25] (ERROR) The bot will now exit after hitting the enter key.

@@ -22,6 +22,20 @@ enum MenuItemType {
     }
 }
 
+enum SettingItemType {
+    case About
+    case Support
+    case Logout
+    
+    func toString() -> String{
+        switch self {
+        case .About: return "About"
+        case .Support: return "Support"
+        default: return "Logout"
+        }
+    }
+}
+
 class DropdownMenuItem: UITableViewCell {
 
     var menuIcon: UIImageView!
@@ -30,6 +44,12 @@ class DropdownMenuItem: UITableViewCell {
     var menuItem: MenuItemType? {
         didSet{
             self.updateUI()
+        }
+    }
+    
+    var settingMenuItem: SettingItemType? {
+        didSet{
+            self.updateSettingUi()
         }
     }
     
@@ -43,6 +63,24 @@ class DropdownMenuItem: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    private func updateSettingUi()
+    {
+        switch settingMenuItem! {
+        case .About:
+            menuIcon.image = #imageLiteral(resourceName: "about")
+            menuLabel.text = settingMenuItem?.toString()
+            break
+        case .Support:
+            menuIcon.image = #imageLiteral(resourceName: "support")
+            menuLabel.text = settingMenuItem?.toString()
+        default:
+            menuIcon.image = #imageLiteral(resourceName: "logout")
+            menuLabel.text = settingMenuItem?.toString()
+        }
+        menuIcon.image = menuIcon.image!.withRenderingMode(.alwaysTemplate)
+        menuIcon.tintColor = UIColor.black
     }
     
     private func updateUI() {
@@ -64,6 +102,4 @@ class DropdownMenuItem: UITableViewCell {
         menuIcon.image = menuIcon.image!.withRenderingMode(.alwaysTemplate)
         menuIcon.tintColor = UIColor.black
     }
-    
-  
 }

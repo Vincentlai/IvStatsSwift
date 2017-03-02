@@ -219,16 +219,16 @@ class ApiManager {
         }
         
         if self.isLoggedIn {
-            self.autoLogin() {
-                (error) in
-                
-                if error != nil {
-                    handler?(nil, nil, Error.Code.Authorization.nserror())
-                }
-                else{
+//            self.autoLogin() {
+//                (error) in
+//
+//                if error != nil {
+//                    handler?(nil, nil, Error.Code.Authorization.nserror())
+//                }
+//                else{
                     fetch()
-                }
-            }
+//                }
+//            }
         } else {
             handler?(nil, nil, Error.Code.Login.nserror())
         }

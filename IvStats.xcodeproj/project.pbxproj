@@ -48,6 +48,7 @@
 		BFC3B49B1E4B0C3C0083CD56 /* PokemonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B49A1E4B0C3C0083CD56 /* PokemonController.swift */; };
 		BFC3B4A11E4D9CE90083CD56 /* FilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B4A01E4D9CE90083CD56 /* FilterController.swift */; };
 		BFC3B4A71E512EBD0083CD56 /* PokemonPrototype.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3B4A61E512EBD0083CD56 /* PokemonPrototype.swift */; };
+		BFCD597A1E5D871600E66DCE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCD59781E5D836E00E66DCE /* MessageUI.framework */; };
 		BFD6DA551E529EC000BEF487 /* PokemonBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6DA541E529EC000BEF487 /* PokemonBasicInfoCell.swift */; };
 		BFD6DA571E529FC400BEF487 /* PokemonDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6DA561E529FC400BEF487 /* PokemonDetailController.swift */; };
 		BFDB68861E544F1B00D5F046 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDB68851E544F1B00D5F046 /* Cartography.framework */; };
@@ -102,6 +103,7 @@
 		BFC3B49A1E4B0C3C0083CD56 /* PokemonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokemonController.swift; path = Controllers/PokemonController.swift; sourceTree = "<group>"; };
 		BFC3B4A01E4D9CE90083CD56 /* FilterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterController.swift; path = Controllers/FilterController.swift; sourceTree = "<group>"; };
 		BFC3B4A61E512EBD0083CD56 /* PokemonPrototype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonPrototype.swift; sourceTree = "<group>"; };
+		BFCD59781E5D836E00E66DCE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BFD6DA541E529EC000BEF487 /* PokemonBasicInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonBasicInfoCell.swift; sourceTree = "<group>"; };
 		BFD6DA561E529FC400BEF487 /* PokemonDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokemonDetailController.swift; path = Controllers/PokemonDetailController.swift; sourceTree = "<group>"; };
 		BFDB68851E544F1B00D5F046 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = "../../Library/Developer/Xcode/DerivedData/IvStats-clezezoarqjivfhbhmmhsuqizqzq/Build/Products/Debug-iphoneos/Cartography/Cartography.framework"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFCD597A1E5D871600E66DCE /* MessageUI.framework in Frameworks */,
 				BFDB68861E544F1B00D5F046 /* Cartography.framework in Frameworks */,
 				BF14B5F41E41A8840001B100 /* PGoApi.framework in Frameworks */,
 				BFB031271E3EC78000821C97 /* RNCryptor.framework in Frameworks */,
@@ -128,6 +131,7 @@
 		07EDBEB15B6C5A6024E68DBF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFCD59781E5D836E00E66DCE /* MessageUI.framework */,
 				BFDB68851E544F1B00D5F046 /* Cartography.framework */,
 				BF14B5F31E41A8840001B100 /* PGoApi.framework */,
 				BFB031261E3EC78000821C97 /* RNCryptor.framework */,
